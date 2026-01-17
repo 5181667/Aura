@@ -26,8 +26,10 @@ echo -e "${GREEN}Step 3: 运行数据库迁移...${NC}"
 npx prisma generate
 npx prisma db push
 
-echo -e "${GREEN}Step 4: 重新构建...${NC}"
-npm run build
+echo -e "${GREEN}Step 4: 重新构建 (低内存模式)...${NC}"
+# 清理缓存节省内存
+rm -rf .next
+npm run build:low || npm run build
 
 echo -e "${GREEN}Step 5: 重启应用...${NC}"
 pm2 restart $APP_NAME
