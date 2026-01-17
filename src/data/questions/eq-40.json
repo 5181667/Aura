@@ -1,0 +1,498 @@
+{
+  "id": "eq-40",
+  "type": "EQ",
+  "title": "情商测试",
+  "description": "基于丹尼尔·戈尔曼的情商理论，测评您在自我认知、自我管理、自我激励、同理心和社交技能五个维度上的情商水平。",
+  "questionCount": 40,
+  "estimatedTime": "8-10分钟",
+  "dimensions": ["SA", "SM", "MO", "EM", "SS"],
+  "dimensionLabels": {
+    "SA": "自我认知 Self-Awareness",
+    "SM": "自我管理 Self-Management",
+    "MO": "自我激励 Motivation",
+    "EM": "同理心 Empathy",
+    "SS": "社交技能 Social Skills"
+  },
+  "questions": [
+    {
+      "id": "sa-1",
+      "question": "我能准确识别自己当下的情绪状态",
+      "dimension": "SA",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "SA", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "SA", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "SA", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "SA", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "SA", "value": 5 } }
+      ]
+    },
+    {
+      "id": "sa-2",
+      "question": "我了解自己情绪变化的触发因素",
+      "dimension": "SA",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "SA", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "SA", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "SA", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "SA", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "SA", "value": 5 } }
+      ]
+    },
+    {
+      "id": "sa-3",
+      "question": "我清楚自己的优势和不足",
+      "dimension": "SA",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "SA", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "SA", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "SA", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "SA", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "SA", "value": 5 } }
+      ]
+    },
+    {
+      "id": "sa-4",
+      "question": "我能意识到情绪对我行为的影响",
+      "dimension": "SA",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "SA", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "SA", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "SA", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "SA", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "SA", "value": 5 } }
+      ]
+    },
+    {
+      "id": "sa-5",
+      "question": "我对自己有清晰客观的认识",
+      "dimension": "SA",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "SA", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "SA", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "SA", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "SA", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "SA", "value": 5 } }
+      ]
+    },
+    {
+      "id": "sa-6",
+      "question": "我知道自己的价值观和人生目标",
+      "dimension": "SA",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "SA", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "SA", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "SA", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "SA", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "SA", "value": 5 } }
+      ]
+    },
+    {
+      "id": "sa-7",
+      "question": "我能觉察到身体对情绪的反应（如心跳加速）",
+      "dimension": "SA",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "SA", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "SA", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "SA", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "SA", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "SA", "value": 5 } }
+      ]
+    },
+    {
+      "id": "sa-8",
+      "question": "我善于自我反省和总结",
+      "dimension": "SA",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "SA", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "SA", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "SA", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "SA", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "SA", "value": 5 } }
+      ]
+    },
+    {
+      "id": "sm-1",
+      "question": "我能有效控制自己的负面情绪",
+      "dimension": "SM",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "SM", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "SM", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "SM", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "SM", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "SM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "sm-2",
+      "question": "生气时我能保持冷静思考",
+      "dimension": "SM",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "SM", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "SM", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "SM", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "SM", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "SM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "sm-3",
+      "question": "我能很快从挫折中恢复过来",
+      "dimension": "SM",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "SM", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "SM", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "SM", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "SM", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "SM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "sm-4",
+      "question": "压力下我仍能保持良好的判断力",
+      "dimension": "SM",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "SM", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "SM", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "SM", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "SM", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "SM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "sm-5",
+      "question": "我不会让情绪支配我的决定",
+      "dimension": "SM",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "SM", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "SM", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "SM", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "SM", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "SM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "sm-6",
+      "question": "我有有效的压力释放方式",
+      "dimension": "SM",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "SM", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "SM", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "SM", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "SM", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "SM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "sm-7",
+      "question": "我能适应变化和不确定性",
+      "dimension": "SM",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "SM", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "SM", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "SM", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "SM", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "SM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "sm-8",
+      "question": "我能延迟满足，为长期目标忍耐",
+      "dimension": "SM",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "SM", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "SM", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "SM", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "SM", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "SM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "mo-1",
+      "question": "我有明确的人生目标并为之努力",
+      "dimension": "MO",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "MO", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "MO", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "MO", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "MO", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "MO", "value": 5 } }
+      ]
+    },
+    {
+      "id": "mo-2",
+      "question": "面对困难我会积极寻找解决方案",
+      "dimension": "MO",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "MO", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "MO", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "MO", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "MO", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "MO", "value": 5 } }
+      ]
+    },
+    {
+      "id": "mo-3",
+      "question": "我对自己的未来充满信心",
+      "dimension": "MO",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "MO", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "MO", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "MO", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "MO", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "MO", "value": 5 } }
+      ]
+    },
+    {
+      "id": "mo-4",
+      "question": "我能从失败中学习并继续前进",
+      "dimension": "MO",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "MO", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "MO", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "MO", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "MO", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "MO", "value": 5 } }
+      ]
+    },
+    {
+      "id": "mo-5",
+      "question": "我追求卓越，不满足于平庸",
+      "dimension": "MO",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "MO", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "MO", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "MO", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "MO", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "MO", "value": 5 } }
+      ]
+    },
+    {
+      "id": "mo-6",
+      "question": "我主动寻求学习和成长的机会",
+      "dimension": "MO",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "MO", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "MO", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "MO", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "MO", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "MO", "value": 5 } }
+      ]
+    },
+    {
+      "id": "mo-7",
+      "question": "我能保持积极乐观的心态",
+      "dimension": "MO",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "MO", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "MO", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "MO", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "MO", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "MO", "value": 5 } }
+      ]
+    },
+    {
+      "id": "mo-8",
+      "question": "我有很强的自我驱动力",
+      "dimension": "MO",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "MO", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "MO", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "MO", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "MO", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "MO", "value": 5 } }
+      ]
+    },
+    {
+      "id": "em-1",
+      "question": "我能敏锐地察觉他人的情绪变化",
+      "dimension": "EM",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "EM", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "EM", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "EM", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "EM", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "EM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "em-2",
+      "question": "我能理解他人的处境和感受",
+      "dimension": "EM",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "EM", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "EM", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "EM", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "EM", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "EM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "em-3",
+      "question": "我善于倾听他人的倾诉",
+      "dimension": "EM",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "EM", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "EM", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "EM", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "EM", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "EM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "em-4",
+      "question": "我能从他人角度思考问题",
+      "dimension": "EM",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "EM", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "EM", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "EM", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "EM", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "EM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "em-5",
+      "question": "我关心他人的需求和感受",
+      "dimension": "EM",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "EM", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "EM", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "EM", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "EM", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "EM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "em-6",
+      "question": "我能读懂他人的肢体语言",
+      "dimension": "EM",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "EM", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "EM", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "EM", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "EM", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "EM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "em-7",
+      "question": "我尊重不同背景和观点的人",
+      "dimension": "EM",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "EM", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "EM", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "EM", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "EM", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "EM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "em-8",
+      "question": "朋友遇到困难时我愿意帮助他们",
+      "dimension": "EM",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "EM", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "EM", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "EM", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "EM", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "EM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "ss-1",
+      "question": "我善于与不同类型的人建立关系",
+      "dimension": "SS",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "SS", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "SS", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "SS", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "SS", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "SS", "value": 5 } }
+      ]
+    },
+    {
+      "id": "ss-2",
+      "question": "我能有效地处理人际冲突",
+      "dimension": "SS",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "SS", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "SS", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "SS", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "SS", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "SS", "value": 5 } }
+      ]
+    },
+    {
+      "id": "ss-3",
+      "question": "我能清晰地表达自己的想法和感受",
+      "dimension": "SS",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "SS", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "SS", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "SS", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "SS", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "SS", "value": 5 } }
+      ]
+    },
+    {
+      "id": "ss-4",
+      "question": "我能影响和说服他人",
+      "dimension": "SS",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "SS", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "SS", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "SS", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "SS", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "SS", "value": 5 } }
+      ]
+    },
+    {
+      "id": "ss-5",
+      "question": "我善于团队合作",
+      "dimension": "SS",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "SS", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "SS", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "SS", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "SS", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "SS", "value": 5 } }
+      ]
+    },
+    {
+      "id": "ss-6",
+      "question": "我能在社交场合自如应对",
+      "dimension": "SS",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "SS", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "SS", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "SS", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "SS", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "SS", "value": 5 } }
+      ]
+    },
+    {
+      "id": "ss-7",
+      "question": "我能激励他人共同达成目标",
+      "dimension": "SS",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "SS", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "SS", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "SS", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "SS", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "SS", "value": 5 } }
+      ]
+    },
+    {
+      "id": "ss-8",
+      "question": "我有良好的人际网络",
+      "dimension": "SS",
+      "options": [
+        { "text": "非常不同意", "score": { "dimension": "SS", "value": 1 } },
+        { "text": "不同意", "score": { "dimension": "SS", "value": 2 } },
+        { "text": "中立", "score": { "dimension": "SS", "value": 3 } },
+        { "text": "同意", "score": { "dimension": "SS", "value": 4 } },
+        { "text": "非常同意", "score": { "dimension": "SS", "value": 5 } }
+      ]
+    }
+  ]
+}

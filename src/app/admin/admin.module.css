@@ -1,225 +1,720 @@
+/* ===== 管理后台布局 ===== */
 .adminLayout {
-    display: flex;
-    min-height: 100vh;
-}
-
-.adminNav {
-    width: 280px;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
-    position: sticky;
-    top: 0;
-    height: 100vh;
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: 800;
-    margin-bottom: 3rem;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.adminBadge {
-    font-size: 0.7rem;
-    padding: 0.25rem 0.5rem;
-    background: rgba(139, 92, 246, 0.2);
-    border: 1px solid rgba(139, 92, 246, 0.3);
-    border-radius: 6px;
-    color: var(--primary);
-}
-
-.navItems {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.navItem {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-    border-radius: 12px;
-    text-decoration: none;
-    color: var(--foreground);
-    transition: all 0.3s;
-    border: 1px solid transparent;
-}
-
-.navItem:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(139, 92, 246, 0.3);
-}
-
-.navItem.active {
-    background: rgba(139, 92, 246, 0.2);
-    border-color: rgba(139, 92, 246, 0.5);
-    color: var(--primary);
-}
-
-.navIcon {
-    font-size: 1.5rem;
-}
-
-.backLink {
-    margin-top: 2rem;
-    padding: 1rem;
-    text-align: center;
-    color: rgba(248, 250, 252, 0.6);
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.backLink:hover {
-    color: var(--foreground);
+  min-height: 100vh;
 }
 
 .adminMain {
-    flex: 1;
-    padding: 3rem;
-    overflow-y: auto;
+  padding: 2rem;
+  max-width: 1600px;
+  margin: 0 auto;
 }
 
+/* ===== 仪表盘容器 ===== */
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ===== 页面头部 ===== */
+.dashboardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.headerLeft h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+
+.headerLeft p {
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.lastUpdate {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.refreshBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  color: var(--text-main);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.refreshBtn:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.refreshBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ===== 核心指标卡片网格 ===== */
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.metricCard {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  transition: all 0.3s;
+  overflow: hidden;
+}
+
+.metricCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--card-accent, var(--primary)), transparent);
+}
+
+.metricCard:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* 卡片颜色变体 */
+.metricUsers { --card-accent: #8b5cf6; }
+.metricActive { --card-accent: #10b981; }
+.metricTests { --card-accent: #06b6d4; }
+.metricResults { --card-accent: #f59e0b; }
+
+.metricIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--card-accent), transparent);
+  border-radius: 12px;
+  color: white;
+  flex-shrink: 0;
+}
+
+.metricContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.metricLabel {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.metricValue {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+
+.metricTrend {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: #10b981;
+  margin-top: 0.25rem;
+}
+
+.trendSeparator {
+  color: var(--text-muted);
+  opacity: 0.5;
+}
+
+.metricBadge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.6rem;
+  background: rgba(16, 185, 129, 0.15);
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #10b981;
+}
+
+/* ===== 图表区域 ===== */
+.chartsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.chartCard {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.chartCard:hover {
+  border-color: var(--glass-border-hover);
+}
+
+.chartWide {
+  grid-column: span 2;
+}
+
+.chartHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.chartTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--primary);
+}
+
+.chartTitle h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.chartSubtitle {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.chartBody {
+  padding: 1.5rem;
+  min-height: 320px;
+}
+
+/* 自定义 Tooltip */
+.chartTooltip {
+  background: var(--surface);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.tooltipLabel {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+}
+
+/* ===== 排行榜列表 ===== */
+.rankingList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.rankingItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: var(--surface);
+  border-radius: 10px;
+  transition: all 0.2s;
+}
+
+.rankingItem:hover {
+  background: var(--selection);
+}
+
+.rankNumber {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-glass);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.rankNumber.topRank {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+}
+
+.rankInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.rankName {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rankType {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.rankBar {
+  width: 80px;
+  height: 6px;
+  background: var(--bg-glass);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.rankBarFill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+.rankValue {
+  width: 40px;
+  text-align: right;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.emptyRanking {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-muted);
+}
+
+/* ===== 活动列表区域 ===== */
+.activityGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.activityCard {
+  padding: 1.5rem;
+  border-radius: 16px;
+}
+
+.activityHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.activityTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--primary);
+}
+
+.activityTitle h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.activityCount {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  background: var(--bg-glass);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+}
+
+.activityList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.activityItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--surface);
+  border-radius: 12px;
+  transition: all 0.2s;
+}
+
+.activityItem:hover {
+  background: var(--selection);
+}
+
+.activityAvatar {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 10px;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.activityInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.activityUser {
+  display: block;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 0.25rem;
+}
+
+.activityDetail {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.activityDetail strong {
+  color: var(--primary);
+}
+
+.activityTime {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
+.activityScore {
+  padding: 0.35rem 0.75rem;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: white;
+}
+
+.activityMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  padding: 0.35rem 0.75rem;
+  background: var(--bg-glass);
+  border-radius: 8px;
+}
+
+.emptyActivity {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-muted);
+}
+
+/* ===== 系统信息 ===== */
+.systemInfo {
+  padding: 1.5rem;
+  border-radius: 16px;
+}
+
+.systemHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--primary);
+}
+
+.systemHeader h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.systemGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.systemItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.systemLabel {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.systemValue {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.statusOnline {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #10b981;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ===== 其他管理页面通用样式 ===== */
 .header {
-    margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .header h1 {
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin-bottom: 0.5rem;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
 }
 
 .header p {
-    font-size: 1.1rem;
-    color: rgba(248, 250, 252, 0.6);
-}
-
-.statsGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
-}
-
-.statCard {
-    padding: 2rem;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s;
-}
-
-.statCard:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(139, 92, 246, 0.3);
-    transform: translateY(-4px);
-}
-
-.statLabel {
-    font-size: 0.9rem;
-    color: rgba(248, 250, 252, 0.6);
-    margin-bottom: 0.5rem;
-}
-
-.statValue {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--primary);
+  color: var(--text-muted);
 }
 
 .section {
-    padding: 2rem;
-    border-radius: 20px;
-    margin-bottom: 2rem;
+  padding: 1.5rem;
+  border-radius: 16px;
+  margin-bottom: 1.5rem;
 }
 
 .sectionHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
 }
 
 .sectionHeader h2 {
-    font-size: 1.8rem;
-    font-weight: 700;
+  font-size: 1.25rem;
+  font-weight: 700;
 }
 
 .table {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 .table th,
 .table td {
-    padding: 1rem;
-    text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .table th {
-    color: var(--primary);
-    font-weight: 600;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .table tbody tr {
-    transition: background 0.2s;
+  transition: background 0.2s;
 }
 
 .table tbody tr:hover {
-    background: rgba(255, 255, 255, 0.03);
+  background: var(--selection);
 }
 
 .actionButtons {
-    display: flex;
-    gap: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
 }
 
 .actionButtons button {
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--foreground);
-    cursor: pointer;
-    transition: all 0.2s;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-glass);
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
 .actionButtons button:hover {
-    background: var(--primary);
-    border-color: var(--primary);
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+/* ===== 响应式设计 ===== */
+@media (max-width: 1400px) {
+  .metricsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .chartsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .chartWide {
+    grid-column: span 2;
+  }
 }
 
 @media (max-width: 1024px) {
-    .adminLayout {
-        flex-direction: column;
-    }
+  .adminMain {
+    padding: 1.5rem;
+  }
+  
+  .metricsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .chartsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .chartWide {
+    grid-column: span 1;
+  }
+  
+  .activityGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .systemGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
-    .adminNav {
-        width: 100%;
-        height: auto;
-        position: relative;
-        border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .navItems {
-        flex-direction: row;
-        overflow-x: auto;
-    }
+@media (max-width: 640px) {
+  .adminMain {
+    padding: 1rem;
+  }
+  
+  .dashboardHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .headerLeft h1 {
+    font-size: 1.5rem;
+  }
+  
+  .metricsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .metricCard {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .metricIcon {
+    margin: 0 auto;
+  }
+  
+  .metricBadge {
+    position: static;
+    margin-top: 0.5rem;
+    align-self: center;
+  }
+  
+  .systemGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .activityItem {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .activityAvatar {
+    margin: 0 auto;
+  }
 }

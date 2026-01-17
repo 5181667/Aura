@@ -1,0 +1,306 @@
+/* ===== 导航栏 - 自适应明暗主题 ===== */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--nav-border);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  transition: background 0.5s ease, border-color 0.5s ease;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0.75rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo - 自适应文字色 */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-main);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.logo:hover {
+  color: var(--primary);
+}
+
+.logoIcon {
+  color: var(--primary);
+  transition: color 0.3s ease;
+}
+
+/* Desktop Navigation */
+.desktopNav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.navLink:hover {
+  color: var(--text-main);
+  background: var(--bg-glass);
+}
+
+.navLink.active {
+  color: var(--text-main);
+  background: var(--selection);
+}
+
+.navLink.active svg {
+  color: var(--primary);
+}
+
+/* User Section */
+.userSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.userMenu {
+  position: relative;
+}
+
+.userButton {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.4rem 0.75rem 0.4rem 0.4rem;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.userButton:hover {
+  background: var(--surface);
+  border-color: var(--glass-border-hover);
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--primary-foreground);
+  overflow: hidden;
+  transition: background 0.5s ease;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.userName {
+  color: var(--text-main);
+  font-size: 0.9rem;
+}
+
+.menuOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  min-width: 180px;
+  background: var(--surface);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 0.5rem;
+  z-index: 100;
+  backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-lg);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.95rem;
+}
+
+.dropdownItem:hover {
+  background: var(--selection);
+  color: var(--text-main);
+}
+
+.dropdownItem svg {
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+
+.dropdownItem:hover svg {
+  color: var(--primary);
+}
+
+/* Auth Buttons */
+.authButtons {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.loginBtn {
+  padding: 0.6rem 1.25rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.loginBtn:hover {
+  color: var(--primary);
+}
+
+/* Mobile Menu Button */
+.mobileMenuBtn {
+  display: none;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--text-main);
+  cursor: pointer;
+}
+
+/* Mobile Navigation */
+.mobileNav {
+  display: none;
+  flex-direction: column;
+  padding: 1rem 2rem 2rem;
+  border-top: 1px solid var(--border-color);
+  background: var(--nav-bg);
+}
+
+.mobileNavLink {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+
+.mobileNavLink:hover,
+.mobileNavLink.active {
+  background: var(--selection);
+  color: var(--text-main);
+}
+
+.mobileNavLink.active svg {
+  color: var(--primary);
+}
+
+.mobileAuthButtons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.mobileAuthButtons a {
+  flex: 1;
+  text-align: center;
+  padding: 0.75rem;
+  border-radius: 10px;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.mobileAuthButtons a:first-child {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+}
+
+.mobileLogout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 12px;
+  color: #ef4444;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .desktopNav {
+    display: none;
+  }
+
+  .userName {
+    display: none;
+  }
+
+  .mobileMenuBtn {
+    display: block;
+  }
+
+  .mobileNav {
+    display: flex;
+  }
+
+  .authButtons {
+    display: none;
+  }
+
+  .container {
+    padding: 0.75rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo span {
+    display: none;
+  }
+}

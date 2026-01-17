@@ -1,0 +1,454 @@
+{
+  "id": "enneagram-36",
+  "type": "ENNEAGRAM",
+  "title": "九型人格测试",
+  "description": "九型人格是一种深层的人格分析系统，帮助您了解自己的核心动机、恐惧和欲望，发现真实的自我，促进个人成长。",
+  "questionCount": 36,
+  "estimatedTime": "8-10分钟",
+  "dimensions": ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
+  "dimensionLabels": {
+    "1": "完美主义者 The Perfectionist",
+    "2": "助人者 The Helper",
+    "3": "成就者 The Achiever",
+    "4": "艺术家 The Individualist",
+    "5": "观察者 The Investigator",
+    "6": "忠诚者 The Loyalist",
+    "7": "热情者 The Enthusiast",
+    "8": "领导者 The Challenger",
+    "9": "和平者 The Peacemaker"
+  },
+  "questions": [
+    {
+      "id": "enn-1",
+      "question": "我经常关注事情是否做得正确、合乎标准",
+      "dimension": "1",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "1", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "1", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "1", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "1", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "1", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-2",
+      "question": "我有很强的是非观念，难以容忍不道德的行为",
+      "dimension": "1",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "1", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "1", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "1", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "1", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "1", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-3",
+      "question": "我经常批评自己做得不够好",
+      "dimension": "1",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "1", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "1", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "1", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "1", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "1", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-4",
+      "question": "我追求完美，细节上的瑕疵会让我不舒服",
+      "dimension": "1",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "1", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "1", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "1", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "1", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "1", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-5",
+      "question": "帮助他人让我感到满足和有价值",
+      "dimension": "2",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "2", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "2", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "2", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "2", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "2", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-6",
+      "question": "我很在意别人的需求，常常把他人放在自己之前",
+      "dimension": "2",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "2", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "2", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "2", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "2", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "2", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-7",
+      "question": "我希望被人需要和感谢",
+      "dimension": "2",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "2", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "2", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "2", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "2", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "2", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-8",
+      "question": "我善于察觉他人的情绪和需求",
+      "dimension": "2",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "2", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "2", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "2", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "2", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "2", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-9",
+      "question": "成功和成就对我非常重要",
+      "dimension": "3",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "3", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "3", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "3", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "3", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "3", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-10",
+      "question": "我很在意自己在他人眼中的形象",
+      "dimension": "3",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "3", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "3", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "3", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "3", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "3", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-11",
+      "question": "我很有目标感，努力工作以取得成就",
+      "dimension": "3",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "3", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "3", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "3", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "3", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "3", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-12",
+      "question": "我善于适应不同场合，展示最佳的自己",
+      "dimension": "3",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "3", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "3", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "3", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "3", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "3", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-13",
+      "question": "我经常感到与众不同或被误解",
+      "dimension": "4",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "4", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "4", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "4", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "4", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "4", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-14",
+      "question": "我追求独特性和真实性",
+      "dimension": "4",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "4", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "4", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "4", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "4", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "4", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-15",
+      "question": "我的情绪起伏比较大，容易陷入忧郁",
+      "dimension": "4",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "4", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "4", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "4", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "4", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "4", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-16",
+      "question": "我对美和艺术有很强的感受力",
+      "dimension": "4",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "4", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "4", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "4", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "4", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "4", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-17",
+      "question": "我喜欢独处和思考",
+      "dimension": "5",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "5", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "5", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "5", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "5", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "5", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-18",
+      "question": "我渴望知识，喜欢深入研究感兴趣的事物",
+      "dimension": "5",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "5", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "5", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "5", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "5", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "5", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-19",
+      "question": "我倾向于保持距离，观察而非参与",
+      "dimension": "5",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "5", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "5", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "5", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "5", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "5", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-20",
+      "question": "我很珍惜自己的私人空间和时间",
+      "dimension": "5",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "5", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "5", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "5", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "5", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "5", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-21",
+      "question": "我经常担心可能发生的问题或危险",
+      "dimension": "6",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "6", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "6", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "6", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "6", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "6", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-22",
+      "question": "我重视忠诚和承诺",
+      "dimension": "6",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "6", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "6", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "6", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "6", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "6", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-23",
+      "question": "我在做决定前会考虑很多可能性",
+      "dimension": "6",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "6", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "6", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "6", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "6", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "6", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-24",
+      "question": "我寻求安全感和可靠的支持",
+      "dimension": "6",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "6", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "6", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "6", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "6", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "6", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-25",
+      "question": "我喜欢新鲜刺激的体验",
+      "dimension": "7",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "7", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "7", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "7", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "7", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "7", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-26",
+      "question": "我乐观积极，总是看到事情好的一面",
+      "dimension": "7",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "7", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "7", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "7", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "7", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "7", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-27",
+      "question": "我害怕被限制或困住",
+      "dimension": "7",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "7", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "7", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "7", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "7", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "7", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-28",
+      "question": "我有很多想法和计划，但有时难以专注",
+      "dimension": "7",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "7", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "7", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "7", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "7", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "7", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-29",
+      "question": "我喜欢掌控局面，不愿受人摆布",
+      "dimension": "8",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "8", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "8", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "8", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "8", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "8", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-30",
+      "question": "我直接坦率，说话不绕弯子",
+      "dimension": "8",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "8", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "8", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "8", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "8", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "8", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-31",
+      "question": "我会保护弱者，对抗不公正",
+      "dimension": "8",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "8", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "8", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "8", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "8", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "8", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-32",
+      "question": "我不怕冲突，必要时会对抗他人",
+      "dimension": "8",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "8", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "8", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "8", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "8", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "8", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-33",
+      "question": "我追求和平，不喜欢冲突",
+      "dimension": "9",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "9", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "9", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "9", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "9", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "9", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-34",
+      "question": "我容易理解不同的观点，善于调解",
+      "dimension": "9",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "9", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "9", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "9", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "9", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "9", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-35",
+      "question": "我有时会忽略自己的需求去配合他人",
+      "dimension": "9",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "9", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "9", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "9", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "9", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "9", "value": 5 } }
+      ]
+    },
+    {
+      "id": "enn-36",
+      "question": "我喜欢稳定舒适的生活，不喜欢改变",
+      "dimension": "9",
+      "options": [
+        { "text": "非常不符合", "score": { "dimension": "9", "value": 1 } },
+        { "text": "不太符合", "score": { "dimension": "9", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "9", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "9", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "9", "value": 5 } }
+      ]
+    }
+  ]
+}

@@ -1,11 +1,12 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
+import { useState, useEffect, Suspense } from "react"
+import { useRouter, useSearchParams } from "next/navigation"
+import { signIn } from "next-auth/react"
 import Link from "next/link"
 import styles from "./auth.module.css"
 
-export default function RegisterPage() {
+function RegisterForm() {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -15,6 +16,8 @@ export default function RegisterPage() {
     const [loading, setLoading] = useState(false)
     const [countdown, setCountdown] = useState(0)
     const router = useRouter()
+    const searchParams = useSearchParams()
+    const returnUrl = searchParams.get("returnUrl") || "/dashboard"
 
     useEffect(() => {
         if (countdown > 0) {
@@ -75,10 +78,10 @@ export default function RegisterPage() {
 
                 if (result?.error) {
                     // If auto-login fails, redirect to login page
-                    router.push("/login")
+                    router.push(`/login?returnUrl=${encodeURIComponent(returnUrl)}`)
                 } else {
                     // Success - redirect to dashboard
-                    router.push("/dashboard")
+                    router.push(returnUrl)
                     router.refresh()
                 }
             } else {
@@ -92,81 +95,94 @@ export default function RegisterPage() {
     }
 
     return (
-        <div className={styles.authContainer}>
-            <form onSubmit={handleSubmit} className={`${styles.authCard} glass`}>
-                <h2>加入 AuraTest</h2>
-                <p className={styles.subtitle}>开启你的个性化测试之旅</p>
+        <form onSubmit={handleSubmit} className={`${styles.authCard} glass`}>
+            <h2>加入 AuraTest</h2>
+            <p className={styles.subtitle}>开启你的个性化测试之旅</p>
 
-                {error && <div className={styles.errorMessage}>{error}</div>}
-                {success && <div className={styles.errorMessage} style={{ background: "rgba(16, 185, 129, 0.1)", border: "1px solid rgba(16, 185, 129, 0.2)", color: "#10b981" }}>{success}</div>}
+            {error && <div className={styles.errorMessage}>{error}</div>}
+            {success && <div className={styles.errorMessage} style={{ background: "rgba(16, 185, 129, 0.1)", border: "1px solid rgba(16, 185, 129, 0.2)", color: "#10b981" }}>{success}</div>}
 
-                <div className={styles.formGroup}>
-                    <label>昵称</label>
+            <div className={styles.formGroup}>
+                <label>昵称</label>
+                <input
+                    type="text"
+                    className="input-premium"
+                    placeholder="你的称呼"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                />
+            </div>
+
+            <div className={styles.formGroup}>
+                <label>邮箱</label>
+                <input
+                    type="email"
+                    className="input-premium"
+                    placeholder="your@email.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
+            </div>
+
+            <div className={styles.formGroup}>
+                <label>密码</label>
+                <input
+                    type="password"
+                    className="input-premium"
+                    placeholder="至少 8 位字符"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
+            </div>
+
+            <div className={styles.formGroup}>
+                <label>验证码</label>
+                <div className={styles.inputWithButton}>
                     <input
                         type="text"
                         className="input-premium"
-                        placeholder="你的称呼"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        placeholder="6 位数字"
+                        value={code}
+                        onChange={(e) => setCode(e.target.value)}
                         required
                     />
+                    <button
+                        type="button"
+                        className="btn-premium"
+                        onClick={handleSendCode}
+                        disabled={countdown > 0}
+                        style={{ padding: "0 1rem", fontSize: "0.8rem", minWidth: "120px" }}
+                    >
+                        {countdown > 0 ? `${countdown}s` : "获取验证码"}
+                    </button>
                 </div>
+            </div>
 
-                <div className={styles.formGroup}>
-                    <label>邮箱</label>
-                    <input
-                        type="email"
-                        className="input-premium"
-                        placeholder="your@email.com"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
+            <button type="submit" className="btn-premium" style={{ width: "100%", marginTop: "1rem" }} disabled={loading}>
+                {loading ? "正在同步灵魂数据..." : "注册 AuraTest 账户"}
+            </button>
+
+            <p className={styles.linkText}>
+                已有账号？ <Link href={`/login?returnUrl=${encodeURIComponent(returnUrl)}`}>返回登录</Link>
+            </p>
+        </form>
+    )
+}
+
+export default function RegisterPage() {
+    return (
+        <div className={styles.authContainer}>
+            <Suspense fallback={
+                <div className={`${styles.authCard} glass`}>
+                    <h2>加入 AuraTest</h2>
+                    <p className={styles.subtitle}>加载中...</p>
                 </div>
-
-                <div className={styles.formGroup}>
-                    <label>密码</label>
-                    <input
-                        type="password"
-                        className="input-premium"
-                        placeholder="至少 8 位字符"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </div>
-
-                <div className={styles.formGroup}>
-                    <label>验证码</label>
-                    <div className={styles.inputWithButton}>
-                        <input
-                            type="text"
-                            className="input-premium"
-                            placeholder="6 位数字"
-                            value={code}
-                            onChange={(e) => setCode(e.target.value)}
-                            required
-                        />
-                        <button
-                            type="button"
-                            className="btn-premium"
-                            onClick={handleSendCode}
-                            disabled={countdown > 0}
-                            style={{ padding: "0 1rem", fontSize: "0.8rem", minWidth: "120px" }}
-                        >
-                            {countdown > 0 ? `${countdown}s` : "获取验证码"}
-                        </button>
-                    </div>
-                </div>
-
-                <button type="submit" className="btn-premium" style={{ width: "100%", marginTop: "1rem" }} disabled={loading}>
-                    {loading ? "正在同步灵魂数据..." : "注册 AuraTest 账户"}
-                </button>
-
-                <p className={styles.linkText}>
-                    已有账号？ <Link href="/login">返回登录</Link>
-                </p>
-            </form>
+            }>
+                <RegisterForm />
+            </Suspense>
         </div>
     )
 }

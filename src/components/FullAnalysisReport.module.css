@@ -1,0 +1,456 @@
+/* ===== 全面分析报告 - 自适应明暗主题 ===== */
+
+.container {
+  padding: 2rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.header h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.headerIcon {
+  color: var(--primary);
+  width: 28px;
+  height: 28px;
+}
+
+/* Loading State */
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem;
+  text-align: center;
+}
+
+.loadingSpinner {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  animation: pulse 2s infinite;
+}
+
+.sparkle {
+  color: white;
+  width: 40px;
+  height: 40px;
+  animation: sparkle 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+@keyframes sparkle {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(180deg); }
+}
+
+.loadingContainer h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+}
+
+.loadingContainer p {
+  color: var(--text-muted);
+}
+
+/* Tabs - 使用主题变量 */
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--bg-glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.tab:hover {
+  background: var(--surface);
+  border-color: var(--border-color);
+  color: var(--text-main);
+}
+
+.activeTab {
+  background: var(--selection);
+  border-color: var(--primary);
+  color: var(--text-main);
+}
+
+.activeTab svg {
+  color: var(--primary);
+}
+
+/* Content Area */
+.content {
+  background: var(--bg-glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 2rem;
+}
+
+/* Overview Content - 所有标题使用主题色 */
+.overviewContent h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-main);
+}
+
+.profileCard {
+  background: var(--selection);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* 重要：正文文字使用高对比度颜色 */
+.profileCard p {
+  line-height: 1.8;
+  color: var(--text-main);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.consistencyBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 20px;
+  color: #059669;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.traitsSection {
+  margin-bottom: 2rem;
+}
+
+.traitTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.traitTag {
+  padding: 0.5rem 1.25rem;
+  background: var(--selection);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.chartSection {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--bg-glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+}
+
+.insightsSection {
+  margin-top: 2rem;
+}
+
+.insightsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.insightCard {
+  padding: 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+}
+
+.insightCard h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+}
+
+/* 正文文字 - 确保 WCAG AA 对比度 */
+.insightCard p {
+  font-size: 0.95rem;
+  color: var(--text-main);
+  line-height: 1.7;
+  font-weight: 500;
+}
+
+/* Career Content */
+.careerContent h3,
+.growthContent h3,
+.relationshipsContent h3,
+.balanceContent h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+}
+
+.careerContent h3 svg,
+.growthContent h3 svg,
+.relationshipsContent h3 svg,
+.balanceContent h3 svg {
+  color: var(--primary);
+}
+
+.careerSection,
+.developmentPath {
+  margin-bottom: 2rem;
+}
+
+.careerTags,
+.avoidTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.careerTag {
+  padding: 0.6rem 1.25rem;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 20px;
+  color: #059669;
+  font-weight: 600;
+}
+
+.avoidTag {
+  padding: 0.6rem 1.25rem;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 20px;
+  color: #dc2626;
+  font-weight: 500;
+}
+
+/* 发展路径文字 - 高对比度 */
+.developmentPath p {
+  line-height: 1.8;
+  color: var(--text-main);
+  font-weight: 500;
+  padding: 1rem 1.25rem;
+  background: var(--selection);
+  border-left: 4px solid var(--primary);
+  border-radius: 0 12px 12px 0;
+}
+
+/* Growth Content */
+.prioritySection,
+.actionSection,
+.resourceSection {
+  margin-bottom: 2rem;
+}
+
+.priorityList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.priorityItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.priorityNumber {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: white;
+  flex-shrink: 0;
+}
+
+.actionList {
+  list-style: none;
+  padding: 0;
+}
+
+/* 行动计划列表 - 高对比度文字 */
+.actionList li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.7;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.actionList li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #059669;
+  font-weight: bold;
+}
+
+.resourceTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.resourceTag {
+  padding: 0.5rem 1rem;
+  background: rgba(59, 130, 246, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 8px;
+  color: #2563eb;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Relationships Content */
+.communicationSection,
+.partnerSection,
+.teamSection {
+  margin-bottom: 2rem;
+}
+
+/* 沟通风格/团队建议 - 高对比度 */
+.communicationSection p,
+.teamSection p {
+  line-height: 1.8;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.partnerTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.partnerTag {
+  padding: 0.6rem 1.25rem;
+  background: rgba(236, 72, 153, 0.12);
+  border: 1px solid rgba(236, 72, 153, 0.3);
+  border-radius: 20px;
+  color: #db2777;
+  font-weight: 600;
+}
+
+/* Balance Content */
+.stressSection,
+.energySection,
+.workLifeSection {
+  margin-bottom: 2rem;
+}
+
+.stressList {
+  list-style: none;
+  padding: 0;
+}
+
+/* 压力管理列表 - 高对比度 */
+.stressList li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.7;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.stressList li::before {
+  content: '🛡️';
+  position: absolute;
+  left: 0;
+}
+
+/* 能量/工作生活平衡 - 高对比度 */
+.energySection p,
+.workLifeSection p {
+  line-height: 1.8;
+  color: var(--text-main);
+  font-weight: 500;
+  padding: 1rem 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .content {
+    padding: 1.5rem;
+  }
+  
+  .tabs {
+    gap: 0.25rem;
+  }
+  
+  .tab {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .tab span {
+    display: none;
+  }
+}

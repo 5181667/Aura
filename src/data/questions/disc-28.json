@@ -1,0 +1,325 @@
+{
+  "id": "disc-28",
+  "type": "DISC",
+  "title": "DISC 行为风格测试",
+  "description": "DISC是一种行为评估工具，帮助您了解自己在工作和生活中的行为倾向，包括支配型(D)、影响型(I)、稳健型(S)和谨慎型(C)四种风格。",
+  "questionCount": 28,
+  "estimatedTime": "5-8分钟",
+  "dimensions": ["D", "I", "S", "C"],
+  "dimensionLabels": {
+    "D": "支配型 Dominance",
+    "I": "影响型 Influence",
+    "S": "稳健型 Steadiness",
+    "C": "谨慎型 Compliance"
+  },
+  "questions": [
+    {
+      "id": "disc-1",
+      "question": "在团队中，我通常会：",
+      "type": "forced_choice",
+      "options": [
+        { "text": "主动承担领导角色，推动项目前进", "score": { "dimension": "D", "value": 2 } },
+        { "text": "活跃气氛，鼓励大家积极参与", "score": { "dimension": "I", "value": 2 } },
+        { "text": "耐心倾听，支持团队成员", "score": { "dimension": "S", "value": 2 } },
+        { "text": "仔细分析，确保工作质量", "score": { "dimension": "C", "value": 2 } }
+      ]
+    },
+    {
+      "id": "disc-2",
+      "question": "面对挑战时，我更倾向于：",
+      "type": "forced_choice",
+      "options": [
+        { "text": "直接面对，快速解决问题", "score": { "dimension": "D", "value": 2 } },
+        { "text": "召集大家一起讨论解决方案", "score": { "dimension": "I", "value": 2 } },
+        { "text": "稳步推进，避免冒险", "score": { "dimension": "S", "value": 2 } },
+        { "text": "仔细研究所有可能性再行动", "score": { "dimension": "C", "value": 2 } }
+      ]
+    },
+    {
+      "id": "disc-3",
+      "question": "我最看重的工作环境是：",
+      "type": "forced_choice",
+      "options": [
+        { "text": "有挑战性，能快速看到成果", "score": { "dimension": "D", "value": 2 } },
+        { "text": "充满活力，有很多互动机会", "score": { "dimension": "I", "value": 2 } },
+        { "text": "稳定和谐，有安全感", "score": { "dimension": "S", "value": 2 } },
+        { "text": "有序规范，追求高质量", "score": { "dimension": "C", "value": 2 } }
+      ]
+    },
+    {
+      "id": "disc-4",
+      "question": "在做决定时，我通常：",
+      "type": "forced_choice",
+      "options": [
+        { "text": "快速果断，相信自己的判断", "score": { "dimension": "D", "value": 2 } },
+        { "text": "征求大家意见，追求共识", "score": { "dimension": "I", "value": 2 } },
+        { "text": "谨慎考虑，避免冲动", "score": { "dimension": "S", "value": 2 } },
+        { "text": "收集数据，逻辑分析后再决定", "score": { "dimension": "C", "value": 2 } }
+      ]
+    },
+    {
+      "id": "disc-5",
+      "question": "与人沟通时，我更习惯：",
+      "type": "forced_choice",
+      "options": [
+        { "text": "直接了当，说重点", "score": { "dimension": "D", "value": 2 } },
+        { "text": "热情表达，富有感染力", "score": { "dimension": "I", "value": 2 } },
+        { "text": "耐心倾听，体贴对方", "score": { "dimension": "S", "value": 2 } },
+        { "text": "用数据说话，逻辑清晰", "score": { "dimension": "C", "value": 2 } }
+      ]
+    },
+    {
+      "id": "disc-6",
+      "question": "压力下，我可能会：",
+      "type": "forced_choice",
+      "options": [
+        { "text": "变得强势，急于控制局面", "score": { "dimension": "D", "value": 2 } },
+        { "text": "话变多，可能会杂乱无章", "score": { "dimension": "I", "value": 2 } },
+        { "text": "变得犹豫不决，回避冲突", "score": { "dimension": "S", "value": 2 } },
+        { "text": "过度分析，陷入细节", "score": { "dimension": "C", "value": 2 } }
+      ]
+    },
+    {
+      "id": "disc-7",
+      "question": "我认为成功的关键是：",
+      "type": "forced_choice",
+      "options": [
+        { "text": "目标明确，敢于竞争", "score": { "dimension": "D", "value": 2 } },
+        { "text": "人脉广泛，善于影响他人", "score": { "dimension": "I", "value": 2 } },
+        { "text": "坚持不懈，踏实可靠", "score": { "dimension": "S", "value": 2 } },
+        { "text": "专业精准，追求卓越", "score": { "dimension": "C", "value": 2 } }
+      ]
+    },
+    {
+      "id": "disc-8",
+      "question": "空闲时间，我更喜欢：",
+      "type": "forced_choice",
+      "options": [
+        { "text": "挑战性的活动或竞技运动", "score": { "dimension": "D", "value": 2 } },
+        { "text": "与朋友聚会或社交活动", "score": { "dimension": "I", "value": 2 } },
+        { "text": "与家人或亲密朋友共处", "score": { "dimension": "S", "value": 2 } },
+        { "text": "独自阅读或学习新知识", "score": { "dimension": "C", "value": 2 } }
+      ]
+    },
+    {
+      "id": "disc-9",
+      "question": "面对批评，我通常会：",
+      "type": "forced_choice",
+      "options": [
+        { "text": "直接反驳或据理力争", "score": { "dimension": "D", "value": 2 } },
+        { "text": "尝试化解气氛，转移话题", "score": { "dimension": "I", "value": 2 } },
+        { "text": "沉默接受，内心不安", "score": { "dimension": "S", "value": 2 } },
+        { "text": "仔细分析批评的合理性", "score": { "dimension": "C", "value": 2 } }
+      ]
+    },
+    {
+      "id": "disc-10",
+      "question": "我的节奏是：",
+      "type": "forced_choice",
+      "options": [
+        { "text": "快节奏，追求效率", "score": { "dimension": "D", "value": 2 } },
+        { "text": "多任务并行，跳跃式", "score": { "dimension": "I", "value": 2 } },
+        { "text": "稳定持续，一步一步", "score": { "dimension": "S", "value": 2 } },
+        { "text": "仔细谨慎，确保准确", "score": { "dimension": "C", "value": 2 } }
+      ]
+    },
+    {
+      "id": "disc-11",
+      "question": "我最大的优势是：",
+      "type": "forced_choice",
+      "options": [
+        { "text": "决断力和执行力", "score": { "dimension": "D", "value": 2 } },
+        { "text": "感染力和说服力", "score": { "dimension": "I", "value": 2 } },
+        { "text": "耐心和可靠性", "score": { "dimension": "S", "value": 2 } },
+        { "text": "精确性和分析能力", "score": { "dimension": "C", "value": 2 } }
+      ]
+    },
+    {
+      "id": "disc-12",
+      "question": "让我感到满足的是：",
+      "type": "forced_choice",
+      "options": [
+        { "text": "完成目标，取得胜利", "score": { "dimension": "D", "value": 2 } },
+        { "text": "获得认可，受人欢迎", "score": { "dimension": "I", "value": 2 } },
+        { "text": "团队和谐，帮助他人", "score": { "dimension": "S", "value": 2 } },
+        { "text": "工作完美，无可挑剔", "score": { "dimension": "C", "value": 2 } }
+      ]
+    },
+    {
+      "id": "disc-13",
+      "question": "在会议中，我通常：",
+      "type": "forced_choice",
+      "options": [
+        { "text": "主导议程，推动决策", "score": { "dimension": "D", "value": 2 } },
+        { "text": "积极发言，活跃气氛", "score": { "dimension": "I", "value": 2 } },
+        { "text": "倾听为主，支持他人", "score": { "dimension": "S", "value": 2 } },
+        { "text": "做笔记，关注细节", "score": { "dimension": "C", "value": 2 } }
+      ]
+    },
+    {
+      "id": "disc-14",
+      "question": "我最担心的是：",
+      "type": "forced_choice",
+      "options": [
+        { "text": "失去控制或被人利用", "score": { "dimension": "D", "value": 2 } },
+        { "text": "被忽视或失去认可", "score": { "dimension": "I", "value": 2 } },
+        { "text": "突然的变化或冲突", "score": { "dimension": "S", "value": 2 } },
+        { "text": "犯错或工作不完美", "score": { "dimension": "C", "value": 2 } }
+      ]
+    },
+    {
+      "id": "disc-15",
+      "question": "处理冲突时，我倾向于：",
+      "type": "forced_choice",
+      "options": [
+        { "text": "正面对抗，分出对错", "score": { "dimension": "D", "value": 2 } },
+        { "text": "用幽默化解，寻求妥协", "score": { "dimension": "I", "value": 2 } },
+        { "text": "让步退让，维护和平", "score": { "dimension": "S", "value": 2 } },
+        { "text": "用事实说话，理性分析", "score": { "dimension": "C", "value": 2 } }
+      ]
+    },
+    {
+      "id": "disc-16",
+      "question": "我希望别人评价我为：",
+      "type": "forced_choice",
+      "options": [
+        { "text": "有能力、有魄力", "score": { "dimension": "D", "value": 2 } },
+        { "text": "有趣、有魅力", "score": { "dimension": "I", "value": 2 } },
+        { "text": "可靠、值得信赖", "score": { "dimension": "S", "value": 2 } },
+        { "text": "专业、有深度", "score": { "dimension": "C", "value": 2 } }
+      ]
+    },
+    {
+      "id": "disc-17",
+      "question": "在新环境中，我会：",
+      "type": "forced_choice",
+      "options": [
+        { "text": "迅速评估形势，找到机会", "score": { "dimension": "D", "value": 2 } },
+        { "text": "主动认识新朋友", "score": { "dimension": "I", "value": 2 } },
+        { "text": "观察环境，慢慢适应", "score": { "dimension": "S", "value": 2 } },
+        { "text": "了解规则和流程", "score": { "dimension": "C", "value": 2 } }
+      ]
+    },
+    {
+      "id": "disc-18",
+      "question": "我学习新技能的方式是：",
+      "type": "forced_choice",
+      "options": [
+        { "text": "边做边学，快速上手", "score": { "dimension": "D", "value": 2 } },
+        { "text": "与人交流，互相学习", "score": { "dimension": "I", "value": 2 } },
+        { "text": "循序渐进，反复练习", "score": { "dimension": "S", "value": 2 } },
+        { "text": "先研究理论，再实践", "score": { "dimension": "C", "value": 2 } }
+      ]
+    },
+    {
+      "id": "disc-19",
+      "question": "别人可能会觉得我：",
+      "type": "forced_choice",
+      "options": [
+        { "text": "有时过于强势或急躁", "score": { "dimension": "D", "value": 2 } },
+        { "text": "有时过于乐观或不够严谨", "score": { "dimension": "I", "value": 2 } },
+        { "text": "有时过于保守或犹豫", "score": { "dimension": "S", "value": 2 } },
+        { "text": "有时过于挑剔或较真", "score": { "dimension": "C", "value": 2 } }
+      ]
+    },
+    {
+      "id": "disc-20",
+      "question": "激励我的是：",
+      "type": "forced_choice",
+      "options": [
+        { "text": "权力、成就和控制", "score": { "dimension": "D", "value": 2 } },
+        { "text": "认可、赞美和关注", "score": { "dimension": "I", "value": 2 } },
+        { "text": "安全、稳定和归属感", "score": { "dimension": "S", "value": 2 } },
+        { "text": "正确、完美和高标准", "score": { "dimension": "C", "value": 2 } }
+      ]
+    },
+    {
+      "id": "disc-21",
+      "question": "处理任务时，我优先考虑：",
+      "type": "forced_choice",
+      "options": [
+        { "text": "结果和效率", "score": { "dimension": "D", "value": 2 } },
+        { "text": "创意和合作", "score": { "dimension": "I", "value": 2 } },
+        { "text": "过程和关系", "score": { "dimension": "S", "value": 2 } },
+        { "text": "质量和准确性", "score": { "dimension": "C", "value": 2 } }
+      ]
+    },
+    {
+      "id": "disc-22",
+      "question": "我的邮件/消息风格是：",
+      "type": "forced_choice",
+      "options": [
+        { "text": "简短直接，只说重点", "score": { "dimension": "D", "value": 2 } },
+        { "text": "热情友好，使用表情", "score": { "dimension": "I", "value": 2 } },
+        { "text": "温和有礼，考虑对方感受", "score": { "dimension": "S", "value": 2 } },
+        { "text": "详细规范，结构清晰", "score": { "dimension": "C", "value": 2 } }
+      ]
+    },
+    {
+      "id": "disc-23",
+      "question": "我的办公环境通常：",
+      "type": "forced_choice",
+      "options": [
+        { "text": "简洁高效，只有必需品", "score": { "dimension": "D", "value": 2 } },
+        { "text": "色彩丰富，有个性装饰", "score": { "dimension": "I", "value": 2 } },
+        { "text": "温馨舒适，有家人照片", "score": { "dimension": "S", "value": 2 } },
+        { "text": "整齐有序，资料分类明确", "score": { "dimension": "C", "value": 2 } }
+      ]
+    },
+    {
+      "id": "disc-24",
+      "question": "我做计划的方式是：",
+      "type": "forced_choice",
+      "options": [
+        { "text": "设定目标，快速行动", "score": { "dimension": "D", "value": 2 } },
+        { "text": "大致方向，灵活调整", "score": { "dimension": "I", "value": 2 } },
+        { "text": "稳步推进，按部就班", "score": { "dimension": "S", "value": 2 } },
+        { "text": "详细规划，考虑各种情况", "score": { "dimension": "C", "value": 2 } }
+      ]
+    },
+    {
+      "id": "disc-25",
+      "question": "在团队协作中，我贡献的是：",
+      "type": "forced_choice",
+      "options": [
+        { "text": "方向和动力", "score": { "dimension": "D", "value": 2 } },
+        { "text": "创意和热情", "score": { "dimension": "I", "value": 2 } },
+        { "text": "支持和稳定", "score": { "dimension": "S", "value": 2 } },
+        { "text": "专业和严谨", "score": { "dimension": "C", "value": 2 } }
+      ]
+    },
+    {
+      "id": "disc-26",
+      "question": "我最不喜欢：",
+      "type": "forced_choice",
+      "options": [
+        { "text": "拖拉和没效率", "score": { "dimension": "D", "value": 2 } },
+        { "text": "枯燥和被忽视", "score": { "dimension": "I", "value": 2 } },
+        { "text": "冲突和不确定", "score": { "dimension": "S", "value": 2 } },
+        { "text": "混乱和低质量", "score": { "dimension": "C", "value": 2 } }
+      ]
+    },
+    {
+      "id": "disc-27",
+      "question": "我相信：",
+      "type": "forced_choice",
+      "options": [
+        { "text": "行动比言语更重要", "score": { "dimension": "D", "value": 2 } },
+        { "text": "人际关系是成功的关键", "score": { "dimension": "I", "value": 2 } },
+        { "text": "稳定是发展的基础", "score": { "dimension": "S", "value": 2 } },
+        { "text": "细节决定成败", "score": { "dimension": "C", "value": 2 } }
+      ]
+    },
+    {
+      "id": "disc-28",
+      "question": "总的来说，我是一个：",
+      "type": "forced_choice",
+      "options": [
+        { "text": "目标导向、果断有力的人", "score": { "dimension": "D", "value": 2 } },
+        { "text": "热情开朗、善于交际的人", "score": { "dimension": "I", "value": 2 } },
+        { "text": "稳重踏实、乐于助人的人", "score": { "dimension": "S", "value": 2 } },
+        { "text": "严谨细致、追求完美的人", "score": { "dimension": "C", "value": 2 } }
+      ]
+    }
+  ]
+}

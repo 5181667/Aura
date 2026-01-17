@@ -2,6 +2,7 @@ import { prisma } from "@/lib/prisma"
 import { notFound } from "next/navigation"
 import RadarChart from "@/components/RadarChart"
 import PersonalityReport from "@/components/PersonalityReport"
+import Navbar from "@/components/Navbar"
 import Link from "next/link"
 import styles from "../../results/[id]/result.module.css"
 
@@ -25,20 +26,27 @@ export default async function SharePage({ params }: { params: Promise<{ token: s
     }
 
     const result = shareToken.result
-    const dimensions = result.dimensions || {
+    const fallbackDimensions = {
         openness: 0,
         conscientiousness: 0,
         extraversion: 0,
         agreeableness: 0,
         neuroticism: 0
     }
+    const dimensionArray = Array.isArray(result.dimensions) ? result.dimensions : null
+    const dimensions = dimensionArray ? fallbackDimensions : (result.dimensions as typeof fallbackDimensions || fallbackDimensions)
+    const radarData = dimensionArray
+        ? Object.fromEntries(
+            dimensionArray.map((dim: any) => [
+                dim.label || dim.dimension,
+                Number(dim.percentage ?? dim.rawScore ?? 0)
+            ])
+        )
+        : dimensions
 
     return (
         <div className={styles.container}>
-            <nav className={`${styles.navbar} glass`}>
-                <Link href="/" className={styles.logo}>AuraTest</Link>
-                <Link href="/tests" className="btn-premium">我也要测试</Link>
-            </nav>
+            <Navbar />
 
             <main className={styles.main}>
                 <div className={styles.header}>
@@ -55,11 +63,24 @@ export default async function SharePage({ params }: { params: Promise<{ token: s
                 <div className={styles.content}>
                     <section className={`${styles.chartSection} glass`}>
                         <h2>性格维度雷达图</h2>
-                        <RadarChart dimensions={dimensions} />
+                        <RadarChart data={radarData} />
                     </section>
 
                     <section className={`${styles.reportSection} glass`}>
-                        <PersonalityReport dimensions={dimensions} />
+                        {dimensionArray ? (
+                            <div className={styles.dimensionList}>
+                                {dimensionArray.map((dim: any) => (
+                                    <div key={dim.dimension} className={styles.dimensionItem}>
+                                        <span className={styles.dimensionName}>{dim.label || dim.dimension}</span>
+                                        <span className={styles.dimensionValue}>
+                                            {Number(dim.percentage ?? dim.rawScore ?? 0)}%
+                                        </span>
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <PersonalityReport dimensions={dimensions} />
+                        )}
                     </section>
 
                     <div className={styles.actions}>

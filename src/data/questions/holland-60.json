@@ -1,0 +1,739 @@
+{
+  "id": "holland-60",
+  "type": "HOLLAND",
+  "title": "霍兰德职业兴趣测试",
+  "description": "基于约翰·霍兰德的职业人格理论，帮助您发现自己的职业兴趣类型和适合的职业方向。测评结果将展示您在六种类型中的倾向。",
+  "questionCount": 60,
+  "estimatedTime": "10-15分钟",
+  "dimensions": ["R", "I", "A", "S", "E", "C"],
+  "dimensionLabels": {
+    "R": "现实型 Realistic",
+    "I": "研究型 Investigative",
+    "A": "艺术型 Artistic",
+    "S": "社会型 Social",
+    "E": "企业型 Enterprising",
+    "C": "常规型 Conventional"
+  },
+  "questions": [
+    {
+      "id": "r-1",
+      "question": "我喜欢动手修理或组装东西",
+      "dimension": "R",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "R", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "R", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "R", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "R", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "R", "value": 5 } }
+      ]
+    },
+    {
+      "id": "r-2",
+      "question": "我喜欢户外活动或体力劳动",
+      "dimension": "R",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "R", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "R", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "R", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "R", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "R", "value": 5 } }
+      ]
+    },
+    {
+      "id": "r-3",
+      "question": "我喜欢操作机器或设备",
+      "dimension": "R",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "R", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "R", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "R", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "R", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "R", "value": 5 } }
+      ]
+    },
+    {
+      "id": "r-4",
+      "question": "我喜欢做木工、电工或机械方面的工作",
+      "dimension": "R",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "R", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "R", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "R", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "R", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "R", "value": 5 } }
+      ]
+    },
+    {
+      "id": "r-5",
+      "question": "我喜欢用工具创造实际的东西",
+      "dimension": "R",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "R", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "R", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "R", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "R", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "R", "value": 5 } }
+      ]
+    },
+    {
+      "id": "r-6",
+      "question": "我喜欢运动或体育活动",
+      "dimension": "R",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "R", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "R", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "R", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "R", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "R", "value": 5 } }
+      ]
+    },
+    {
+      "id": "r-7",
+      "question": "我喜欢照顾动物或植物",
+      "dimension": "R",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "R", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "R", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "R", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "R", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "R", "value": 5 } }
+      ]
+    },
+    {
+      "id": "r-8",
+      "question": "我喜欢开车或操控交通工具",
+      "dimension": "R",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "R", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "R", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "R", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "R", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "R", "value": 5 } }
+      ]
+    },
+    {
+      "id": "r-9",
+      "question": "我喜欢建造或制作东西",
+      "dimension": "R",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "R", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "R", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "R", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "R", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "R", "value": 5 } }
+      ]
+    },
+    {
+      "id": "r-10",
+      "question": "我喜欢解决实际的技术问题",
+      "dimension": "R",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "R", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "R", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "R", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "R", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "R", "value": 5 } }
+      ]
+    },
+    {
+      "id": "i-1",
+      "question": "我喜欢研究和分析问题",
+      "dimension": "I",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "I", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "I", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "I", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "I", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "I", "value": 5 } }
+      ]
+    },
+    {
+      "id": "i-2",
+      "question": "我喜欢做实验或科学研究",
+      "dimension": "I",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "I", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "I", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "I", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "I", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "I", "value": 5 } }
+      ]
+    },
+    {
+      "id": "i-3",
+      "question": "我喜欢阅读科学或技术类书籍",
+      "dimension": "I",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "I", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "I", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "I", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "I", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "I", "value": 5 } }
+      ]
+    },
+    {
+      "id": "i-4",
+      "question": "我喜欢探索事物的原理",
+      "dimension": "I",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "I", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "I", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "I", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "I", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "I", "value": 5 } }
+      ]
+    },
+    {
+      "id": "i-5",
+      "question": "我喜欢解决复杂的数学或逻辑问题",
+      "dimension": "I",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "I", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "I", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "I", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "I", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "I", "value": 5 } }
+      ]
+    },
+    {
+      "id": "i-6",
+      "question": "我喜欢独立思考和研究",
+      "dimension": "I",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "I", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "I", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "I", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "I", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "I", "value": 5 } }
+      ]
+    },
+    {
+      "id": "i-7",
+      "question": "我对自然现象或科学发现感兴趣",
+      "dimension": "I",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "I", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "I", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "I", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "I", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "I", "value": 5 } }
+      ]
+    },
+    {
+      "id": "i-8",
+      "question": "我喜欢学习新的理论知识",
+      "dimension": "I",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "I", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "I", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "I", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "I", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "I", "value": 5 } }
+      ]
+    },
+    {
+      "id": "i-9",
+      "question": "我喜欢分析数据和信息",
+      "dimension": "I",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "I", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "I", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "I", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "I", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "I", "value": 5 } }
+      ]
+    },
+    {
+      "id": "i-10",
+      "question": "我喜欢思考抽象的概念",
+      "dimension": "I",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "I", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "I", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "I", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "I", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "I", "value": 5 } }
+      ]
+    },
+    {
+      "id": "a-1",
+      "question": "我喜欢绘画、雕塑或其他视觉艺术",
+      "dimension": "A",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "A", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "A", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "A", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "A", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "A", "value": 5 } }
+      ]
+    },
+    {
+      "id": "a-2",
+      "question": "我喜欢音乐、唱歌或演奏乐器",
+      "dimension": "A",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "A", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "A", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "A", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "A", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "A", "value": 5 } }
+      ]
+    },
+    {
+      "id": "a-3",
+      "question": "我喜欢写作或文学创作",
+      "dimension": "A",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "A", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "A", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "A", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "A", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "A", "value": 5 } }
+      ]
+    },
+    {
+      "id": "a-4",
+      "question": "我喜欢表演或戏剧",
+      "dimension": "A",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "A", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "A", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "A", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "A", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "A", "value": 5 } }
+      ]
+    },
+    {
+      "id": "a-5",
+      "question": "我喜欢设计和创意工作",
+      "dimension": "A",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "A", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "A", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "A", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "A", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "A", "value": 5 } }
+      ]
+    },
+    {
+      "id": "a-6",
+      "question": "我喜欢摄影或电影制作",
+      "dimension": "A",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "A", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "A", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "A", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "A", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "A", "value": 5 } }
+      ]
+    },
+    {
+      "id": "a-7",
+      "question": "我喜欢用独特的方式表达自己",
+      "dimension": "A",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "A", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "A", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "A", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "A", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "A", "value": 5 } }
+      ]
+    },
+    {
+      "id": "a-8",
+      "question": "我喜欢参观艺术展览或演出",
+      "dimension": "A",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "A", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "A", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "A", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "A", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "A", "value": 5 } }
+      ]
+    },
+    {
+      "id": "a-9",
+      "question": "我喜欢舞蹈或其他身体艺术表达",
+      "dimension": "A",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "A", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "A", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "A", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "A", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "A", "value": 5 } }
+      ]
+    },
+    {
+      "id": "a-10",
+      "question": "我喜欢不受约束的创作环境",
+      "dimension": "A",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "A", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "A", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "A", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "A", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "A", "value": 5 } }
+      ]
+    },
+    {
+      "id": "s-1",
+      "question": "我喜欢帮助他人解决问题",
+      "dimension": "S",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "S", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "S", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "S", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "S", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "S", "value": 5 } }
+      ]
+    },
+    {
+      "id": "s-2",
+      "question": "我喜欢教导或培训他人",
+      "dimension": "S",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "S", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "S", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "S", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "S", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "S", "value": 5 } }
+      ]
+    },
+    {
+      "id": "s-3",
+      "question": "我喜欢倾听他人的困扰",
+      "dimension": "S",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "S", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "S", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "S", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "S", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "S", "value": 5 } }
+      ]
+    },
+    {
+      "id": "s-4",
+      "question": "我喜欢参与志愿服务或公益活动",
+      "dimension": "S",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "S", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "S", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "S", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "S", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "S", "value": 5 } }
+      ]
+    },
+    {
+      "id": "s-5",
+      "question": "我喜欢照顾或护理他人",
+      "dimension": "S",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "S", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "S", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "S", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "S", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "S", "value": 5 } }
+      ]
+    },
+    {
+      "id": "s-6",
+      "question": "我喜欢与人合作解决社会问题",
+      "dimension": "S",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "S", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "S", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "S", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "S", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "S", "value": 5 } }
+      ]
+    },
+    {
+      "id": "s-7",
+      "question": "我喜欢组织团体活动",
+      "dimension": "S",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "S", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "S", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "S", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "S", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "S", "value": 5 } }
+      ]
+    },
+    {
+      "id": "s-8",
+      "question": "我喜欢调解冲突",
+      "dimension": "S",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "S", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "S", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "S", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "S", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "S", "value": 5 } }
+      ]
+    },
+    {
+      "id": "s-9",
+      "question": "我喜欢鼓励和支持他人",
+      "dimension": "S",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "S", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "S", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "S", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "S", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "S", "value": 5 } }
+      ]
+    },
+    {
+      "id": "s-10",
+      "question": "我喜欢在服务行业工作",
+      "dimension": "S",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "S", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "S", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "S", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "S", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "S", "value": 5 } }
+      ]
+    },
+    {
+      "id": "e-1",
+      "question": "我喜欢领导团队",
+      "dimension": "E",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "E", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "E", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "E", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "E", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "E", "value": 5 } }
+      ]
+    },
+    {
+      "id": "e-2",
+      "question": "我喜欢说服他人接受我的观点",
+      "dimension": "E",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "E", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "E", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "E", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "E", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "E", "value": 5 } }
+      ]
+    },
+    {
+      "id": "e-3",
+      "question": "我喜欢做销售或推广工作",
+      "dimension": "E",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "E", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "E", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "E", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "E", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "E", "value": 5 } }
+      ]
+    },
+    {
+      "id": "e-4",
+      "question": "我喜欢创业或经营生意",
+      "dimension": "E",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "E", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "E", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "E", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "E", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "E", "value": 5 } }
+      ]
+    },
+    {
+      "id": "e-5",
+      "question": "我喜欢做决策和承担责任",
+      "dimension": "E",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "E", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "E", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "E", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "E", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "E", "value": 5 } }
+      ]
+    },
+    {
+      "id": "e-6",
+      "question": "我喜欢竞争和挑战",
+      "dimension": "E",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "E", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "E", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "E", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "E", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "E", "value": 5 } }
+      ]
+    },
+    {
+      "id": "e-7",
+      "question": "我喜欢谈判和交涉",
+      "dimension": "E",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "E", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "E", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "E", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "E", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "E", "value": 5 } }
+      ]
+    },
+    {
+      "id": "e-8",
+      "question": "我喜欢在公众面前演讲",
+      "dimension": "E",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "E", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "E", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "E", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "E", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "E", "value": 5 } }
+      ]
+    },
+    {
+      "id": "e-9",
+      "question": "我喜欢制定策略和计划",
+      "dimension": "E",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "E", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "E", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "E", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "E", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "E", "value": 5 } }
+      ]
+    },
+    {
+      "id": "e-10",
+      "question": "我喜欢追求高收入和地位",
+      "dimension": "E",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "E", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "E", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "E", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "E", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "E", "value": 5 } }
+      ]
+    },
+    {
+      "id": "c-1",
+      "question": "我喜欢整理和归档文件",
+      "dimension": "C",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "C", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "C", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "C", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "C", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "C", "value": 5 } }
+      ]
+    },
+    {
+      "id": "c-2",
+      "question": "我喜欢处理数据和表格",
+      "dimension": "C",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "C", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "C", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "C", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "C", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "C", "value": 5 } }
+      ]
+    },
+    {
+      "id": "c-3",
+      "question": "我喜欢按照规则和程序办事",
+      "dimension": "C",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "C", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "C", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "C", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "C", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "C", "value": 5 } }
+      ]
+    },
+    {
+      "id": "c-4",
+      "question": "我喜欢检查和核对细节",
+      "dimension": "C",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "C", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "C", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "C", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "C", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "C", "value": 5 } }
+      ]
+    },
+    {
+      "id": "c-5",
+      "question": "我喜欢做财务或会计工作",
+      "dimension": "C",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "C", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "C", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "C", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "C", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "C", "value": 5 } }
+      ]
+    },
+    {
+      "id": "c-6",
+      "question": "我喜欢操作办公软件",
+      "dimension": "C",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "C", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "C", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "C", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "C", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "C", "value": 5 } }
+      ]
+    },
+    {
+      "id": "c-7",
+      "question": "我喜欢稳定有规律的工作",
+      "dimension": "C",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "C", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "C", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "C", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "C", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "C", "value": 5 } }
+      ]
+    },
+    {
+      "id": "c-8",
+      "question": "我喜欢制作报告和文档",
+      "dimension": "C",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "C", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "C", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "C", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "C", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "C", "value": 5 } }
+      ]
+    },
+    {
+      "id": "c-9",
+      "question": "我喜欢系统化地组织信息",
+      "dimension": "C",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "C", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "C", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "C", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "C", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "C", "value": 5 } }
+      ]
+    },
+    {
+      "id": "c-10",
+      "question": "我喜欢有明确职责的工作",
+      "dimension": "C",
+      "options": [
+        { "text": "非常不喜欢", "score": { "dimension": "C", "value": 1 } },
+        { "text": "不喜欢", "score": { "dimension": "C", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "C", "value": 3 } },
+        { "text": "喜欢", "score": { "dimension": "C", "value": 4 } },
+        { "text": "非常喜欢", "score": { "dimension": "C", "value": 5 } }
+      ]
+    }
+  ]
+}

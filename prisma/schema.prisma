@@ -17,21 +17,25 @@ model User {
   password      String
   image         String?
   role          String    @default("USER") // USER, ADMIN
+  isActive      Boolean   @default(true)   // 账号是否启用
   lastActiveAt  DateTime  @default(now())
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
   // Test Results
   testResults   TestResult[]
+  
+  // Full Analysis
+  fullAnalysis  FullAnalysis?
 
-  // Friendships
+  // Friendships (保留，暂不删除)
   sentRequests     FriendRequest[] @relation("SentRequests")
   receivedRequests  FriendRequest[] @relation("ReceivedRequests")
   
   friends       User[]    @relation("UserFriends")
   friendsOf     User[]    @relation("UserFriends")
 
-  // Chat
+  // Chat (保留，暂不删除)
   sentMessages     Message[] @relation("SentMessages")
   receivedMessages Message[] @relation("ReceivedMessages")
 }
@@ -53,23 +57,27 @@ model Test {
   id          String   @id @default(cuid())
   title       String
   description String
-  type        String   // e.g., "MBTI"
+  type        String   // MBTI, BIG_FIVE, DISC, EQ, HOLLAND, ENNEAGRAM, CUSTOM
   category    String   @default("personality") // personality, emotion, career, etc.
   questions   Json     // Array of questions
+  scoring     Json?    // 评分规则配置
   isPublished Boolean  @default(true)
+  isSystem    Boolean  @default(false)  // 系统内置测试
   createdAt   DateTime @default(now())
   
   results     TestResult[]
 }
 
 model TestResult {
-  id         String   @id @default(cuid())
-  userId     String
-  testId     String
-  score      String   // e.g., "INTJ" or a numerical score
-  details    Json     // Detailed breakdown
-  dimensions Json?    // Big Five personality dimensions
-  createdAt  DateTime @default(now())
+  id            String    @id @default(cuid())
+  userId        String
+  testId        String
+  score         String    // e.g., "INTJ" or a numerical score
+  details       Json      // Detailed breakdown
+  dimensions    Json?     // 各维度得分
+  aiAnalysis    Json?     // AI分析结果
+  aiAnalyzedAt  DateTime? // AI分析时间
+  createdAt     DateTime  @default(now())
 
   user       User @relation(fields: [userId], references: [id])
   test       Test @relation(fields: [testId], references: [id])
@@ -106,4 +114,16 @@ model ShareToken {
   createdAt  DateTime @default(now())
 
   result     TestResult @relation(fields: [resultId], references: [id], onDelete: Cascade)
+}
+
+// 全面综合分析
+model FullAnalysis {
+  id              String    @id @default(cuid())
+  userId          String    @unique
+  analysisData    Json      // 综合分析结果
+  includedTests   String[]  // 包含的测试ID列表
+  analyzedAt      DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  user            User      @relation(fields: [userId], references: [id])
 }
