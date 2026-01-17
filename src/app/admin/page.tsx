@@ -1,6 +1,8 @@
 import { prisma } from "@/lib/prisma"
 import AdminDashboardClient from "./AdminDashboardClient"
 
+export const dynamic = 'force-dynamic'
+
 // 获取日期范围
 function getDateRange(days: number) {
   const end = new Date()

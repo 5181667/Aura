@@ -4,6 +4,8 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 import { redirect } from "next/navigation"
 import ResultClient from "./ResultClient"
 
+export const dynamic = 'force-dynamic'
+
 export default async function ResultPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params
     const session = await getServerSession(authOptions)

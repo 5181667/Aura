@@ -5,6 +5,8 @@ import Navbar from "@/components/Navbar"
 import TestsClient from "./TestsClient"
 import styles from "./tests.module.css"
 
+export const dynamic = 'force-dynamic'
+
 export default async function TestsPage() {
     const session = await getServerSession(authOptions)
     const tests = await prisma.test.findMany({

@@ -6,6 +6,8 @@ import Navbar from "@/components/Navbar"
 import Link from "next/link"
 import styles from "../../results/[id]/result.module.css"
 
+export const dynamic = 'force-dynamic'
+
 export default async function SharePage({ params }: { params: Promise<{ token: string }> }) {
     const { token } = await params
     

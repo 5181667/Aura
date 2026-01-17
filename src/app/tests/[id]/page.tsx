@@ -2,6 +2,8 @@ import { prisma } from "@/lib/prisma"
 import TestEngine from "./TestEngine"
 import styles from "../tests.module.css"
 
+export const dynamic = 'force-dynamic'
+
 export default async function TestPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params
     

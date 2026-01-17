@@ -8,6 +8,8 @@ import Navbar from "@/components/Navbar"
 import TestTimeline from "@/components/TestTimeline"
 import styles from "./dashboard.module.css"
 
+export const dynamic = 'force-dynamic'
+
 export default async function DashboardPage() {
     const session = await getServerSession(authOptions)
 

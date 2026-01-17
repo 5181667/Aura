@@ -3,6 +3,8 @@ import Link from "next/link"
 import TestsTable from "./TestsTable"
 import styles from "../admin.module.css"
 
+export const dynamic = 'force-dynamic'
+
 export default async function AdminTestsPage() {
     const tests = await prisma.test.findMany({
         orderBy: { createdAt: 'desc' },
