@@ -1,0 +1,108 @@
+.timeline {
+    width: 100%;
+    position: relative;
+}
+
+.dateGroup {
+    margin-bottom: 3rem;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.dateGroup::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: -3rem;
+    width: 2px;
+    background: linear-gradient(180deg, var(--primary), transparent);
+}
+
+.dateLabel {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.dateLabel::before {
+    content: '';
+    position: absolute;
+    left: -2.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--primary);
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.2);
+}
+
+.results {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.resultCard {
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    transition: all 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.resultCard:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(139, 92, 246, 0.4);
+    transform: translateY(-4px);
+}
+
+.resultBadge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: rgba(139, 92, 246, 0.2);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 0.75rem;
+}
+
+.resultCard h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--foreground);
+}
+
+.resultScore {
+    font-size: 0.95rem;
+    color: rgba(248, 250, 252, 0.7);
+    margin-bottom: 0.5rem;
+}
+
+.resultScore span {
+    font-weight: 700;
+    color: var(--accent);
+    margin-left: 0.5rem;
+}
+
+.resultTime {
+    font-size: 0.85rem;
+    color: rgba(248, 250, 252, 0.5);
+}
+
+@media (max-width: 768px) {
+    .results {
+        grid-template-columns: 1fr;
+    }
+}

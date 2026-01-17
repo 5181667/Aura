@@ -1,0 +1,109 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  password      String
+  image         String?
+  role          String    @default("USER") // USER, ADMIN
+  lastActiveAt  DateTime  @default(now())
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Test Results
+  testResults   TestResult[]
+
+  // Friendships
+  sentRequests     FriendRequest[] @relation("SentRequests")
+  receivedRequests  FriendRequest[] @relation("ReceivedRequests")
+  
+  friends       User[]    @relation("UserFriends")
+  friendsOf     User[]    @relation("UserFriends")
+
+  // Chat
+  sentMessages     Message[] @relation("SentMessages")
+  receivedMessages Message[] @relation("ReceivedMessages")
+}
+
+model FriendRequest {
+  id          String   @id @default(cuid())
+  senderId    String
+  receiverId  String
+  status      String   @default("PENDING") // PENDING, ACCEPTED, REJECTED
+  createdAt   DateTime @default(now())
+
+  sender      User     @relation("SentRequests", fields: [senderId], references: [id])
+  receiver    User     @relation("ReceivedRequests", fields: [receiverId], references: [id])
+
+  @@unique([senderId, receiverId])
+}
+
+model Test {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  type        String   // e.g., "MBTI"
+  category    String   @default("personality") // personality, emotion, career, etc.
+  questions   Json     // Array of questions
+  isPublished Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  
+  results     TestResult[]
+}
+
+model TestResult {
+  id         String   @id @default(cuid())
+  userId     String
+  testId     String
+  score      String   // e.g., "INTJ" or a numerical score
+  details    Json     // Detailed breakdown
+  dimensions Json?    // Big Five personality dimensions
+  createdAt  DateTime @default(now())
+
+  user       User @relation(fields: [userId], references: [id])
+  test       Test @relation(fields: [testId], references: [id])
+  shareTokens ShareToken[]
+}
+
+model Message {
+  id          String   @id @default(cuid())
+  content     String
+  senderId    String
+  receiverId  String
+  createdAt   DateTime @default(now())
+  isRead      Boolean  @default(false)
+
+  sender      User @relation("SentMessages", fields: [senderId], references: [id])
+  receiver    User @relation("ReceivedMessages", fields: [receiverId], references: [id])
+}
+
+model VerificationCode {
+  id        String   @id @default(cuid())
+  email     String
+  code      String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@unique([email, code])
+}
+
+model ShareToken {
+  id         String   @id @default(cuid())
+  token      String   @unique @default(cuid())
+  resultId   String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+
+  result     TestResult @relation(fields: [resultId], references: [id], onDelete: Cascade)
+}
