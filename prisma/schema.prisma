@@ -60,7 +60,7 @@ model Test {
   type        String   // MBTI, BIG_FIVE, DISC, EQ, HOLLAND, ENNEAGRAM, CUSTOM
   category    String   @default("personality") // personality, emotion, career, etc.
   questions   Json     // Array of questions
-  scoring     Json?    // 评分规则配置
+  scoring     Json?    // Scoring configuration
   isPublished Boolean  @default(true)
   isSystem    Boolean  @default(false)  // 系统内置测试
   createdAt   DateTime @default(now())
