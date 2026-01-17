@@ -102,6 +102,21 @@ npm run dev
 
 访问 [http://localhost:3000](http://localhost:3000)
 
+## 🌐 部署到阿里云
+
+### 快速部署
+```bash
+# 在阿里云服务器上运行
+curl -o deploy.sh https://raw.githubusercontent.com/5181667/Aura/main/deploy.sh
+chmod +x deploy.sh
+sudo ./deploy.sh
+```
+
+### 详细文档
+- [阿里云快速部署指南](./阿里云部署快速指南.md)
+- [阿里云详细部署文档](./ALIYUN_DEPLOYMENT.md)
+- [通用部署文档](./DEPLOYMENT.md)
+
 ## 📁 项目结构
 
 \`\`\`
