@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "NODE_OPTIONS='--max-old-space-size=512' next build",
-    "build:low": "NODE_OPTIONS='--max-old-space-size=256' next build",
+    "build": "NEXT_DISABLE_ESLINT=1 NODE_OPTIONS='--max-old-space-size=512' next build",
+    "build:low": "NEXT_DISABLE_ESLINT=1 NODE_OPTIONS='--max-old-space-size=256' next build",
     "start": "next start",
     "lint": "eslint"
   },

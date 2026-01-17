@@ -4,11 +4,6 @@ const nextConfig: NextConfig = {
   // 关闭 React Compiler (节省内存)
   reactCompiler: false,
   
-  // 跳过 ESLint 检查
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  
   // 跳过 TypeScript 类型检查
   typescript: {
     ignoreBuildErrors: true,
