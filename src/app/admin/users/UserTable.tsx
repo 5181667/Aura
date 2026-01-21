@@ -441,11 +441,11 @@ export default function UserTable({ users: initialUsers }: { users: User[] }) {
                             </th>
                             <th>用户</th>
                             <th>角色</th>
+                            <th>会员</th>
                             <th>状态</th>
-                            <th>测试次数</th>
-                            <th>好友数</th>
-                            <th>最后活跃</th>
                             <th>注册时间</th>
+                            <th>最后活跃</th>
+                            <th>数据统计</th>
                             <th>操作</th>
                         </tr>
                     </thead>
