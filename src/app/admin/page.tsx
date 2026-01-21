@@ -237,7 +237,7 @@ export default async function AdminPage() {
   // 格式化最近结果
   const formattedRecentResults = recentResults.map(r => ({
     id: r.id,
-    userName: r.user.name || '匿名用户',
+    userName: r.user?.name || '匿名用户',
     testTitle: r.test.title,
     score: r.score,
     createdAt: r.createdAt.toISOString()
