@@ -47,7 +47,7 @@ export default function Home() {
           <div className={styles.actionArea}>
             <Link href="/tests" className="btn-premium">
               <Target size={20} />
-              开始探索
+              免费开始
               <ArrowRight size={18} className={styles.arrowIcon} />
             </Link>
             <Link href="/register" className={styles.secondaryAction}>

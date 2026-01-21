@@ -79,13 +79,13 @@ export default async function AdminPage() {
     prisma.user.count({
       where: { lastActiveAt: { gte: weekStart } }
     }),
-    
+
     // 测试统计
     prisma.test.count(),
     prisma.test.count({
       where: { isPublished: true }
     }),
-    
+
     // 结果统计
     prisma.testResult.count(),
     prisma.testResult.count({
@@ -94,7 +94,7 @@ export default async function AdminPage() {
     prisma.testResult.count({
       where: { createdAt: { gte: weekStart } }
     }),
-    
+
     // 最近测试完成
     prisma.testResult.findMany({
       take: 8,
@@ -104,7 +104,7 @@ export default async function AdminPage() {
         test: { select: { title: true } }
       }
     }),
-    
+
     // 最近注册用户
     prisma.user.findMany({
       take: 8,
@@ -117,7 +117,7 @@ export default async function AdminPage() {
         _count: { select: { testResults: true } }
       }
     }),
-    
+
     // 所有测试（用于类型分布）
     prisma.test.findMany({
       select: {
@@ -125,21 +125,21 @@ export default async function AdminPage() {
         _count: { select: { results: true } }
       }
     }),
-    
+
     // 近7天用户注册（按天分组）
     prisma.user.groupBy({
       by: ['createdAt'],
       where: { createdAt: { gte: weekStart } },
       _count: true
     }),
-    
+
     // 近7天测试完成（按天分组）
     prisma.testResult.groupBy({
       by: ['createdAt'],
       where: { createdAt: { gte: weekStart } },
       _count: true
     }),
-    
+
     // 按测试统计完成数
     prisma.testResult.groupBy({
       by: ['testId'],
@@ -156,20 +156,20 @@ export default async function AdminPage() {
     date.setDate(date.getDate() - i)
     userTrendMap.set(formatDate(date), 0)
   }
-  
+
   // 由于 groupBy 返回的是完整时间戳，需要手动按日期聚合
   const usersCreatedDates = await prisma.user.findMany({
     where: { createdAt: { gte: weekStart } },
     select: { createdAt: true }
   })
-  
+
   usersCreatedDates.forEach(u => {
     const dateKey = formatDate(new Date(u.createdAt))
     if (userTrendMap.has(dateKey)) {
       userTrendMap.set(dateKey, (userTrendMap.get(dateKey) || 0) + 1)
     }
   })
-  
+
   const userTrend = Array.from(userTrendMap).map(([date, count]) => ({
     date,
     count
@@ -182,19 +182,19 @@ export default async function AdminPage() {
     date.setDate(date.getDate() - i)
     completionMap.set(formatDate(date), 0)
   }
-  
+
   const resultsCreatedDates = await prisma.testResult.findMany({
     where: { createdAt: { gte: weekStart } },
     select: { createdAt: true }
   })
-  
+
   resultsCreatedDates.forEach(r => {
     const dateKey = formatDate(new Date(r.createdAt))
     if (completionMap.has(dateKey)) {
       completionMap.set(dateKey, (completionMap.get(dateKey) || 0) + 1)
     }
   })
-  
+
   const dailyCompletions = Array.from(completionMap).map(([date, completions]) => ({
     date,
     completions
@@ -206,7 +206,7 @@ export default async function AdminPage() {
     const current = typeDistributionMap.get(test.type) || 0
     typeDistributionMap.set(test.type, current + test._count.results)
   })
-  
+
   const testTypeDistribution = Array.from(typeDistributionMap)
     .map(([type, value]) => ({
       name: typeLabels[type] || type,
@@ -224,7 +224,7 @@ export default async function AdminPage() {
   allTestsWithInfo.forEach(t => {
     testInfoMap.set(t.id, { title: t.title, type: t.type })
   })
-  
+
   const popularTests = resultsByTest.map(item => {
     const info = testInfoMap.get(item.testId)
     return {

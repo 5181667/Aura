@@ -39,28 +39,28 @@ export default async function DashboardPage() {
     })
 
     // 计算用户注册天数
-    const daysSinceJoined = user?.createdAt 
+    const daysSinceJoined = user?.createdAt
         ? Math.floor((Date.now() - new Date(user.createdAt).getTime()) / (1000 * 60 * 60 * 24)) + 1
         : 1
 
     // 统计数据
-    const testTypes = new Set(user?.testResults.map(r => r.test.type))
+    const testTypes = new Set(user?.testResults?.map(r => r.test.type))
     const premiumReportsCount = user?.premiumReports?.length || 0
     const stats = {
-        totalTests: user?.testResults.length || 0,
+        totalTests: user?.testResults?.length || 0,
         testTypes: testTypes.size,
         hasFullAnalysis: !!user?.fullAnalysis,
         premiumReports: premiumReportsCount,
         // 获取最近的 MBTI 结果作为主要特质
-        mainTrait: user?.testResults.find(r => r.test.type === 'MBTI')?.score || 
-                   user?.testResults[0]?.score || null
+        mainTrait: user?.testResults?.find(r => r.test.type === 'MBTI')?.score ||
+            user?.testResults?.[0]?.score || null
     }
 
     // 获取未完成的测试类型
     const allTestTypes = ['MBTI', 'BIG_FIVE', 'DISC', 'EQ', 'HOLLAND', 'ENNEAGRAM']
     const completedTypes = Array.from(testTypes)
     const uncompletedTests = allTestTypes.filter(t => !completedTypes.includes(t))
-    
+
     // 测试类型配置
     const testTypeInfo: Record<string, { name: string; desc: string; icon: string }> = {
         'BIG_FIVE': { name: '大五人格', desc: '解锁 98% 的深度自我认知', icon: '🧬' },
@@ -89,7 +89,7 @@ export default async function DashboardPage() {
                             )}
                         </p>
                     </div>
-                    
+
                     <div className={styles.statusBar}>
                         <div className={styles.statusItem}>
                             <FileText size={18} />
@@ -120,7 +120,7 @@ export default async function DashboardPage() {
 
                 {/* MBTI 角色展示 */}
                 {stats.mainTrait && stats.mainTrait.length === 4 && (
-                    <DashboardMBTI 
+                    <DashboardMBTI
                         mbtiType={stats.mainTrait}
                         userName={user?.name || undefined}
                     />
@@ -136,7 +136,7 @@ export default async function DashboardPage() {
                                 探索更多 <ArrowRight size={16} />
                             </Link>
                         </div>
-                        
+
                         {user?.testResults.length === 0 ? (
                             <div className={styles.emptyState}>
                                 <div className={styles.emptyIcon}>
@@ -162,19 +162,19 @@ export default async function DashboardPage() {
                                 <div className={styles.aiOrb} />
                                 <div className={styles.aiOrbSecondary} />
                             </div>
-                            
+
                             <div className={styles.aiContent}>
                                 <div className={styles.aiIconWrapper}>
                                     <Brain size={32} />
                                     <div className={styles.aiPulse} />
                                 </div>
-                                
+
                                 <h3>AI 深度人格画像</h3>
                                 <p>
                                     基于你完成的 {stats.totalTests} 次测试数据，
                                     AI 将为你生成独一无二的综合性格分析报告
                                 </p>
-                                
+
                                 <Link href="/analysis" className={styles.aiBtn}>
                                     <Zap size={18} />
                                     {stats.hasFullAnalysis ? '查看我的画像' : '生成深度人格画像'}
@@ -210,10 +210,11 @@ export default async function DashboardPage() {
                                 <div className={styles.recommendList}>
                                     {uncompletedTests.slice(0, 2).map(type => {
                                         const info = testTypeInfo[type]
+                                        if (!info) return null
                                         return (
-                                            <Link 
-                                                key={type} 
-                                                href="/tests" 
+                                            <Link
+                                                key={type}
+                                                href="/tests"
                                                 className={styles.recommendCard}
                                             >
                                                 <span className={styles.recommendIcon}>{info.icon}</span>
