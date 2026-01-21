@@ -1,12 +1,34 @@
 /* ===== 管理后台布局 ===== */
 .adminLayout {
   min-height: 100vh;
+  display: flex;
 }
 
 .adminMain {
+  flex: 1;
+  margin-left: 260px;
   padding: 2rem;
-  max-width: 1600px;
-  margin: 0 auto;
+  max-width: calc(100% - 260px);
+  min-height: 100vh;
+}
+
+@media (max-width: 1024px) {
+  .adminMain {
+    margin-left: 240px;
+    max-width: calc(100% - 240px);
+  }
+}
+
+@media (max-width: 768px) {
+  .adminLayout {
+    flex-direction: column;
+  }
+  
+  .adminMain {
+    margin-left: 0;
+    max-width: 100%;
+    padding: 1rem;
+  }
 }
 
 /* ===== 仪表盘容器 ===== */
@@ -87,6 +109,96 @@
 @keyframes spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+/* ===== 快捷入口 ===== */
+.quickAccess {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.quickCard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.quickCard:hover {
+  background: var(--surface);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.quickIcon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.quickInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.quickTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.quickDesc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.quickArrow {
+  color: var(--text-muted);
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: all 0.3s;
+}
+
+.quickCard:hover .quickArrow {
+  opacity: 1;
+  transform: translateX(0);
+  color: var(--primary);
+}
+
+@media (max-width: 1024px) {
+  .quickAccess {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .quickAccess {
+    grid-template-columns: 1fr;
+  }
+  
+  .quickCard {
+    padding: 1rem;
+  }
+  
+  .quickIcon {
+    width: 44px;
+    height: 44px;
+  }
 }
 
 /* ===== 核心指标卡片网格 ===== */

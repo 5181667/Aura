@@ -1,0 +1,192 @@
+/* ===== MBTI 角色组件样式 ===== */
+
+.container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 尺寸变体 */
+.sm { width: 100px; height: 100px; }
+.md { width: 140px; height: 140px; }
+.lg { width: 200px; height: 200px; }
+.xl { width: 280px; height: 280px; }
+
+/* 光晕效果 */
+.glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(30px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* 装饰环 */
+.ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px dashed;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* 角色包装器 */
+.characterWrapper {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 角色图片 */
+.character {
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.2));
+    transition: filter 0.3s ease;
+}
+
+.character:hover {
+    filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.3));
+}
+
+/* 闪光效果 */
+.shimmer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    border-radius: 50%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 100%
+    );
+    background-size: 200% 100%;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+}
+
+/* 加载占位符 */
+.placeholder {
+    position: absolute;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.placeholderPulse {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.2) 50%,
+        transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* 粒子效果 */
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    opacity: 0;
+}
+
+/* 备用头像 */
+.fallbackAvatar {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        inset 0 2px 8px rgba(255, 255, 255, 0.2);
+}
+
+.fallbackText {
+    color: white;
+    font-weight: 800;
+    font-size: 1.2em;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== Mini 版本 ===== */
+.miniContainer {
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: box-shadow 0.2s ease;
+}
+
+.miniContainer:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.miniContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.miniContainer span {
+    color: white;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== 响应式调整 ===== */
+@media (max-width: 640px) {
+    .sm { width: 80px; height: 80px; }
+    .md { width: 110px; height: 110px; }
+    .lg { width: 160px; height: 160px; }
+    .xl { width: 220px; height: 220px; }
+    
+    .particle {
+        width: 4px;
+        height: 4px;
+    }
+}
+
+/* ===== 减少动画偏好 ===== */
+@media (prefers-reduced-motion: reduce) {
+    .shimmer,
+    .placeholderPulse {
+        animation: none;
+    }
+    
+    .particle {
+        display: none;
+    }
+    
+    .ring {
+        animation: none !important;
+    }
+}

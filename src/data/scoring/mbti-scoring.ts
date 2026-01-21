@@ -56,7 +56,7 @@ export function calculateMBTI(answers: Answer[]): TestResult {
   // 初始化维度得分
   const dimensions: Record<string, number> = { EI: 0, SN: 0, TF: 0, JP: 0 }
   const counts: Record<string, number> = { EI: 0, SN: 0, TF: 0, JP: 0 }
-  
+
   // 累加得分
   answers.forEach(ans => {
     if (dimensions.hasOwnProperty(ans.dimension)) {
@@ -64,23 +64,23 @@ export function calculateMBTI(answers: Answer[]): TestResult {
       counts[ans.dimension]++
     }
   })
-  
+
   // 计算每个维度的概率和类型字母
   const dimensionScores: DimensionScore[] = []
   let typeString = ''
   let totalConfidence = 0
-  
+
   for (const dim of ['EI', 'SN', 'TF', 'JP']) {
     const rawScore = dimensions[dim]
     const maxPossible = counts[dim] * 2 // 最大可能分数
-    
+
     // 使用 sigmoid 转换为概率
     const probability = sigmoid(rawScore, 0.15) * 100
-    
+
     // 确定类型字母
     let letter: string
     let label: string
-    
+
     if (dim === 'EI') {
       letter = rawScore >= 0 ? 'E' : 'I'
       label = rawScore >= 0 ? dimensionLabels.EI[0] : dimensionLabels.EI[1]
@@ -94,24 +94,28 @@ export function calculateMBTI(answers: Answer[]): TestResult {
       letter = rawScore >= 0 ? 'J' : 'P'
       label = rawScore >= 0 ? dimensionLabels.JP[0] : dimensionLabels.JP[1]
     }
-    
+
     typeString += letter
-    
+
     // 计算维度置信度（偏离中心的程度）
     const deviation = Math.abs(rawScore) / maxPossible
     totalConfidence += deviation
-    
+
+    // 如果是负向维度（I, N, F, P），百分比应该是 100 - probability
+    // 这样 3% 的 N 就会显示为 97% 的 N
+    const displayPercentage = rawScore < 0 ? 100 - Math.round(probability) : Math.round(probability)
+
     dimensionScores.push({
       dimension: dim,
       rawScore,
-      percentage: Math.round(probability),
+      percentage: displayPercentage,
       label
     })
   }
-  
+
   // 整体置信度（0-100）
   const confidence = Math.round((totalConfidence / 4) * 100)
-  
+
   return {
     type: 'MBTI',
     score: typeString,

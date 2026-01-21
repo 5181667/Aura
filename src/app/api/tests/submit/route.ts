@@ -6,20 +6,18 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 export async function POST(req: Request) {
     try {
         const session = await getServerSession(authOptions)
-
-        if (!session?.user) {
-            return NextResponse.json({ message: "未登录" }, { status: 401 })
-        }
-
         const { testId, score, details, dimensions } = await req.json()
 
         if (!testId || !score) {
             return NextResponse.json({ message: "缺少必要参数" }, { status: 400 })
         }
 
+        // 支持游客提交，userId 可为空
+        const userId = session?.user ? (session.user as any).id : null
+
         const result = await prisma.testResult.create({
             data: {
-                userId: (session.user as any).id,
+                userId,
                 testId,
                 score,
                 details,
@@ -29,7 +27,8 @@ export async function POST(req: Request) {
 
         return NextResponse.json({ 
             message: "提交成功", 
-            resultId: result.id 
+            resultId: result.id,
+            isGuest: !userId  // 告知前端是否为游客
         }, { status: 201 })
     } catch (error) {
         console.error("TEST_SUBMIT_ERROR", error)

@@ -1,0 +1,218 @@
+/* ===== Dashboard MBTI 组件样式 ===== */
+
+.container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 2rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, var(--mesh-1) 0%, transparent 70%);
+    filter: blur(60px);
+    pointer-events: none;
+    animation: float 10s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-20px, 20px); }
+}
+
+.characterSection {
+    flex-shrink: 0;
+}
+
+.infoSection {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    position: relative;
+    z-index: 1;
+}
+
+.typeHeader {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.emoji {
+    font-size: 2.5rem;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+.typeInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.typeName {
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.5px;
+}
+
+.typeTitle {
+    font-size: 1rem;
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.tagline {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-style: italic;
+    padding-left: 1rem;
+    border-left: 3px solid var(--primary);
+    margin: 0.5rem 0;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.tag {
+    padding: 0.35rem 0.75rem;
+    background: var(--selection);
+    border: 1px solid var(--border-color);
+    border-radius: 100px;
+    font-size: 0.8rem;
+    color: var(--primary);
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.tag:hover {
+    background: var(--primary);
+    color: var(--primary-foreground);
+    border-color: var(--primary);
+}
+
+.viewBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 0.6rem 1.25rem;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 100px;
+    color: var(--text-main);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+    width: fit-content;
+}
+
+.viewBtn:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--primary-foreground);
+    transform: translateX(4px);
+}
+
+/* ===== 状态栏徽章 ===== */
+.statusBadge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.75rem 0.35rem 0.35rem;
+    background: var(--selection);
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.statusBadge:hover {
+    background: var(--primary);
+}
+
+.statusBadge:hover .statusType {
+    color: var(--primary-foreground);
+}
+
+.statusType {
+    font-size: 0.9rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: all 0.3s;
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+        gap: 1.5rem;
+    }
+    
+    .typeHeader {
+        justify-content: center;
+    }
+    
+    .tagline {
+        border-left: none;
+        padding-left: 0;
+        text-align: center;
+    }
+    
+    .tags {
+        justify-content: center;
+    }
+    
+    .viewBtn {
+        margin: 1rem auto 0;
+    }
+    
+    .emoji {
+        font-size: 2rem;
+    }
+    
+    .typeName {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1.25rem;
+    }
+    
+    .typeHeader {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .typeInfo {
+        align-items: center;
+    }
+}

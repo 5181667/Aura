@@ -3,9 +3,10 @@ import { getServerSession } from "next-auth"
 import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 import Link from "next/link"
 import { redirect } from "next/navigation"
-import { Brain, Sparkles, ArrowRight, Zap, Trophy, FileText, Compass } from "lucide-react"
+import { Brain, Sparkles, ArrowRight, Zap, Trophy, FileText, Compass, Crown } from "lucide-react"
 import Navbar from "@/components/Navbar"
 import TestTimeline from "@/components/TestTimeline"
+import DashboardMBTI from "@/components/DashboardMBTI"
 import styles from "./dashboard.module.css"
 
 export const dynamic = 'force-dynamic'
@@ -24,7 +25,16 @@ export default async function DashboardPage() {
                 include: { test: true },
                 orderBy: { createdAt: "desc" }
             },
-            fullAnalysis: true
+            fullAnalysis: true,
+            premiumReports: {
+                where: { paymentStatus: 'PAID' },
+                include: {
+                    testResult: {
+                        include: { test: true }
+                    }
+                },
+                orderBy: { paidAt: 'desc' }
+            }
         }
     })
 
@@ -35,10 +45,12 @@ export default async function DashboardPage() {
 
     // 统计数据
     const testTypes = new Set(user?.testResults.map(r => r.test.type))
+    const premiumReportsCount = user?.premiumReports?.length || 0
     const stats = {
         totalTests: user?.testResults.length || 0,
         testTypes: testTypes.size,
         hasFullAnalysis: !!user?.fullAnalysis,
+        premiumReports: premiumReportsCount,
         // 获取最近的 MBTI 结果作为主要特质
         mainTrait: user?.testResults.find(r => r.test.type === 'MBTI')?.score || 
                    user?.testResults[0]?.score || null
@@ -106,6 +118,14 @@ export default async function DashboardPage() {
                     </div>
                 </header>
 
+                {/* MBTI 角色展示 */}
+                {stats.mainTrait && stats.mainTrait.length === 4 && (
+                    <DashboardMBTI 
+                        mbtiType={stats.mainTrait}
+                        userName={user?.name || undefined}
+                    />
+                )}
+
                 {/* 主内容区 */}
                 <div className={styles.mainGrid}>
                     {/* 左侧：时间轴 */}
@@ -162,6 +182,23 @@ export default async function DashboardPage() {
                                 </Link>
                             </div>
                         </div>
+
+                        {/* 高级报告入口 */}
+                        {stats.premiumReports > 0 && (
+                            <div className={styles.premiumSection}>
+                                <h3 className={styles.premiumTitle}>
+                                    <Crown size={18} />
+                                    我的高级报告
+                                </h3>
+                                <p className={styles.premiumDesc}>
+                                    您已解锁 {stats.premiumReports} 份高级分析报告
+                                </p>
+                                <Link href="/dashboard/premium-reports" className={styles.premiumBtn}>
+                                    查看全部报告
+                                    <ArrowRight size={16} />
+                                </Link>
+                            </div>
+                        )}
 
                         {/* 待探索推荐 */}
                         {uncompletedTests.length > 0 && (

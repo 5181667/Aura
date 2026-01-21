@@ -105,8 +105,8 @@ export const mbtiProfiles: Record<string, MBTIProfile> = {
     title: '主人公',
     tagline: '我相信你能做到',
     emoji: '🌟',
-    color: '#06b6d4',
-    colorSecondary: '#22d3ee',
+    color: '#10b981',
+    colorSecondary: '#34d399',
     tags: ['魅力四射', '善于激励', '关心他人', '天生领袖'],
     description: '你是充满魅力的领导者，天生善于理解他人、激发潜能。你热衷于帮助他人成长，并能团结众人为共同目标努力。',
     strengths: ['出色的沟通和影响力', '善于发现他人潜力', '强大的组织协调能力'],
@@ -261,27 +261,27 @@ export interface DimensionComparison {
 
 export function getDimensionComparisons(dimensions: any[]): DimensionComparison[] {
   const comparisons: DimensionComparison[] = []
-  
+
   const dimensionMap: Record<string, { left: string; leftL: string; right: string; rightL: string }> = {
     'EI': { left: '外向', leftL: 'E', right: '内向', rightL: 'I' },
     'SN': { left: '实感', leftL: 'S', right: '直觉', rightL: 'N' },
     'TF': { left: '理性', leftL: 'T', right: '情感', rightL: 'F' },
     'JP': { left: '计划', leftL: 'J', right: '随性', rightL: 'P' }
   }
-  
+
   dimensions.forEach(dim => {
     const config = dimensionMap[dim.dimension]
     if (!config) return
-    
+
     // rawScore > 0 表示偏向左侧，< 0 偏向右侧
     const rawScore = dim.rawScore || 0
     const percentage = dim.percentage || 50
-    
+
     // 计算两侧百分比
     const isLeftDominant = rawScore >= 0
     const leftPct = isLeftDominant ? percentage : 100 - percentage
     const rightPct = 100 - leftPct
-    
+
     comparisons.push({
       dimension: dim.dimension,
       leftLabel: config.left,
@@ -293,6 +293,6 @@ export function getDimensionComparisons(dimensions: any[]): DimensionComparison[
       activeLeft: isLeftDominant
     })
   })
-  
+
   return comparisons
 }

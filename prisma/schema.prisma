@@ -16,7 +16,9 @@ model User {
   email         String?   @unique
   password      String
   image         String?
+  gender        String?   // male / female / null(不选)
   role          String    @default("USER") // USER, ADMIN
+  isPro         Boolean   @default(false)  // 是否为付费会员
   isActive      Boolean   @default(true)   // 账号是否启用
   lastActiveAt  DateTime  @default(now())
   createdAt     DateTime  @default(now())
@@ -27,6 +29,9 @@ model User {
   
   // Full Analysis
   fullAnalysis  FullAnalysis?
+  
+  // Premium Reports
+  premiumReports PremiumReport[]
 
   // Friendships (保留，暂不删除)
   sentRequests     FriendRequest[] @relation("SentRequests")
@@ -70,7 +75,7 @@ model Test {
 
 model TestResult {
   id            String    @id @default(cuid())
-  userId        String
+  userId        String?   // 可为空（游客）
   testId        String
   score         String    // e.g., "INTJ" or a numerical score
   details       Json      // Detailed breakdown
@@ -79,9 +84,10 @@ model TestResult {
   aiAnalyzedAt  DateTime? // AI分析时间
   createdAt     DateTime  @default(now())
 
-  user       User @relation(fields: [userId], references: [id])
-  test       Test @relation(fields: [testId], references: [id])
-  shareTokens ShareToken[]
+  user          User? @relation(fields: [userId], references: [id])
+  test          Test @relation(fields: [testId], references: [id])
+  shareTokens   ShareToken[]
+  premiumReport PremiumReport?
 }
 
 model Message {
@@ -126,4 +132,24 @@ model FullAnalysis {
   updatedAt       DateTime  @updatedAt
 
   user            User      @relation(fields: [userId], references: [id])
+}
+
+// 高级报告（每次测试可单独购买）
+model PremiumReport {
+  id            String    @id @default(cuid())
+  testResultId  String    @unique
+  userId        String?   // 可为空（游客购买）
+  orderId       String    @unique  // 支付订单号
+  amount        Float     @default(9.9)  // 支付金额
+  paymentStatus String    @default("PENDING") // PENDING/PAID/FAILED/REFUNDED
+  paymentMethod String?   // wechat/alipay
+  paidAt        DateTime? // 支付时间
+  reportData    Json?     // AI生成的详尽报告
+  generatedAt   DateTime? // 报告生成时间
+  generateError String?   // 生成错误信息（用于重试）
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  testResult    TestResult @relation(fields: [testResultId], references: [id], onDelete: Cascade)
+  user          User?      @relation(fields: [userId], references: [id])
 }

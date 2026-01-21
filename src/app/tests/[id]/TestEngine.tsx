@@ -7,6 +7,7 @@ import { calculateScore } from "@/data/scoring"
 import { useToast } from "@/components/Toast"
 import { getSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
+import GenderSelector from "@/components/GenderSelector"
 import styles from "./engine.module.css"
 
 interface TestEngineProps {
@@ -54,6 +55,8 @@ export default function TestEngine({ test }: TestEngineProps) {
     const [currentIndex, setCurrentIndex] = useState(0)
     const [answers, setAnswers] = useState<any[]>([])
     const [submitting, setSubmitting] = useState(false)
+    const [showGenderSelector, setShowGenderSelector] = useState(false)
+    const [pendingResultId, setPendingResultId] = useState<string | null>(null)
     const pendingKey = `pending-test-submit:${test.id}`
 
     const questions = test.questions as any[]
@@ -124,25 +127,10 @@ export default function TestEngine({ test }: TestEngineProps) {
         setSubmitting(true)
         
         try {
-            const session = await getSession()
-            if (!session) {
-                if (typeof window !== 'undefined') {
-                    localStorage.setItem(pendingKey, JSON.stringify({
-                        testId: test.id,
-                        answers: finalAnswers,
-                        createdAt: Date.now()
-                    }))
-                }
-                showToast('请先登录或注册，登录后将自动生成结果', 'info')
-                setSubmitting(false)
-                router.push(`/login?returnUrl=${encodeURIComponent(`/tests/${test.id}`)}`)
-                return
-            }
-
             // 使用评分算法计算结果
             const result = calculateScore(test.type, finalAnswers)
             
-            // 提交到后端
+            // 提交到后端（支持游客提交）
             const response = await fetch('/api/tests/submit', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -158,31 +146,47 @@ export default function TestEngine({ test }: TestEngineProps) {
                 const data = await response.json()
                 if (typeof window !== 'undefined') {
                     localStorage.removeItem(pendingKey)
+                    // 如果是游客，保存结果ID到本地以便后续关联
+                    if (data.isGuest) {
+                        const guestResults = JSON.parse(localStorage.getItem('guest-results') || '[]')
+                        guestResults.push({
+                            resultId: data.resultId,
+                            testId: test.id,
+                            createdAt: Date.now()
+                        })
+                        localStorage.setItem('guest-results', JSON.stringify(guestResults))
+                    }
                 }
-                // 自动触发 AI 分析
-                fetch('/api/ai/analyze', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ resultId: data.resultId })
-                }).catch(console.error)
+                
+                // 已登录用户自动触发 AI 分析
+                const session = await getSession()
+                if (session) {
+                    fetch('/api/ai/analyze', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ resultId: data.resultId })
+                    }).catch(console.error)
+                    
+                    // 检查是否需要显示性别选择（首次测试）
+                    try {
+                        const genderRes = await fetch('/api/user/gender')
+                        const genderData = await genderRes.json()
+                        if (!genderData.hasGender) {
+                            // 首次测试，显示性别选择弹窗
+                            setPendingResultId(data.resultId)
+                            setShowGenderSelector(true)
+                            setSubmitting(false)
+                            return
+                        }
+                    } catch (e) {
+                        console.error('Check gender error:', e)
+                    }
+                }
                 
                 // 跳转到结果页
                 window.location.href = `/results/${data.resultId}`
             } else {
                 const errorData = await response.json().catch(() => null)
-                if (response.status === 401) {
-                    if (typeof window !== 'undefined') {
-                        localStorage.setItem(pendingKey, JSON.stringify({
-                            testId: test.id,
-                            answers: finalAnswers,
-                            createdAt: Date.now()
-                        }))
-                    }
-                    showToast('请先登录或注册，登录后将自动生成结果', 'info')
-                    setSubmitting(false)
-                    router.push(`/login?returnUrl=${encodeURIComponent(`/tests/${test.id}`)}`)
-                    return
-                }
                 const message = errorData?.message || '提交失败'
                 throw new Error(message)
             }
@@ -193,14 +197,37 @@ export default function TestEngine({ test }: TestEngineProps) {
         }
     }
 
+    // 处理性别选择
+    const handleGenderSelect = async (gender: string | null) => {
+        try {
+            // 保存性别
+            await fetch('/api/user/gender', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ gender })
+            })
+        } catch (e) {
+            console.error('Save gender error:', e)
+        }
+        
+        // 跳转到结果页
+        if (pendingResultId) {
+            window.location.href = `/results/${pendingResultId}`
+        }
+    }
+
+    const handleGenderClose = () => {
+        setShowGenderSelector(false)
+        if (pendingResultId) {
+            window.location.href = `/results/${pendingResultId}`
+        }
+    }
+
     useEffect(() => {
         const resumePendingSubmit = async () => {
             if (typeof window === 'undefined') return
             const stored = localStorage.getItem(pendingKey)
             if (!stored) return
-
-            const session = await getSession()
-            if (!session) return
 
             try {
                 const pending = JSON.parse(stored)
@@ -365,6 +392,13 @@ export default function TestEngine({ test }: TestEngineProps) {
                 <kbd>1</kbd>-<kbd>{Math.min(currentQuestion.options.length, 9)}</kbd> 选择 
                 {currentIndex > 0 && <><span className={styles.hintDivider}>|</span><kbd>←</kbd> 返回上一题</>}
             </div>
+            
+            {/* 性别选择弹窗 */}
+            <GenderSelector 
+                isOpen={showGenderSelector}
+                onSelect={handleGenderSelect}
+                onClose={handleGenderClose}
+            />
         </div>
     )
 }

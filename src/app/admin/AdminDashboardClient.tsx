@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { 
   LineChart, Line, AreaChart, Area, BarChart, Bar, PieChart, Pie, Cell,
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
@@ -8,8 +8,10 @@ import {
 import { 
   Users, FileText, CheckCircle, TrendingUp, TrendingDown,
   Activity, Clock, Calendar, Eye, Award, Zap, Database,
-  UserPlus, ClipboardList, BarChart3, PieChartIcon, RefreshCw
+  UserPlus, ClipboardList, BarChart3, PieChartIcon, RefreshCw,
+  ArrowRight, PlusCircle, Settings
 } from 'lucide-react'
+import Link from 'next/link'
 import styles from './admin.module.css'
 
 interface DashboardData {
@@ -60,6 +62,31 @@ const typeColors: Record<string, string> = {
   'CUSTOM': '#94a3b8'
 }
 
+// 检测当前是否为亮色主题
+function useIsLightTheme() {
+  const [isLight, setIsLight] = useState(false)
+  
+  useEffect(() => {
+    const checkTheme = () => {
+      const theme = document.documentElement.getAttribute('data-theme')
+      setIsLight(theme === 'green' || theme === 'yellow')
+    }
+    
+    checkTheme()
+    
+    // 监听主题变化
+    const observer = new MutationObserver(checkTheme)
+    observer.observe(document.documentElement, { 
+      attributes: true, 
+      attributeFilter: ['data-theme'] 
+    })
+    
+    return () => observer.disconnect()
+  }, [])
+  
+  return isLight
+}
+
 // 自定义 Tooltip
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
@@ -79,6 +106,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 
 export default function AdminDashboardClient({ data }: { data: DashboardData }) {
   const [refreshing, setRefreshing] = useState(false)
+  const isLightTheme = useIsLightTheme()
 
   const handleRefresh = () => {
     setRefreshing(true)
@@ -93,6 +121,13 @@ export default function AdminDashboardClient({ data }: { data: DashboardData }) 
   const completionGrowthRate = data.totalResults > 0
     ? ((data.resultsThisWeek / data.totalResults) * 100).toFixed(1)
     : '0'
+
+  // 根据主题动态调整图表颜色
+  const chartColors = {
+    grid: isLightTheme ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)',
+    axis: isLightTheme ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.5)',
+    text: isLightTheme ? 'rgba(0,0,0,0.8)' : 'rgba(255,255,255,0.8)',
+  }
 
   return (
     <div className={styles.dashboard}>
@@ -117,6 +152,42 @@ export default function AdminDashboardClient({ data }: { data: DashboardData }) 
           </button>
         </div>
       </header>
+
+      {/* 快捷入口 */}
+      <div className={styles.quickAccess}>
+        <Link href="/admin/users" className={styles.quickCard}>
+          <div className={styles.quickIcon} style={{ background: 'linear-gradient(135deg, #8b5cf6, #a78bfa)' }}>
+            <Users size={24} />
+          </div>
+          <div className={styles.quickInfo}>
+            <span className={styles.quickTitle}>用户管理</span>
+            <span className={styles.quickDesc}>管理 {data.totalUsers} 位用户</span>
+          </div>
+          <ArrowRight size={18} className={styles.quickArrow} />
+        </Link>
+        
+        <Link href="/admin/tests" className={styles.quickCard}>
+          <div className={styles.quickIcon} style={{ background: 'linear-gradient(135deg, #06b6d4, #22d3ee)' }}>
+            <FileText size={24} />
+          </div>
+          <div className={styles.quickInfo}>
+            <span className={styles.quickTitle}>测试管理</span>
+            <span className={styles.quickDesc}>{data.publishedTests} 个已发布测试</span>
+          </div>
+          <ArrowRight size={18} className={styles.quickArrow} />
+        </Link>
+        
+        <Link href="/admin/tests/create" className={styles.quickCard}>
+          <div className={styles.quickIcon} style={{ background: 'linear-gradient(135deg, #10b981, #34d399)' }}>
+            <PlusCircle size={24} />
+          </div>
+          <div className={styles.quickInfo}>
+            <span className={styles.quickTitle}>创建测试</span>
+            <span className={styles.quickDesc}>添加新测试内容</span>
+          </div>
+          <ArrowRight size={18} className={styles.quickArrow} />
+        </Link>
+      </div>
 
       {/* 核心指标卡片 */}
       <div className={styles.metricsGrid}>
@@ -217,16 +288,18 @@ export default function AdminDashboardClient({ data }: { data: DashboardData }) 
                     <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0}/>
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+                <CartesianGrid strokeDasharray="3 3" stroke={chartColors.grid} />
                 <XAxis 
                   dataKey="date" 
-                  stroke="rgba(255,255,255,0.5)"
+                  stroke={chartColors.axis}
                   fontSize={12}
+                  tick={{ fill: chartColors.axis }}
                 />
                 <YAxis 
-                  stroke="rgba(255,255,255,0.5)"
+                  stroke={chartColors.axis}
                   fontSize={12}
                   allowDecimals={false}
+                  tick={{ fill: chartColors.axis }}
                 />
                 <Tooltip content={<CustomTooltip />} />
                 <Area 
@@ -270,7 +343,7 @@ export default function AdminDashboardClient({ data }: { data: DashboardData }) 
                 <Tooltip content={<CustomTooltip />} />
                 <Legend 
                   verticalAlign="bottom"
-                  formatter={(value) => <span style={{ color: 'rgba(255,255,255,0.8)' }}>{value}</span>}
+                  formatter={(value) => <span style={{ color: chartColors.text }}>{value}</span>}
                 />
               </PieChart>
             </ResponsiveContainer>
@@ -295,16 +368,18 @@ export default function AdminDashboardClient({ data }: { data: DashboardData }) 
                     <stop offset="95%" stopColor="#10b981" stopOpacity={0.3}/>
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+                <CartesianGrid strokeDasharray="3 3" stroke={chartColors.grid} />
                 <XAxis 
                   dataKey="date" 
-                  stroke="rgba(255,255,255,0.5)"
+                  stroke={chartColors.axis}
                   fontSize={12}
+                  tick={{ fill: chartColors.axis }}
                 />
                 <YAxis 
-                  stroke="rgba(255,255,255,0.5)"
+                  stroke={chartColors.axis}
                   fontSize={12}
                   allowDecimals={false}
+                  tick={{ fill: chartColors.axis }}
                 />
                 <Tooltip content={<CustomTooltip />} />
                 <Bar 

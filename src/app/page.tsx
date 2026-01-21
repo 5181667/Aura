@@ -25,7 +25,7 @@ export default function Home() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className={styles.hero}
         >
-          <motion.span 
+          <motion.span
             className={styles.badge}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -34,11 +34,11 @@ export default function Home() {
             <Sparkles size={16} />
             Next Gen Personality Lab
           </motion.span>
-          
+
           <h1 className={styles.title}>
             发现真实的<span className={styles.gradientText}>自我</span>
           </h1>
-          
+
           <p className={styles.description}>
             通过科学的测试体系，探索你的性格维度与潜能，<br />
             开启一段认识自我的奇妙旅程。
@@ -61,7 +61,7 @@ export default function Home() {
                 <Users size={22} />
               </div>
               <div className={styles.statContent}>
-                <strong>1000+</strong>
+                <strong>7000+</strong>
                 <span>活跃用户</span>
               </div>
             </div>
@@ -71,7 +71,7 @@ export default function Home() {
                 <LineChart size={22} />
               </div>
               <div className={styles.statContent}>
-                <strong>50000+</strong>
+                <strong>800000+</strong>
                 <span>测试完成</span>
               </div>
             </div>
@@ -89,7 +89,7 @@ export default function Home() {
         </motion.div>
 
         <div className={styles.featureGrid}>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -99,13 +99,13 @@ export default function Home() {
               <Brain className={styles.fIcon} />
             </div>
             <div className={styles.fContent}>
-              <h3>科学测评</h3>
-              <p>基于大五人格理论与 MBTI 研究，提供专业的性格分析报告。</p>
+              <h3>深度人格解码</h3>
+              <p>拒绝标签化。融合 MBTI 与大五人格理论，剥离表象，精准还原那个连你自己都未曾察觉的真实自我。</p>
             </div>
             <ArrowRight className={styles.fArrow} size={20} />
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -115,13 +115,13 @@ export default function Home() {
               <Sparkles className={styles.fIcon} />
             </div>
             <div className={styles.fContent}>
-              <h3>AI 智能分析</h3>
-              <p>深度 AI 为你解读测试结果，提供个性化的成长建议。</p>
+              <h3>AI 专属成长导师</h3>
+              <p>不仅仅是结果。深度 AI 算法为你生成独家解析，从职场潜能到情感模式，提供真正可落地的人生建议。</p>
             </div>
             <ArrowRight className={styles.fArrow} size={20} />
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -131,8 +131,8 @@ export default function Home() {
               <LineChart className={styles.fIcon} />
             </div>
             <div className={styles.fContent}>
-              <h3>数据可视化</h3>
-              <p>通过雷达图与趋势分析，直观展示你的性格特征变化。</p>
+              <h3>可视化潜能地图</h3>
+              <p>告别枯燥数据。通过多维雷达图，一眼看清你的优势短板，让你的性格特质与成长路径清晰可见。</p>
             </div>
             <ArrowRight className={styles.fArrow} size={20} />
           </motion.div>

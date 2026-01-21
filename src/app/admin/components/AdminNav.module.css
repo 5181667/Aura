@@ -1,0 +1,276 @@
+/* ===== 管理后台侧边导航栏 ===== */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 260px;
+    height: 100vh;
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    transition: background 0.5s ease, border-color 0.5s ease;
+}
+
+/* Logo 区域 */
+.logoSection {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--text-main);
+}
+
+.logoIcon {
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+.logoText {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.logoTitle {
+    font-size: 1.25rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.logoBadge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* 导航区域 */
+.navSection {
+    padding: 1.25rem 1rem;
+}
+
+.navLabel {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+    padding: 0 0.5rem;
+}
+
+.navList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+/* 导航项 */
+.navItem {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.navItem:hover {
+    background: var(--selection);
+    color: var(--text-main);
+}
+
+.navItem.active {
+    background: linear-gradient(135deg, var(--primary), var(--primary-deep));
+    color: var(--primary-foreground);
+    box-shadow: 0 4px 12px var(--btn-shadow);
+}
+
+.navItem.active .navIcon {
+    color: var(--primary-foreground);
+}
+
+.navItem.active .navDesc {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.navIcon {
+    flex-shrink: 0;
+    color: var(--text-muted);
+    transition: color 0.2s;
+}
+
+.navItem:hover .navIcon {
+    color: var(--primary);
+}
+
+.navContent {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.navTitle {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.navDesc {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.activeIndicator {
+    position: absolute;
+    right: -1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 60%;
+    background: var(--primary-foreground);
+    border-radius: 2px 0 0 2px;
+}
+
+/* 快捷操作样式 */
+.quickAction {
+    border: 1px dashed var(--border-color);
+    background: transparent;
+}
+
+.quickAction:hover {
+    border-color: var(--primary);
+    border-style: solid;
+    background: var(--selection);
+}
+
+.quickAction .navIcon {
+    color: var(--primary);
+}
+
+/* 底部区域 */
+.bottomSection {
+    margin-top: auto;
+    padding: 1rem;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.backLink,
+.homeLink {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: all 0.2s;
+}
+
+.backLink:hover,
+.homeLink:hover {
+    background: var(--selection);
+    color: var(--text-main);
+}
+
+.backLink {
+    color: var(--primary);
+}
+
+.backLink:hover {
+    background: var(--selection);
+    color: var(--primary-deep);
+}
+
+/* ===== 响应式设计 ===== */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 240px;
+    }
+    
+    .navDesc {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0.75rem;
+        gap: 0.5rem;
+    }
+    
+    .logoSection {
+        width: 100%;
+        padding: 0.75rem;
+        border-bottom: none;
+        border-right: none;
+    }
+    
+    .navSection {
+        flex: 1;
+        padding: 0.5rem;
+    }
+    
+    .navLabel {
+        display: none;
+    }
+    
+    .navList {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .navItem {
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .navContent {
+        display: none;
+    }
+    
+    .activeIndicator {
+        display: none;
+    }
+    
+    .bottomSection {
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        border-top: 1px solid var(--border-color);
+        margin-top: 0.5rem;
+        padding-top: 0.75rem;
+    }
+}

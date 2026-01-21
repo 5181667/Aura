@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 import { redirect } from "next/navigation"
-import Navbar from "@/components/Navbar"
+import AdminNav from "./components/AdminNav"
 import styles from "./admin.module.css"
 
 export default async function AdminLayout({
@@ -17,7 +17,7 @@ export default async function AdminLayout({
 
     return (
         <div className={styles.adminLayout}>
-            <Navbar />
+            <AdminNav />
             <main className={styles.adminMain}>
                 {children}
             </main>
