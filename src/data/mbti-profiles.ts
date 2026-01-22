@@ -242,9 +242,11 @@ export const mbtiProfiles: Record<string, MBTIProfile> = {
   }
 }
 
-// 根据类型获取 Profile
+// 根据类型获取 Profile（支持 -A/-T 后缀）
 export function getMBTIProfile(type: string): MBTIProfile | null {
-  return mbtiProfiles[type.toUpperCase()] || null
+  // 移除 -A 或 -T 后缀
+  const baseType = type.toUpperCase().replace(/-[AT]$/, '')
+  return mbtiProfiles[baseType] || null
 }
 
 // 获取维度对比数据

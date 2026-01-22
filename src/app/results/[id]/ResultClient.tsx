@@ -28,7 +28,8 @@ const dimensionIconsMap: Record<string, React.ReactNode> = {
     'T': <Activity size={16} />,
     'F': <Heart size={16} />,
     'J': <Calendar size={16} />,
-    'P': <Zap size={16} />
+    'P': <Zap size={16} />,
+    'A': <Target size={16} />,
 }
 
 // 双向对抗进度条组件
@@ -535,7 +536,7 @@ export default function ResultClient({ result, isLoggedIn = false, isGuest = fal
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.2 }}
                             >
-                                {profile.type}
+                                {result.score}
                             </motion.h1>
 
                             <motion.h2
