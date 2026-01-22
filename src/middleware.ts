@@ -18,11 +18,11 @@ export default withAuth(
         callbacks: {
             authorized: ({ token, req }) => {
                 const pathname = req.nextUrl.pathname
-                
+
                 // Public routes
-                if (pathname === "/" || pathname.startsWith("/login") || 
+                if (pathname === "/" || pathname.startsWith("/login") ||
                     pathname.startsWith("/register") || pathname.startsWith("/tests") ||
-                    pathname.startsWith("/share")) {
+                    pathname.startsWith("/share") || pathname.startsWith("/results")) {
                     return true
                 }
 
