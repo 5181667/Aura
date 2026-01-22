@@ -74,7 +74,7 @@ function Particles({ color }: { color: string }) {
                 <motion.div
                     key={i}
                     className={styles.particle}
-                    style={{ 
+                    style={{
                         background: color,
                         left: `${particle.left}%`,
                         top: `${particle.top}%`,
@@ -96,9 +96,9 @@ function Particles({ color }: { color: string }) {
     )
 }
 
-export default function MBTICharacter({ 
-    type, 
-    size = 'lg', 
+export default function MBTICharacter({
+    type,
+    size = 'lg',
     animated = true,
     showGlow = true,
     className = ''
@@ -106,8 +106,9 @@ export default function MBTICharacter({
     const [imageLoaded, setImageLoaded] = useState(false)
     const [imageError, setImageError] = useState(false)
     const [mounted, setMounted] = useState(false)
-    
-    const normalizedType = type?.toUpperCase() || 'INTJ'
+
+    // 移除 -A/-T 后缀，只用 4 字母类型查找颜色和图片
+    const normalizedType = (type?.toUpperCase() || 'INTJ').replace(/-[AT]$/, '')
     const colors = mbtiColors[normalizedType] || mbtiColors['INTJ']
     const dimensions = sizeConfig[size]
 
@@ -118,15 +119,15 @@ export default function MBTICharacter({
     // 如果图片加载失败，显示备用的简单头像
     if (imageError) {
         return (
-            <motion.div 
+            <motion.div
                 className={`${styles.container} ${styles[size]} ${className}`}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
             >
-                <motion.div 
+                <motion.div
                     className={styles.fallbackAvatar}
-                    style={{ 
+                    style={{
                         background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
                         width: dimensions.width,
                         height: dimensions.height,
@@ -141,7 +142,7 @@ export default function MBTICharacter({
     }
 
     return (
-        <motion.div 
+        <motion.div
             className={`${styles.container} ${styles[size]} ${className}`}
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -149,9 +150,9 @@ export default function MBTICharacter({
         >
             {/* 光晕效果 */}
             {showGlow && mounted && (
-                <motion.div 
+                <motion.div
                     className={styles.glow}
-                    style={{ 
+                    style={{
                         background: `radial-gradient(circle, ${colors.glow} 0%, transparent 70%)`,
                         width: dimensions.width * 1.5,
                         height: dimensions.height * 1.5,
@@ -163,9 +164,9 @@ export default function MBTICharacter({
 
             {/* 外圈装饰环 */}
             {mounted && (
-                <motion.div 
+                <motion.div
                     className={styles.ring}
-                    style={{ 
+                    style={{
                         borderColor: colors.primary,
                         width: dimensions.width * 1.15,
                         height: dimensions.height * 1.15,
@@ -176,7 +177,7 @@ export default function MBTICharacter({
             )}
 
             {/* 主角色图片 */}
-            <motion.div 
+            <motion.div
                 className={styles.characterWrapper}
                 animate={animated ? { y: [-4, 4, -4] } : undefined}
                 transition={animated ? { duration: 3, repeat: Infinity, ease: "easeInOut" } : undefined}
@@ -193,9 +194,9 @@ export default function MBTICharacter({
                     onLoad={() => setImageLoaded(true)}
                     onError={() => setImageError(true)}
                     initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ 
-                        opacity: imageLoaded ? 1 : 0, 
-                        scale: imageLoaded ? 1 : 0.9 
+                    animate={{
+                        opacity: imageLoaded ? 1 : 0,
+                        scale: imageLoaded ? 1 : 0.9
                     }}
                     transition={{ duration: 0.4 }}
                     whileHover={animated ? { scale: 1.05 } : undefined}
@@ -203,7 +204,7 @@ export default function MBTICharacter({
 
                 {/* 加载占位符 */}
                 {!imageLoaded && !imageError && (
-                    <div 
+                    <div
                         className={styles.placeholder}
                         style={{
                             width: dimensions.width,
@@ -225,14 +226,14 @@ export default function MBTICharacter({
 }
 
 // 迷你版本，用于列表和小头像显示
-export function MBTICharacterMini({ 
-    type, 
+export function MBTICharacterMini({
+    type,
     size = 40,
-    className = '' 
-}: { 
+    className = ''
+}: {
     type: string
     size?: number
-    className?: string 
+    className?: string
 }) {
     const [imageError, setImageError] = useState(false)
     const normalizedType = type?.toUpperCase() || 'INTJ'
@@ -240,10 +241,10 @@ export function MBTICharacterMini({
 
     if (imageError) {
         return (
-            <div 
+            <div
                 className={`${styles.miniContainer} ${className}`}
-                style={{ 
-                    width: size, 
+                style={{
+                    width: size,
                     height: size,
                     background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
                 }}
@@ -254,7 +255,7 @@ export function MBTICharacterMini({
     }
 
     return (
-        <motion.div 
+        <motion.div
             className={`${styles.miniContainer} ${className}`}
             style={{ width: size, height: size }}
             whileHover={{ scale: 1.1 }}

@@ -9,19 +9,19 @@ export const mbtiThemeMap: Record<string, ThemeType> = {
   'INTP': 'violet',
   'ENTJ': 'violet',
   'ENTP': 'violet',
-  
+
   // Diplomat - NF (Green/绿色)
   'INFJ': 'green',
   'INFP': 'green',
   'ENFJ': 'green',
   'ENFP': 'green',
-  
+
   // Sentinel - SJ (Blue/蓝色)
   'ISTJ': 'blue',
   'ISFJ': 'blue',
   'ESTJ': 'blue',
   'ESFJ': 'blue',
-  
+
   // Explorer - SP (Yellow/黄色)
   'ISTP': 'yellow',
   'ISFP': 'yellow',
@@ -94,8 +94,9 @@ export const themeConfig: Record<ThemeType, {
  */
 export function getThemeByMBTI(mbtiType: string | null | undefined): ThemeType {
   if (!mbtiType) return 'violet'
-  
-  const normalizedType = mbtiType.toUpperCase().trim()
+
+  // 移除 -A 或 -T 后缀再查找
+  const normalizedType = mbtiType.toUpperCase().trim().replace(/-[AT]$/, '')
   return mbtiThemeMap[normalizedType] || 'violet'
 }
 
@@ -111,7 +112,7 @@ export function getMBTIGroup(mbtiType: string): {
 } {
   const theme = getThemeByMBTI(mbtiType)
   const config = themeConfig[theme]
-  
+
   return {
     group: config.group as 'Analyst' | 'Diplomat' | 'Sentinel' | 'Explorer',
     groupCN: config.groupCN,

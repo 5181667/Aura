@@ -44,8 +44,15 @@
 }
 
 @keyframes orbFloat {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(30px, -30px) scale(1.05); }
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(30px, -30px) scale(1.05);
+    }
 }
 
 /* 导航栏 - 由 Navbar 组件处理 */
@@ -111,13 +118,40 @@
     gap: 3rem;
 }
 
-/* MBTI 角色 */
+/* MBTI 角色 - 增强融合效果 */
 .avatarWrapper {
     position: relative;
     flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 1.5rem;
+}
+
+/* 角色背景光晕 - 与页面背景融合 */
+.avatarWrapper::before {
+    content: '';
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--profile-color, var(--primary)) 0%, transparent 70%);
+    opacity: 0.25;
+    filter: blur(40px);
+    z-index: -1;
+    animation: avatarGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes avatarGlow {
+    0% {
+        opacity: 0.2;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0.35;
+        transform: scale(1.05);
+    }
 }
 
 /* Hero 文字 */
@@ -752,28 +786,28 @@
         flex-direction: column;
         text-align: center;
     }
-    
+
     .avatarWrapper {
         order: -1;
     }
-    
+
     .avatarSvg {
         width: 160px;
         height: 220px;
     }
-    
+
     .typeCode {
         font-size: 4rem;
     }
-    
+
     .typeTitle {
         font-size: 1.75rem;
     }
-    
+
     .dataGrid {
         grid-template-columns: 1fr;
     }
-    
+
     .traitsGrid {
         grid-template-columns: 1fr;
     }
@@ -783,86 +817,86 @@
     .guestBanner {
         padding: 0.75rem 1rem;
     }
-    
+
     .guestBannerContent {
         flex-wrap: wrap;
         justify-content: center;
         text-align: center;
         font-size: 0.85rem;
     }
-    
+
     .guestBannerContent span {
         flex-basis: 100%;
         margin-bottom: 0.5rem;
     }
-    
+
     .guestBannerClose {
         top: 0.5rem;
     }
-    
+
     .main {
         padding: 1rem 4% 3rem;
     }
-    
+
     .heroSection {
         padding: 2rem 0 3rem;
     }
-    
+
     .avatarSvg {
         width: 140px;
         height: 190px;
     }
-    
+
     .typeCode {
         font-size: 3.5rem;
     }
-    
+
     .typeTitle {
         font-size: 1.5rem;
     }
-    
+
     .typeTagline {
         font-size: 1rem;
     }
-    
+
     .introSection {
         padding: 2rem 1.5rem;
         border-radius: 24px;
     }
-    
+
     .description {
         font-size: 1rem;
         padding-left: 1rem;
     }
-    
+
     .dimensionsCard,
     .radarCard,
     .extraCard {
         padding: 1.5rem;
     }
-    
+
     .extraGrid {
         grid-template-columns: 1fr;
     }
-    
+
     .actions {
         flex-direction: column;
         gap: 1rem;
     }
-    
+
     .actions button,
     .actions a {
         width: 100%;
         justify-content: center;
     }
-    
+
     .heroOrb {
         width: 400px;
         height: 400px;
         top: -10%;
         right: -30%;
     }
-    
+
     .heroOrbSecondary {
         display: none;
     }
@@ -870,6 +904,7 @@
 
 /* 减少动画偏好 */
 @media (prefers-reduced-motion: reduce) {
+
     .heroOrb,
     .heroOrbSecondary {
         animation: none;

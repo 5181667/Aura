@@ -8,18 +8,34 @@
 }
 
 /* 尺寸变体 */
-.sm { width: 100px; height: 100px; }
-.md { width: 140px; height: 140px; }
-.lg { width: 200px; height: 200px; }
-.xl { width: 280px; height: 280px; }
+.sm {
+    width: 100px;
+    height: 100px;
+}
 
-/* 光晕效果 */
+.md {
+    width: 140px;
+    height: 140px;
+}
+
+.lg {
+    width: 200px;
+    height: 200px;
+}
+
+.xl {
+    width: 280px;
+    height: 280px;
+}
+
+/* 光晕效果 - 增强融合 */
 .glow {
     position: absolute;
     border-radius: 50%;
-    filter: blur(30px);
+    filter: blur(50px);
     pointer-events: none;
     z-index: 0;
+    opacity: 0.8;
 }
 
 /* 装饰环 */
@@ -31,7 +47,7 @@
     pointer-events: none;
 }
 
-/* 角色包装器 */
+/* 角色包装器 - 增强融合效果 */
 .characterWrapper {
     position: relative;
     z-index: 1;
@@ -40,16 +56,17 @@
     justify-content: center;
 }
 
-/* 角色图片 */
+/* 角色图片 - 更柔和的阴影 */
 .character {
     position: relative;
     z-index: 2;
-    filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.2));
-    transition: filter 0.3s ease;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.15));
+    transition: all 0.4s ease;
 }
 
 .character:hover {
-    filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.2));
+    transform: scale(1.02);
 }
 
 /* 闪光效果 */
@@ -59,12 +76,10 @@
     left: 0;
     z-index: 3;
     border-radius: 50%;
-    background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.1) 50%,
-        transparent 100%
-    );
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.1) 50%,
+            transparent 100%);
     background-size: 200% 100%;
     pointer-events: none;
     mix-blend-mode: overlay;
@@ -83,19 +98,22 @@
 .placeholderPulse {
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.2) 50%,
-        transparent 100%
-    );
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.2) 50%,
+            transparent 100%);
     background-size: 200% 100%;
     animation: pulse 1.5s infinite;
 }
 
 @keyframes pulse {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
 }
 
 /* 粒子效果 */
@@ -121,7 +139,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 
+    box-shadow:
         0 8px 32px rgba(0, 0, 0, 0.2),
         inset 0 2px 8px rgba(255, 255, 255, 0.2);
 }
@@ -164,11 +182,26 @@
 
 /* ===== 响应式调整 ===== */
 @media (max-width: 640px) {
-    .sm { width: 80px; height: 80px; }
-    .md { width: 110px; height: 110px; }
-    .lg { width: 160px; height: 160px; }
-    .xl { width: 220px; height: 220px; }
-    
+    .sm {
+        width: 80px;
+        height: 80px;
+    }
+
+    .md {
+        width: 110px;
+        height: 110px;
+    }
+
+    .lg {
+        width: 160px;
+        height: 160px;
+    }
+
+    .xl {
+        width: 220px;
+        height: 220px;
+    }
+
     .particle {
         width: 4px;
         height: 4px;
@@ -177,15 +210,16 @@
 
 /* ===== 减少动画偏好 ===== */
 @media (prefers-reduced-motion: reduce) {
+
     .shimmer,
     .placeholderPulse {
         animation: none;
     }
-    
+
     .particle {
         display: none;
     }
-    
+
     .ring {
         animation: none !important;
     }
