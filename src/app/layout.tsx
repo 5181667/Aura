@@ -55,9 +55,11 @@ export const metadata: Metadata = {
     canonical: siteUrl,
   },
   verification: {
-    // 添加搜索引擎验证码（需要注册后获取）
+    // 添加搜索引擎验证码
     // google: "你的Google验证码",
-    // other: { "baidu-site-verification": "你的百度验证码" }
+    other: {
+      "baidu-site-verification": "codeva-A2WPFyQH6M"
+    }
   },
   category: "psychology",
 };
