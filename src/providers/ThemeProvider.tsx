@@ -26,14 +26,19 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<ThemeType>('violet')
   const [mounted, setMounted] = useState(false)
 
-  // 初始化：从 localStorage 读取主题
+  // 初始化：从 localStorage 读取主题，如果没有则随机 Green/Yellow
   useEffect(() => {
     setMounted(true)
-    
+
     const stored = localStorage.getItem(THEME_STORAGE_KEY)
     if (stored && isValidTheme(stored)) {
       setThemeState(stored)
       applyThemeToDocument(stored)
+    } else {
+      // 随机选择 绿色 或 黄色(橙色)
+      const randomTheme: ThemeType = Math.random() > 0.5 ? 'green' : 'yellow'
+      setThemeState(randomTheme)
+      applyThemeToDocument(randomTheme)
     }
   }, [])
 
@@ -60,7 +65,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   // 防止服务端渲染闪烁
   if (!mounted) {
     return (
-      <ThemeContext.Provider value={{ theme: 'violet', setTheme: () => {}, setThemeByMBTI: () => {} }}>
+      <ThemeContext.Provider value={{ theme: 'violet', setTheme: () => { }, setThemeByMBTI: () => { } }}>
         {children}
       </ThemeContext.Provider>
     )
