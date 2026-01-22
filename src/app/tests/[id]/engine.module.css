@@ -145,10 +145,13 @@
 }
 
 @keyframes orbBreathe {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateX(-50%) scale(1);
         opacity: 0.6;
     }
+
     50% {
         transform: translateX(-50%) scale(1.1);
         opacity: 0.8;
@@ -156,12 +159,16 @@
 }
 
 @keyframes orbFloat {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translate(0, 0);
     }
+
     33% {
         transform: translate(30px, -20px);
     }
+
     66% {
         transform: translate(-20px, 20px);
     }
@@ -275,14 +282,6 @@
     min-height: 60px;
 }
 
-.optionBtn:hover {
-    background: var(--selection);
-    border-color: var(--hover-color, var(--primary));
-    box-shadow: 
-        0 0 0 1px var(--hover-color, var(--primary)),
-        0 4px 20px var(--btn-shadow);
-}
-
 .optionBtn:active {
     transform: scale(0.98);
 }
@@ -304,10 +303,20 @@
     transition: all 0.3s;
 }
 
-.optionBtn:hover .keyHint {
-    background: var(--primary);
-    border-color: var(--primary);
-    color: var(--primary-foreground);
+@media (hover: hover) {
+    .optionBtn:hover {
+        background: var(--selection);
+        border-color: var(--hover-color, var(--primary));
+        box-shadow:
+            0 0 0 1px var(--hover-color, var(--primary)),
+            0 4px 20px var(--btn-shadow);
+    }
+
+    .optionBtn:hover .keyHint {
+        background: var(--primary);
+        border-color: var(--primary);
+        color: var(--primary-foreground);
+    }
 }
 
 .optionText {
@@ -340,21 +349,18 @@
     transition: all 0.3s;
 }
 
-.prevBtn:hover {
-    border-color: var(--primary);
-    color: var(--primary);
-    background: var(--selection);
-}
+@media (hover: hover) {
+    .prevBtn:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+        background: var(--selection);
+    }
 
-.prevBtn:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-}
-
-.prevBtn:disabled:hover {
-    border-color: var(--border-color);
-    color: var(--text-muted);
-    background: transparent;
+    .prevBtn:disabled:hover {
+        border-color: var(--border-color);
+        color: var(--text-muted);
+        background: transparent;
+    }
 }
 
 .keyboardHint {
@@ -416,6 +422,7 @@
         transform: scale(0);
         opacity: 0;
     }
+
     to {
         transform: scale(1);
         opacity: 1;
@@ -457,9 +464,11 @@
     box-shadow: 0 4px 20px var(--btn-shadow);
 }
 
-.submitBtn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px var(--btn-shadow-hover);
+@media (hover: hover) {
+    .submitBtn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px var(--btn-shadow-hover);
+    }
 }
 
 .submitBtn:disabled {
@@ -480,10 +489,12 @@
     transition: all 0.3s;
 }
 
-.reviewBtn:hover {
-    border-color: var(--primary);
-    color: var(--primary);
-    background: var(--selection);
+@media (hover: hover) {
+    .reviewBtn:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+        background: var(--selection);
+    }
 }
 
 /* 加载状态 */
@@ -507,7 +518,9 @@
 }
 
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* 错误状态 */
@@ -548,9 +561,11 @@
     transition: all 0.3s;
 }
 
-.backBtn:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
+@media (hover: hover) {
+    .backBtn:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+    }
 }
 
 /* ===== 响应式设计 ===== */
@@ -559,7 +574,7 @@
         width: 500px;
         height: 500px;
     }
-    
+
     .atmosphereOrbSecondary {
         width: 300px;
         height: 300px;
@@ -571,77 +586,77 @@
         padding: 2rem 1.5rem;
         border-radius: 24px;
     }
-    
+
     .introIcon {
         width: 80px;
         height: 80px;
     }
-    
+
     .introCard h2 {
         font-size: 1.5rem;
     }
-    
+
     .introMeta {
         flex-wrap: wrap;
         gap: 1rem;
     }
-    
+
     .engineWrapper {
         padding: 16px 16px 30px;
     }
-    
+
     .glassPanel {
         border-radius: 24px;
     }
-    
+
     .questionCard {
         padding: 2rem 1.5rem;
     }
-    
+
     .questionCard h3 {
         font-size: 1.35rem;
         margin-bottom: 2rem;
     }
-    
+
     .optionBtn {
         padding: 1rem 1.25rem;
         min-height: 52px;
         font-size: 0.95rem;
     }
-    
+
     .keyHint {
         width: 24px;
         height: 24px;
         font-size: 0.75rem;
     }
-    
+
     .actionBar {
         padding: 1rem 1.5rem;
     }
-    
+
     .keyboardHint {
         display: none;
     }
-    
+
     .atmosphereOrb {
         width: 400px;
         height: 400px;
     }
-    
+
     .atmosphereOrbSecondary {
         display: none;
     }
-    
+
     .complete {
         padding: 3rem 1.5rem;
         border-radius: 24px;
     }
-    
+
     .completeIcon {
         width: 100px;
         height: 100px;
     }
-    
+
     .complete h3 {
         font-size: 1.5rem;
     }
@@ -651,40 +666,40 @@
     .progressInfo {
         font-size: 0.85rem;
     }
-    
+
     .questionCard {
         padding: 1.5rem;
     }
-    
+
     .questionCard h3 {
         font-size: 1.2rem;
         margin-bottom: 1.5rem;
     }
-    
+
     .step {
         font-size: 0.7rem;
     }
-    
+
     .optionBtn {
         padding: 0.875rem 1rem;
         min-height: 48px;
         gap: 0.75rem;
     }
-    
+
     .optionsGrid {
         gap: 0.625rem;
     }
-    
+
     .actionBar {
         flex-direction: column;
         gap: 1rem;
     }
-    
+
     .prevBtn {
         width: 100%;
         justify-content: center;
     }
-    
+
     .atmosphereOrb {
         width: 300px;
         height: 300px;
@@ -694,19 +709,20 @@
 
 /* 减少动画偏好 */
 @media (prefers-reduced-motion: reduce) {
+
     .atmosphereOrb,
     .atmosphereOrbSecondary {
         animation: none;
     }
-    
+
     .progressBar {
         transition: width 0.2s ease;
     }
-    
+
     .optionBtn {
         transition: background 0.2s ease, border-color 0.2s ease;
     }
-    
+
     .completeIcon {
         animation: none;
     }
