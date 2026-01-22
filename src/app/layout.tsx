@@ -6,10 +6,10 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://auratest.cn";
 
 export const metadata: Metadata = {
   title: {
-    default: "AuraTest - 专业心理测试平台 | MBTI、大五人格、九型人格测评",
+    default: "AuraTest - 免费专业心理测试平台 | MBTI、大五人格、九型人格测评",
     template: "%s | AuraTest"
   },
-  description: "AuraTest 提供专业的 MBTI 16型人格测试、大五人格测评、九型人格、DISC 行为风格、霍兰德职业兴趣等心理测试，AI 智能深度分析，帮助你发现真实的自我。",
+  description: "AuraTest 提供免费专业的 MBTI 16型人格测试、大五人格测评、九型人格、DISC 行为风格、霍兰德职业兴趣等心理测试，AI 智能深度分析，帮助你发现真实的自我。",
   keywords: [
     "MBTI测试", "MBTI人格测试", "性格测试", "心理测评", "人格测试",
     "大五人格", "九型人格", "DISC测试", "霍兰德测试", "职业测试",
@@ -34,21 +34,21 @@ export const metadata: Metadata = {
     locale: "zh_CN",
     url: siteUrl,
     siteName: "AuraTest",
-    title: "AuraTest - 专业心理测试平台",
-    description: "MBTI、大五人格、九型人格等专业心理测评，AI智能分析，帮助你深入了解自己",
+    title: "AuraTest - 免费专业心理测试平台",
+    description: "MBTI、大五人格、九型人格等免费专业心理测评，AI智能分析，帮助你深入了解自己",
     images: [
       {
         url: `${siteUrl}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "AuraTest - 专业心理测试平台",
+        alt: "AuraTest - 免费专业心理测试平台",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AuraTest - 专业心理测试平台",
-    description: "MBTI、大五人格、九型人格等专业心理测评，AI智能分析",
+    title: "AuraTest - 免费专业心理测试平台",
+    description: "MBTI、大五人格、九型人格等免费专业心理测评，AI智能分析",
     images: [`${siteUrl}/og-image.png`],
   },
   alternates: {
