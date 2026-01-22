@@ -266,7 +266,8 @@ export function getDimensionComparisons(dimensions: any[]): DimensionComparison[
     'EI': { left: '外向', leftL: 'E', right: '内向', rightL: 'I' },
     'SN': { left: '实感', leftL: 'S', right: '直觉', rightL: 'N' },
     'TF': { left: '理性', leftL: 'T', right: '情感', rightL: 'F' },
-    'JP': { left: '计划', leftL: 'J', right: '随性', rightL: 'P' }
+    'JP': { left: '计划', leftL: 'J', right: '随性', rightL: 'P' },
+    'AT': { left: '自信', leftL: 'A', right: '敏感', rightL: 'T' }
   }
 
   dimensions.forEach(dim => {

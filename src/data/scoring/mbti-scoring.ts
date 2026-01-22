@@ -29,7 +29,8 @@ const dimensionLabels: Record<string, [string, string]> = {
   'EI': ['外向 Extraversion', '内向 Introversion'],
   'SN': ['感觉 Sensing', '直觉 iNtuition'],
   'TF': ['思考 Thinking', '情感 Feeling'],
-  'JP': ['判断 Judging', '知觉 Perceiving']
+  'JP': ['判断 Judging', '知觉 Perceiving'],
+  'AT': ['自信 Assertive', '敏感 Turbulent']
 }
 
 // MBTI 类型描述
@@ -54,8 +55,8 @@ export const mbtiTypeDescriptions: Record<string, string> = {
 
 export function calculateMBTI(answers: Answer[]): TestResult {
   // 初始化维度得分
-  const dimensions: Record<string, number> = { EI: 0, SN: 0, TF: 0, JP: 0 }
-  const counts: Record<string, number> = { EI: 0, SN: 0, TF: 0, JP: 0 }
+  const dimensions: Record<string, number> = { EI: 0, SN: 0, TF: 0, JP: 0, AT: 0 }
+  const counts: Record<string, number> = { EI: 0, SN: 0, TF: 0, JP: 0, AT: 0 }
 
   // 累加得分
   answers.forEach(ans => {
@@ -70,6 +71,7 @@ export function calculateMBTI(answers: Answer[]): TestResult {
   let typeString = ''
   let totalConfidence = 0
 
+  // 处理前4个维度 (E/I, S/N, T/F, J/P)
   for (const dim of ['EI', 'SN', 'TF', 'JP']) {
     const rawScore = dimensions[dim]
     const maxPossible = counts[dim] * 2 // 最大可能分数
@@ -98,7 +100,7 @@ export function calculateMBTI(answers: Answer[]): TestResult {
     typeString += letter
 
     // 计算维度置信度（偏离中心的程度）
-    const deviation = Math.abs(rawScore) / maxPossible
+    const deviation = maxPossible > 0 ? Math.abs(rawScore) / maxPossible : 0
     totalConfidence += deviation
 
     // 如果是负向维度（I, N, F, P），百分比应该是 100 - probability
@@ -113,8 +115,31 @@ export function calculateMBTI(answers: Answer[]): TestResult {
     })
   }
 
+  // 处理AT维度 (Assertive/Turbulent)
+  const atRawScore = dimensions.AT
+  const atMaxPossible = counts.AT * 2
+  const atProbability = sigmoid(atRawScore, 0.15) * 100
+
+  // 正分 = Assertive (-A), 负分 = Turbulent (-T)
+  const atLetter = atRawScore >= 0 ? 'A' : 'T'
+  const atLabel = atRawScore >= 0 ? dimensionLabels.AT[0] : dimensionLabels.AT[1]
+  const atDeviation = atMaxPossible > 0 ? Math.abs(atRawScore) / atMaxPossible : 0
+  const atDisplayPercentage = atRawScore < 0 ? 100 - Math.round(atProbability) : Math.round(atProbability)
+
+  // 添加 -A 或 -T 后缀
+  typeString += '-' + atLetter
+
+  dimensionScores.push({
+    dimension: 'AT',
+    rawScore: atRawScore,
+    percentage: atDisplayPercentage,
+    label: atLabel
+  })
+
+  totalConfidence += atDeviation
+
   // 整体置信度（0-100）
-  const confidence = Math.round((totalConfidence / 4) * 100)
+  const confidence = Math.round((totalConfidence / 5) * 100)
 
   return {
     type: 'MBTI',
@@ -124,7 +149,10 @@ export function calculateMBTI(answers: Answer[]): TestResult {
   }
 }
 
-// 获取 MBTI 类型描述
+// 获取 MBTI 类型描述（不包含 -A/-T 后缀）
 export function getMBTIDescription(type: string): string {
-  return mbtiTypeDescriptions[type] || '未知类型'
+  // 移除 -A 或 -T 后缀
+  const baseType = type.replace(/-[AT]$/, '')
+  return mbtiTypeDescriptions[baseType] || '未知类型'
 }
+
