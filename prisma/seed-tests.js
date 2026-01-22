@@ -7,7 +7,7 @@ const prisma = new PrismaClient()
 // 测试题库配置
 const testConfigs = [
   {
-    filename: 'mbti-48.json',
+    filename: 'mbti-60.json',
     type: 'MBTI',
     category: 'personality',
     isSystem: true
@@ -49,7 +49,7 @@ async function seedTests() {
 
   for (const config of testConfigs) {
     const filePath = path.join(__dirname, '../src/data/questions', config.filename)
-    
+
     // 检查文件是否存在
     if (!fs.existsSync(filePath)) {
       console.log(`⚠️  文件不存在: ${config.filename}，跳过`)
@@ -109,7 +109,7 @@ async function seedTests() {
   }
 
   console.log('\n✨ 系统测试数据初始化完成！')
-  
+
   // 显示当前测试统计
   const testCount = await prisma.test.count()
   const publishedCount = await prisma.test.count({ where: { isPublished: true } })
