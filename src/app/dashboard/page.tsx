@@ -79,15 +79,28 @@ export default async function DashboardPage() {
                 {/* 顶部：问候区 + 属性栏 */}
                 <header className={styles.header}>
                     <div className={styles.greetingArea}>
-                        <h1 className={styles.greeting}>
-                            你好，{user?.name} <span className={styles.wave}>👋</span>
-                        </h1>
-                        <p className={styles.subtitle}>
-                            这是你探索自我的第 <strong>{daysSinceJoined}</strong> 天
-                            {stats.testTypes > 0 && (
-                                <>，已解锁 <strong>{stats.testTypes}</strong> 个维度的性格画像</>
+                        <div className={styles.greetingRow}>
+                            <div className={styles.greetingText}>
+                                <h1 className={styles.greeting}>
+                                    你好，{user?.name} <span className={styles.wave}>👋</span>
+                                </h1>
+                                <p className={styles.subtitle}>
+                                    这是你探索自我的第 <strong>{daysSinceJoined}</strong> 天
+                                    {stats.testTypes > 0 && (
+                                        <>，已解锁 <strong>{stats.testTypes}</strong> 个维度的性格画像</>
+                                    )}
+                                </p>
+                            </div>
+                            {stats.mainTrait && (
+                                <div className={styles.greetingCharacter}>
+                                    <img
+                                        src={`/avatars/mbti/${stats.mainTrait.replace(/-[AT]$/, '')}.svg`}
+                                        alt={stats.mainTrait}
+                                        className={styles.greetingAvatar}
+                                    />
+                                </div>
                             )}
-                        </p>
+                        </div>
                     </div>
 
                     <div className={styles.statusBar}>
