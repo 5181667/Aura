@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import Link from "next/link"
 import { Brain, Users, LineChart, Target, Sparkles, TrendingUp, ArrowRight } from "lucide-react"
 import Navbar from "@/components/Navbar"
+import LoadingButton from "@/components/LoadingButton"
 import styles from './page.module.css'
 
 export default function Home() {
@@ -45,11 +46,11 @@ export default function Home() {
           </p>
 
           <div className={styles.actionArea}>
-            <Link href="/tests" className="btn-premium">
+            <LoadingButton href="/tests" className="btn-premium flex items-center justify-center gap-2">
               <Target size={20} />
               免费开始
               <ArrowRight size={18} className={styles.arrowIcon} />
-            </Link>
+            </LoadingButton>
             <Link href="/register" className={styles.secondaryAction}>
               了解更多
             </Link>

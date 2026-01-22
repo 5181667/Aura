@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import styles from './MBTICharacter.module.css'
 
@@ -106,20 +106,29 @@ export default function MBTICharacter({
     const [imageLoaded, setImageLoaded] = useState(false)
     const [imageError, setImageError] = useState(false)
     const [mounted, setMounted] = useState(false)
+    const imgRef = useRef<HTMLImageElement>(null)
 
     // 移除 -A/-T 后缀，只用 4 字母类型查找颜色和图片
     const normalizedType = (type?.toUpperCase() || 'INTJ').replace(/-[AT]$/, '')
     const colors = mbtiColors[normalizedType] || mbtiColors['INTJ']
     const dimensions = sizeConfig[size]
 
-    useEffect(() => {
+    // 使用 derived state pattern 处理类型切换时的状态重置
+    const [prevType, setPrevType] = useState(normalizedType)
+    if (normalizedType !== prevType) {
+        setPrevType(normalizedType)
         setImageLoaded(false)
         setImageError(false)
-    }, [normalizedType])
+    }
 
     useEffect(() => {
         setMounted(true)
-    }, [])
+
+        // 检查图片是否已经加载完成（处理缓存情况）
+        if (imgRef.current && imgRef.current.complete) {
+            setImageLoaded(true)
+        }
+    }, [normalizedType]) // 当类型变化时也会触发检查
 
     // 如果图片加载失败，显示备用的简单头像
     if (imageError) {
@@ -187,8 +196,10 @@ export default function MBTICharacter({
                 animate={animated ? { y: [-4, 4, -4] } : undefined}
                 transition={animated ? { duration: 3, repeat: Infinity, ease: "easeInOut" } : undefined}
             >
-                {/* 角色图片 */}
+                {/* 角色图片 - 添加 key 强制重新挂载 */}
                 <motion.img
+                    ref={imgRef}
+                    key={normalizedType}
                     src={`/avatars/mbti/${normalizedType}.svg`}
                     alt={`${normalizedType} Character`}
                     className={styles.character}

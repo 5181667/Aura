@@ -8,6 +8,7 @@ import { useToast } from "@/components/Toast"
 import { getSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import GenderSelector from "@/components/GenderSelector"
+import LoadingButton from "@/components/LoadingButton"
 import styles from "./engine.module.css"
 
 interface TestEngineProps {
@@ -62,7 +63,7 @@ export default function TestEngine({ test }: TestEngineProps) {
     const questions = test.questions as any[]
     const progress = ((currentIndex + 1) / questions.length) * 100
     const estimatedTime = test.scoring?.estimatedTime || `${Math.ceil(questions.length * 0.3)}分钟`
-    
+
     // 获取当前问题的维度颜色
     const currentQuestion = questions[currentIndex]
     const currentDimension = currentQuestion?.options?.[0]?.score?.dimension || 'default'
@@ -78,7 +79,7 @@ export default function TestEngine({ test }: TestEngineProps) {
             dimension: option.score.dimension,
             value: option.score.value
         }
-        
+
         const newAnswers = [...answers, newAnswer]
         setAnswers(newAnswers)
 
@@ -103,7 +104,7 @@ export default function TestEngine({ test }: TestEngineProps) {
         const handleKeyDown = (e: KeyboardEvent) => {
             const key = e.key
             const optionCount = currentQuestion?.options?.length || 0
-            
+
             // 数字键 1-9 选择选项
             if (key >= '1' && key <= '9') {
                 const index = parseInt(key) - 1
@@ -111,7 +112,7 @@ export default function TestEngine({ test }: TestEngineProps) {
                     handleAnswer(currentQuestion.options[index])
                 }
             }
-            
+
             // 退格键返回上一题
             if (key === 'Backspace' && currentIndex > 0) {
                 e.preventDefault()
@@ -125,11 +126,11 @@ export default function TestEngine({ test }: TestEngineProps) {
 
     const submitResult = async (finalAnswers: any[]) => {
         setSubmitting(true)
-        
+
         try {
             // 使用评分算法计算结果
             const result = calculateScore(test.type, finalAnswers)
-            
+
             // 提交到后端（支持游客提交）
             const response = await fetch('/api/tests/submit', {
                 method: 'POST',
@@ -157,7 +158,7 @@ export default function TestEngine({ test }: TestEngineProps) {
                         localStorage.setItem('guest-results', JSON.stringify(guestResults))
                     }
                 }
-                
+
                 // 已登录用户自动触发 AI 分析
                 const session = await getSession()
                 if (session) {
@@ -166,7 +167,7 @@ export default function TestEngine({ test }: TestEngineProps) {
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ resultId: data.resultId })
                     }).catch(console.error)
-                    
+
                     // 检查是否需要显示性别选择（首次测试）
                     try {
                         const genderRes = await fetch('/api/user/gender')
@@ -182,7 +183,7 @@ export default function TestEngine({ test }: TestEngineProps) {
                         console.error('Check gender error:', e)
                     }
                 }
-                
+
                 // 跳转到结果页
                 window.location.href = `/results/${data.resultId}`
             } else {
@@ -209,7 +210,7 @@ export default function TestEngine({ test }: TestEngineProps) {
         } catch (e) {
             console.error('Save gender error:', e)
         }
-        
+
         // 跳转到结果页
         if (pendingResultId) {
             window.location.href = `/results/${pendingResultId}`
@@ -251,7 +252,7 @@ export default function TestEngine({ test }: TestEngineProps) {
                 </div>
                 <h2>{test.title}</h2>
                 <p className={styles.introDesc}>{test.description}</p>
-                
+
                 <div className={styles.introMeta}>
                     <div className={styles.metaItem}>
                         <Target size={20} />
@@ -273,9 +274,14 @@ export default function TestEngine({ test }: TestEngineProps) {
                     </ul>
                 </div>
 
-                <button className="btn-premium" onClick={handleStart}>
+                <LoadingButton
+                    className="btn-premium w-full md:w-auto"
+                    onClick={() => {
+                        setStarted(true)
+                    }}
+                >
                     开始测试
-                </button>
+                </LoadingButton>
             </div>
         )
     }
@@ -297,14 +303,14 @@ export default function TestEngine({ test }: TestEngineProps) {
         <div className={styles.engineWrapper}>
             {/* 动态呼吸背景光斑 */}
             <div className={styles.atmosphereContainer}>
-                <motion.div 
+                <motion.div
                     className={styles.atmosphereOrb}
                     animate={{
                         background: `radial-gradient(circle, ${currentColors.primary}40 0%, ${currentColors.secondary}15 40%, transparent 70%)`
                     }}
                     transition={{ duration: 1.5, ease: "easeInOut" }}
                 />
-                <motion.div 
+                <motion.div
                     className={styles.atmosphereOrbSecondary}
                     animate={{
                         background: `radial-gradient(circle, ${currentColors.secondary}25 0%, ${currentColors.primary}10 40%, transparent 70%)`
@@ -324,13 +330,13 @@ export default function TestEngine({ test }: TestEngineProps) {
                     transition={{ duration: 0.5 }}
                 />
             </div>
-            
+
             {/* 进度信息 */}
             <div className={styles.progressInfo}>
                 <span className={styles.progressText}>
                     {currentIndex + 1} / {questions.length}
                 </span>
-                <motion.span 
+                <motion.span
                     className={styles.progressPercent}
                     animate={{ color: currentColors.primary }}
                     transition={{ duration: 0.5 }}
@@ -374,7 +380,7 @@ export default function TestEngine({ test }: TestEngineProps) {
                         {/* 底部操作区 */}
                         <div className={styles.actionBar}>
                             {currentIndex > 0 && (
-                                <button 
+                                <button
                                     className={styles.prevBtn}
                                     onClick={handlePrevious}
                                 >
@@ -386,15 +392,15 @@ export default function TestEngine({ test }: TestEngineProps) {
                     </motion.div>
                 </AnimatePresence>
             </div>
-            
+
             {/* 键盘提示 - 桌面端显示 */}
             <div className={styles.keyboardHint}>
-                <kbd>1</kbd>-<kbd>{Math.min(currentQuestion.options.length, 9)}</kbd> 选择 
+                <kbd>1</kbd>-<kbd>{Math.min(currentQuestion.options.length, 9)}</kbd> 选择
                 {currentIndex > 0 && <><span className={styles.hintDivider}>|</span><kbd>←</kbd> 返回上一题</>}
             </div>
-            
+
             {/* 性别选择弹窗 */}
-            <GenderSelector 
+            <GenderSelector
                 isOpen={showGenderSelector}
                 onSelect={handleGenderSelect}
                 onClose={handleGenderClose}

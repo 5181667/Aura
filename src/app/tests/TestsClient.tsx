@@ -2,8 +2,74 @@
 
 import { useState } from 'react'
 import Link from "next/link"
-import { Brain, Heart, Briefcase, Clock, CheckCircle, ArrowRight, Sparkles } from "lucide-react"
+import { useRouter } from "next/navigation"
+import { Brain, Heart, Briefcase, Clock, CheckCircle, ArrowRight, Sparkles, RotateCcw } from "lucide-react"
+import LoadingButton from "@/components/LoadingButton"
 import styles from "./tests.module.css"
+
+function TestCard({ test, isCompleted, config }: { test: any; isCompleted: boolean; config: any }) {
+    const router = useRouter()
+    const scoring = test.scoring as any
+    const questions = test.questions as any[]
+
+    const handleClick = () => {
+        router.push(`/tests/${test.id}`)
+    }
+
+    return (
+        <div
+            className={`${styles.testCard} glass cursor-pointer`}
+            onClick={handleClick}
+        >
+            {isCompleted && (
+                <div className={styles.completedBadge}>
+                    <CheckCircle size={14} />
+                    已完成
+                </div>
+            )}
+
+            <div className={styles.cardHeader}>
+                <span
+                    className={styles.tag}
+                    style={{
+                        background: `${config.color}20`,
+                        color: config.color,
+                        borderColor: `${config.color}40`
+                    }}
+                >
+                    {config.label}
+                </span>
+                <h3>{test.title}</h3>
+            </div>
+
+            <p className={styles.description}>{test.description}</p>
+
+            <div className={styles.cardMeta}>
+                <span className={styles.metaItem}>
+                    <Clock size={14} />
+                    {scoring?.estimatedTime || '10-15分钟'}
+                </span>
+                <span className={styles.metaItem}>
+                    {questions?.length || 0} 题
+                </span>
+            </div>
+
+            <div style={{ marginTop: 'auto' }}>
+                <LoadingButton
+                    href={`/tests/${test.id}`}
+                    onClick={(e) => {
+                        e.stopPropagation()
+                    }}
+                    className={isCompleted ? styles.restartBtn : styles.startBtn}
+                    loadingText="跳转中..."
+                >
+                    <span>{isCompleted ? '重新测试' : '开始测试'}</span>
+                    {isCompleted ? <RotateCcw size={16} /> : <ArrowRight size={16} />}
+                </LoadingButton>
+            </div>
+        </div>
+    )
+}
 
 // 测试类型标签配置
 const typeConfig: Record<string, { label: string; color: string; category: string }> = {
@@ -74,53 +140,14 @@ export default function TestsClient({ tests, completedTestIds }: TestsClientProp
                 {displayTests.map((test: any) => {
                     const config = typeConfig[test.type] || { label: test.type, color: '#8b5cf6' }
                     const isCompleted = completedTestIds.includes(test.id)
-                    const scoring = test.scoring as any
-                    const questions = test.questions as any[]
-                    
+
                     return (
-                        <Link 
-                            key={test.id} 
-                            href={`/tests/${test.id}`}
-                            className={`${styles.testCard} glass`}
-                        >
-                            {isCompleted && (
-                                <div className={styles.completedBadge}>
-                                    <CheckCircle size={14} />
-                                    已完成
-                                </div>
-                            )}
-                            
-                            <div className={styles.cardHeader}>
-                                <span 
-                                    className={styles.tag}
-                                    style={{ 
-                                        background: `${config.color}20`, 
-                                        color: config.color,
-                                        borderColor: `${config.color}40`
-                                    }}
-                                >
-                                    {config.label}
-                                </span>
-                                <h3>{test.title}</h3>
-                            </div>
-                            
-                            <p className={styles.description}>{test.description}</p>
-                            
-                            <div className={styles.cardMeta}>
-                                <span className={styles.metaItem}>
-                                    <Clock size={14} />
-                                    {scoring?.estimatedTime || '10-15分钟'}
-                                </span>
-                                <span className={styles.metaItem}>
-                                    {questions?.length || 0} 题
-                                </span>
-                            </div>
-                            
-                            <div className={styles.startBtn}>
-                                <span>{isCompleted ? '重新测试' : '开始测试'}</span>
-                                <ArrowRight size={16} />
-                            </div>
-                        </Link>
+                        <TestCard
+                            key={test.id}
+                            test={test}
+                            isCompleted={isCompleted}
+                            config={config}
+                        />
                     )
                 })}
             </div>

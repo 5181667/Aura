@@ -541,6 +541,7 @@ export default function ResultClient({ result, isLoggedIn = false, isGuest = fal
 
                             <motion.h2
                                 className={styles.typeTitle}
+                                style={{ color: profile.color }}
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.3 }}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Providers from "@/components/Providers";
+import FeedbackWidget from "@/components/FeedbackWidget";
 import "./globals.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://auratest.cn";
@@ -77,6 +78,7 @@ export default function RootLayout({
       <body>
         <Providers>
           {children}
+          <FeedbackWidget />
         </Providers>
       </body>
     </html>

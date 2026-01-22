@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Eye, RotateCcw } from 'lucide-react'
+import { getMBTIProfile } from '@/data/mbti-profiles'
 import styles from './TestTimeline.module.css'
 
 interface TestResult {
@@ -39,20 +40,20 @@ const typeIcons: Record<string, string> = {
 export default function TestTimeline({ results }: { results: TestResult[] }) {
     const groupByDate = (results: TestResult[]) => {
         const groups: { [key: string]: TestResult[] } = {}
-        
+
         results.forEach(result => {
             const date = new Date(result.createdAt).toLocaleDateString('zh-CN', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric'
             })
-            
+
             if (!groups[date]) {
                 groups[date] = []
             }
             groups[date].push(result)
         })
-        
+
         return groups
     }
 
@@ -63,7 +64,7 @@ export default function TestTimeline({ results }: { results: TestResult[] }) {
         <div className={styles.timeline}>
             {/* 渐变时间轴线 */}
             <div className={styles.timelineLine} />
-            
+
             {Object.entries(groupedResults).map(([date, dateResults], groupIndex) => (
                 <motion.div
                     key={date}
@@ -77,13 +78,21 @@ export default function TestTimeline({ results }: { results: TestResult[] }) {
                         <div className={styles.nodeDot} />
                         <span className={styles.dateLabel}>{date}</span>
                     </div>
-                    
+
                     {/* 该日期的测试卡片 */}
                     <div className={styles.results}>
                         {dateResults.map((result, idx) => {
-                            const color = typeColors[result.test.type] || '#8b5cf6'
+                            let color = typeColors[result.test.type] || '#8b5cf6'
                             const icon = typeIcons[result.test.type] || '📋'
-                            
+
+                            // 如果是 MBTI，尝试获取具体类型的颜色
+                            if (result.test.type === 'MBTI') {
+                                const profile = getMBTIProfile(result.score)
+                                if (profile) {
+                                    color = profile.color
+                                }
+                            }
+
                             return (
                                 <motion.div
                                     key={result.id}
@@ -97,7 +106,7 @@ export default function TestTimeline({ results }: { results: TestResult[] }) {
                                     <div className={styles.scoreWatermark}>
                                         {result.score}
                                     </div>
-                                    
+
                                     {/* 卡片内容 */}
                                     <div className={styles.cardContent}>
                                         <div className={styles.cardTop}>
@@ -112,9 +121,9 @@ export default function TestTimeline({ results }: { results: TestResult[] }) {
                                                 })}
                                             </span>
                                         </div>
-                                        
+
                                         <h4 className={styles.testTitle}>{result.test.title}</h4>
-                                        
+
                                         <div className={styles.resultDisplay}>
                                             <span className={styles.resultLabel}>测试结果</span>
                                             <span className={styles.resultValue} style={{ color }}>
@@ -122,18 +131,18 @@ export default function TestTimeline({ results }: { results: TestResult[] }) {
                                             </span>
                                         </div>
                                     </div>
-                                    
+
                                     {/* Hover 操作按钮 */}
                                     <div className={styles.cardActions}>
-                                        <Link 
-                                            href={`/results/${result.id}`} 
+                                        <Link
+                                            href={`/results/${result.id}`}
                                             className={styles.actionBtn}
                                         >
                                             <Eye size={16} />
                                             查看详情
                                         </Link>
-                                        <Link 
-                                            href={`/tests/${result.test.id}`} 
+                                        <Link
+                                            href={`/tests/${result.test.id}`}
                                             className={styles.actionBtn}
                                         >
                                             <RotateCcw size={16} />

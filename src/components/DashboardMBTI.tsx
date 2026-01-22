@@ -42,8 +42,8 @@ export default function DashboardMBTI({ mbtiType, userName }: DashboardMBTIProps
                 >
                     <span className={styles.emoji}>{profile.emoji}</span>
                     <div className={styles.typeInfo}>
-                        <h3 className={styles.typeName}>{mbtiType}</h3>
-                        <p className={styles.typeTitle}>{profile.title}</p>
+                        <h3 className={styles.typeName} style={{ color: profile.color }}>{mbtiType}</h3>
+                        <p className={styles.typeTitle} style={{ color: profile.color }}>{profile.title}</p>
                     </div>
                 </motion.div>
 
