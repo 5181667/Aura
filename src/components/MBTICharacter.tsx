@@ -113,6 +113,11 @@ export default function MBTICharacter({
     const dimensions = sizeConfig[size]
 
     useEffect(() => {
+        setImageLoaded(false)
+        setImageError(false)
+    }, [normalizedType])
+
+    useEffect(() => {
         setMounted(true)
     }, [])
 
