@@ -1,11 +1,33 @@
 /* ===== 代表人物画廊 ===== */
 
+.galleryWrapper {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.5rem 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) transparent;
+}
+
+.galleryWrapper::-webkit-scrollbar {
+    height: 6px;
+}
+
+.galleryWrapper::-webkit-scrollbar-track {
+    background: var(--bg-glass, rgba(255, 255, 255, 0.05));
+    border-radius: 100px;
+}
+
+.galleryWrapper::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 100px;
+}
+
 .gallery {
     display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    padding: 0.5rem 0;
+    gap: 1.5rem;
+    padding: 0.5rem 0.25rem 1rem;
+    min-width: max-content;
 }
 
 /* 人物卡片 */
@@ -13,9 +35,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.6rem;
     cursor: pointer;
     transition: transform 0.3s ease;
+    flex-shrink: 0;
 }
 
 .personCard:hover {
@@ -25,8 +48,8 @@
 /* 头像容器 */
 .avatarWrapper {
     position: relative;
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
 }
 
 /* 发光效果 */
@@ -62,7 +85,7 @@
 }
 
 .personCard:hover .avatarBorder {
-    transform: scale(1.05);
+    transform: scale(1.08);
     box-shadow:
         0 8px 30px rgba(0, 0, 0, 0.2),
         inset 0 0 0 1px rgba(255, 255, 255, 0.2);
@@ -86,18 +109,37 @@
     justify-content: center;
     background: var(--bg-glass, rgba(255, 255, 255, 0.05));
     border-radius: 50%;
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--theme-color, var(--primary));
 }
 
+/* 点击提示 */
+.clickHint {
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100%);
+    font-size: 0.7rem;
+    color: var(--text-muted, #a1a1aa);
+    white-space: nowrap;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.personCard:hover .clickHint {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
 /* 人物名称 */
 .personName {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 600;
     color: var(--text-muted, #a1a1aa);
     text-align: center;
-    max-width: 100px;
+    max-width: 80px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -115,13 +157,13 @@
     }
 
     .avatarWrapper {
-        width: 72px;
-        height: 72px;
+        width: 68px;
+        height: 68px;
     }
 
     .personName {
-        font-size: 0.8rem;
-        max-width: 80px;
+        font-size: 0.75rem;
+        max-width: 70px;
     }
 }
 
@@ -131,16 +173,20 @@
     }
 
     .avatarWrapper {
-        width: 64px;
-        height: 64px;
+        width: 60px;
+        height: 60px;
     }
 
     .avatarFallback {
-        font-size: 1.25rem;
+        font-size: 1.2rem;
     }
 
     .personName {
-        font-size: 0.75rem;
-        max-width: 70px;
+        font-size: 0.7rem;
+        max-width: 65px;
+    }
+
+    .clickHint {
+        display: none;
     }
 }

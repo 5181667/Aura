@@ -2,9 +2,9 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { 
-    LayoutDashboard, Users, FileText, Settings, 
-    ChevronLeft, Home, Shield, PlusCircle
+import {
+    LayoutDashboard, Users, FileText, Settings,
+    ChevronLeft, Home, Shield, PlusCircle, Star
 } from "lucide-react"
 import styles from "./AdminNav.module.css"
 
@@ -12,31 +12,37 @@ export default function AdminNav() {
     const pathname = usePathname()
 
     const navItems = [
-        { 
-            href: "/admin", 
-            label: "仪表盘", 
+        {
+            href: "/admin",
+            label: "仪表盘",
             icon: LayoutDashboard,
             description: "数据概览"
         },
-        { 
-            href: "/admin/users", 
-            label: "用户管理", 
+        {
+            href: "/admin/users",
+            label: "用户管理",
             icon: Users,
             description: "管理用户账号"
         },
-        { 
-            href: "/admin/tests", 
-            label: "测试管理", 
+        {
+            href: "/admin/tests",
+            label: "测试管理",
             icon: FileText,
             description: "管理测试内容"
+        },
+        {
+            href: "/admin/famous-people",
+            label: "名人管理",
+            icon: Star,
+            description: "查看代表人物"
         },
     ]
 
     const quickActions = [
-        { 
-            href: "/admin/tests/create", 
-            label: "创建测试", 
-            icon: PlusCircle 
+        {
+            href: "/admin/tests/create",
+            label: "创建测试",
+            icon: PlusCircle
         },
     ]
 
