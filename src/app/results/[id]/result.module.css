@@ -527,13 +527,16 @@
 /* 代表人物画廊卡片 */
 .famousPeopleCard {
     grid-column: 1 / -1;
-    padding: 2rem;
+    padding: 1.5rem;
     background: var(--glass);
     backdrop-filter: blur(10px);
     border-radius: 24px;
     border: 1px solid var(--glass-border);
     box-shadow: var(--shadow-sm);
     transition: background 0.5s ease, border-color 0.5s ease;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* ===== 操作按钮 ===== */

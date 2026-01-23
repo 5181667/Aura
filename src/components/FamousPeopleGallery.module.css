@@ -7,6 +7,8 @@
     padding: 0.5rem 0;
     scrollbar-width: thin;
     scrollbar-color: var(--primary) transparent;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
 }
 
 .galleryWrapper::-webkit-scrollbar {
