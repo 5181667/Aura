@@ -3,7 +3,7 @@ import Providers from "@/components/Providers";
 import FeedbackWidget from "@/components/FeedbackWidget";
 import "./globals.css";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://auratest.cn";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://hhcc.online";
 
 export const metadata: Metadata = {
   title: {

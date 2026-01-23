@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { prisma } from '@/lib/prisma'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://auratest.cn'
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://hhcc.online'
 
     // 静态页面
     const staticPages: MetadataRoute.Sitemap = [
@@ -36,12 +36,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     try {
         const tests = await prisma.test.findMany({
             where: { isPublished: true },
-            select: { id: true, updatedAt: true }
+            select: { id: true, createdAt: true }
         })
 
         const testPages: MetadataRoute.Sitemap = tests.map((test) => ({
             url: `${siteUrl}/tests/${test.id}`,
-            lastModified: test.updatedAt,
+            lastModified: test.createdAt,
             changeFrequency: 'weekly' as const,
             priority: 0.8,
         }))
