@@ -9,6 +9,7 @@ import Navbar from '@/components/Navbar'
 import MBTICharacter from '@/components/MBTICharacter'
 import PaymentDialog from '@/components/PaymentDialog'
 import PremiumReport from '@/components/PremiumReport'
+import FamousPeopleGallery from '@/components/FamousPeopleGallery'
 import { getMBTIProfile, getDimensionComparisons, type DimensionComparison } from '@/data/mbti-profiles'
 import { useTheme } from '@/providers/ThemeProvider'
 import styles from './result.module.css'
@@ -679,16 +680,15 @@ export default function ResultClient({ result, isLoggedIn = false, isGuest = fal
                             </div>
                         </div>
 
-                        <div className={styles.extraCard}>
+                        <div className={styles.famousPeopleCard}>
                             <div className={styles.extraHeader}>
                                 <Users size={20} />
                                 <h4>代表人物</h4>
                             </div>
-                            <div className={styles.extraTags}>
-                                {profile.famousPeople.map(person => (
-                                    <span key={person} className={styles.extraTag}>{person}</span>
-                                ))}
-                            </div>
+                            <FamousPeopleGallery
+                                mbtiType={profile.type}
+                                themeColor={profile.color}
+                            />
                         </div>
                     </div>
                 </motion.section>
