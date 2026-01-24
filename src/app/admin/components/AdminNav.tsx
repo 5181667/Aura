@@ -4,7 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import {
     LayoutDashboard, Users, FileText, Settings,
-    ChevronLeft, Home, Shield, PlusCircle, Star
+    ChevronLeft, Home, Shield, PlusCircle, Star, History
 } from "lucide-react"
 import styles from "./AdminNav.module.css"
 
@@ -29,6 +29,12 @@ export default function AdminNav() {
             label: "测试管理",
             icon: FileText,
             description: "管理测试内容"
+        },
+        {
+            href: "/admin/results",
+            label: "历史测试",
+            icon: History,
+            description: "查看测试详情"
         },
         {
             href: "/admin/famous-people",
