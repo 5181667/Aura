@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Share2, ChevronRight, Sparkles, Brain, Target, Heart, Briefcase, Users, Eye, Zap, Calendar, Activity, Crown, LogIn, X, RefreshCw, Loader2 } from 'lucide-react'
+import { Share2, ChevronRight, Sparkles, Brain, Target, Heart, Briefcase, Users, Eye, Zap, Calendar, Activity, Crown, LogIn, X, RefreshCw, Loader2, ArrowLeft, User, Mail, Clock, Shield } from 'lucide-react'
 import ShareDialog from '@/components/ShareDialog'
 import Navbar from '@/components/Navbar'
 import MBTICharacter from '@/components/MBTICharacter'
@@ -244,9 +244,10 @@ interface ResultClientProps {
     isLoggedIn?: boolean
     isGuest?: boolean
     isPro?: boolean
+    isAdmin?: boolean
 }
 
-export default function ResultClient({ result, isLoggedIn = false, isGuest = false, isPro = false }: ResultClientProps) {
+export default function ResultClient({ result, isLoggedIn = false, isGuest = false, isPro = false, isAdmin = false }: ResultClientProps) {
     const [showShare, setShowShare] = useState(false)
     const [showGuestBanner, setShowGuestBanner] = useState(isGuest)
     const [showPayment, setShowPayment] = useState(false)
@@ -316,9 +317,9 @@ export default function ResultClient({ result, isLoggedIn = false, isGuest = fal
     const dimensionArray = Array.isArray(result.dimensions) ? result.dimensions : null
     const dimensionComparisons = dimensionArray ? getDimensionComparisons(dimensionArray) : []
 
-    // 游客提示横幅组件
+    // 游客提示横幅组件（管理员模式下不显示）
     const GuestBanner = () => (
-        showGuestBanner && !isLoggedIn ? (
+        showGuestBanner && !isLoggedIn && !isAdmin ? (
             <motion.div
                 className={styles.guestBanner}
                 initial={{ opacity: 0, y: -20 }}
@@ -443,10 +444,45 @@ export default function ResultClient({ result, isLoggedIn = false, isGuest = fal
         )
     }
 
+    // 管理员信息面板组件
+    const AdminInfoPanel = () => (
+        isAdmin ? (
+            <motion.div
+                className={styles.adminPanel}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+            >
+                <Link href="/admin/results" className={styles.adminBackBtn}>
+                    <ArrowLeft size={18} />
+                    返回管理后台
+                </Link>
+                <div className={styles.adminInfo}>
+                    <div className={styles.adminInfoItem}>
+                        <User size={16} />
+                        <span>{result.user?.name || "游客"}</span>
+                    </div>
+                    <div className={styles.adminInfoItem}>
+                        <Mail size={16} />
+                        <span>{result.user?.email || "未绑定邮箱"}</span>
+                    </div>
+                    <div className={styles.adminInfoItem}>
+                        <Clock size={16} />
+                        <span>{new Date(result.createdAt).toLocaleString("zh-CN")}</span>
+                    </div>
+                    <div className={styles.adminInfoItem}>
+                        <Shield size={16} />
+                        <span className={styles.adminBadge}>管理员查看模式</span>
+                    </div>
+                </div>
+            </motion.div>
+        ) : null
+    )
+
     // 非 MBTI 的通用结果显示
     if (!isMBTI) {
         return (
             <div className={styles.container}>
+                <AdminInfoPanel />
                 <GuestBanner />
                 <Navbar />
 
@@ -454,12 +490,14 @@ export default function ResultClient({ result, isLoggedIn = false, isGuest = fal
                     <div className={styles.genericResult}>
                         <h1>{result.test.title}</h1>
                         <div className={styles.genericScore}>{result.score}</div>
-                        <div className={styles.genericActions}>
-                            <button className="btn-premium" onClick={() => setShowShare(true)}>
-                                <Share2 size={18} />
-                                分享结果
-                            </button>
-                        </div>
+                        {!isAdmin && (
+                            <div className={styles.genericActions}>
+                                <button className="btn-premium" onClick={() => setShowShare(true)}>
+                                    <Share2 size={18} />
+                                    分享结果
+                                </button>
+                            </div>
+                        )}
                         {dimensionArray && (
                             <div className={styles.genericDimensions}>
                                 {dimensionArray.map((dim: any) => (
@@ -486,6 +524,7 @@ export default function ResultClient({ result, isLoggedIn = false, isGuest = fal
     // MBTI 专属的精美结果页面
     return (
         <div className={styles.container}>
+            <AdminInfoPanel />
             <GuestBanner />
 
             {/* 动态背景 */}
@@ -693,25 +732,40 @@ export default function ResultClient({ result, isLoggedIn = false, isGuest = fal
                     </div>
                 </motion.section>
 
-                {/* 高级报告区域 */}
-                <PremiumSection />
+                {/* 高级报告区域（管理员模式下只显示已生成的报告） */}
+                {isAdmin ? (
+                    hasPremiumReport && (
+                        <motion.section
+                            className={styles.premiumSection}
+                            initial={{ opacity: 0, y: 40 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 1.1, duration: 0.6 }}
+                        >
+                            <PremiumReport report={premiumReport} />
+                        </motion.section>
+                    )
+                ) : (
+                    <PremiumSection />
+                )}
 
-                {/* 操作按钮 */}
-                <motion.div
-                    className={styles.actions}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1.2 }}
-                >
-                    <button className="btn-premium" onClick={() => setShowShare(true)}>
-                        <Share2 size={18} />
-                        分享我的性格说明书
-                    </button>
-                    <Link href="/tests" className={styles.secondaryBtn}>
-                        继续探索更多测试
-                        <ChevronRight size={18} />
-                    </Link>
-                </motion.div>
+                {/* 操作按钮（管理员模式下不显示） */}
+                {!isAdmin && (
+                    <motion.div
+                        className={styles.actions}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 1.2 }}
+                    >
+                        <button className="btn-premium" onClick={() => setShowShare(true)}>
+                            <Share2 size={18} />
+                            分享我的性格说明书
+                        </button>
+                        <Link href="/tests" className={styles.secondaryBtn}>
+                            继续探索更多测试
+                            <ChevronRight size={18} />
+                        </Link>
+                    </motion.div>
+                )}
             </main>
 
             {showShare && (

@@ -743,6 +743,18 @@
   border-color: var(--primary);
 }
 
+/* ===== 详情页全屏样式（覆盖管理员布局） ===== */
+.fullscreenDetail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 200;
+  overflow-y: auto;
+  background: var(--bg);
+}
+
 /* ===== 响应式设计 ===== */
 @media (max-width: 1400px) {
   .metricsGrid {
