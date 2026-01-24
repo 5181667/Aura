@@ -28,6 +28,9 @@ export default async function SharePage({ params }: { params: Promise<{ token: s
     }
 
     const result = shareToken.result
+    // 处理游客情况：user 可能为 null
+    const userName = result.user?.name || '匿名用户'
+    
     const fallbackDimensions = {
         openness: 0,
         conscientiousness: 0,
@@ -53,7 +56,7 @@ export default async function SharePage({ params }: { params: Promise<{ token: s
             <main className={styles.main}>
                 <div className={styles.header}>
                     <p style={{ opacity: 0.7, marginBottom: '1rem' }}>
-                        {result.user.name} 分享了 TA 的测试结果
+                        {userName} 分享了 TA 的测试结果
                     </p>
                     <h1>{result.test.title}</h1>
                     <div className={styles.scoreDisplay}>

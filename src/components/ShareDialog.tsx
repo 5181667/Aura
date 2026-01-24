@@ -23,12 +23,18 @@ export default function ShareDialog({ resultId, onClose }: ShareDialogProps) {
                 body: JSON.stringify({ resultId })
             })
             const data = await res.json()
+            
+            if (!res.ok) {
+                throw new Error(data.message || '生成分享链接失败')
+            }
+            
             const link = `${window.location.origin}/share/${data.token}`
             setShareLink(link)
             await navigator.clipboard.writeText(link)
             alert('链接已复制到剪贴板！')
         } catch (error) {
-            alert('生成失败，请重试')
+            const message = error instanceof Error ? error.message : '生成失败，请重试'
+            alert(message)
         } finally {
             setLoading(false)
         }
