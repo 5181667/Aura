@@ -198,44 +198,66 @@ ${testSummaries}
 4. 只输出JSON，不要其他内容`
 }
 
-async function callDeepSeekAPI(prompt: string, maxTokens = 8000): Promise<string> {
+class APITimeoutError extends Error {
+  constructor(timeoutMs: number) {
+    super(`AI 生成超时（${Math.round(timeoutMs / 1000)}秒），已自动切换为智能分析报告`)
+    this.name = 'APITimeoutError'
+  }
+}
+
+async function callDeepSeekAPI(prompt: string, maxTokens = 8000, timeoutMs = 50000): Promise<string> {
   const apiKey = process.env.DEEPSEEK_API_KEY
 
   if (!apiKey) {
     throw new Error('DEEPSEEK_API_KEY 未配置')
   }
 
-  const response = await fetch(DEEPSEEK_API_URL, {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${apiKey}`,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      model: 'deepseek-chat',
-      messages: [
-        {
-          role: 'system',
-          content: '你是一位专业的心理咨询师和职业规划专家，擅长分析各类心理测评结果并提供有价值的建议。请始终以纯JSON格式输出结果，不要使用markdown代码块包裹。'
-        },
-        {
-          role: 'user',
-          content: prompt
-        }
-      ],
-      temperature: 0.7,
-      max_tokens: maxTokens
+  const controller = new AbortController()
+  const timer = setTimeout(() => controller.abort(), timeoutMs)
+
+  try {
+    const response = await fetch(DEEPSEEK_API_URL, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        model: 'deepseek-chat',
+        messages: [
+          {
+            role: 'system',
+            content: '你是一位专业的心理咨询师和职业规划专家，擅长分析各类心理测评结果并提供有价值的建议。请始终以纯JSON格式输出结果，不要使用markdown代码块包裹。'
+          },
+          {
+            role: 'user',
+            content: prompt
+          }
+        ],
+        temperature: 0.7,
+        max_tokens: maxTokens
+      }),
+      signal: controller.signal
     })
-  })
 
-  if (!response.ok) {
-    const error = await response.text()
-    throw new Error(`DeepSeek API 调用失败: ${error}`)
+    if (!response.ok) {
+      const error = await response.text()
+      throw new Error(`DeepSeek API 调用失败: ${error}`)
+    }
+
+    const data = await response.json()
+    return data.choices[0]?.message?.content || ''
+  } catch (err: any) {
+    if (err.name === 'AbortError') {
+      throw new APITimeoutError(timeoutMs)
+    }
+    throw err
+  } finally {
+    clearTimeout(timer)
   }
-
-  const data = await response.json()
-  return data.choices[0]?.message?.content || ''
 }
+
+export { APITimeoutError }
 
 function parseJSONResponse<T>(content: string): T {
   const cleaned = content

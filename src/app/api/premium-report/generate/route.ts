@@ -2,12 +2,32 @@ import { NextResponse } from "next/server"
 import { prisma } from "@/lib/prisma"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/app/api/auth/[...nextauth]/route"
-import { generatePremiumReport, generateMockPremiumReport } from "@/lib/deepseek"
+import { generatePremiumReport, generateMockPremiumReport, APITimeoutError } from "@/lib/deepseek"
+
+// 后台重试 AI 生成（不阻塞用户请求）
+async function backgroundRetryAIGeneration(premiumReportId: string, testData: any, gender?: string) {
+    try {
+        console.log(`[BG] 开始后台重试 AI 报告生成: ${premiumReportId}`)
+        const reportData = await generatePremiumReport(testData, gender)
+
+        await prisma.premiumReport.update({
+            where: { id: premiumReportId },
+            data: {
+                reportData: reportData as any,
+                generatedAt: new Date(),
+                generateError: null
+            }
+        })
+        console.log(`[BG] AI 报告生成成功: ${premiumReportId}`)
+    } catch (err) {
+        console.error(`[BG] AI 报告后台重试失败: ${premiumReportId}`, err)
+    }
+}
 
 // 生成高级报告
 export async function POST(req: Request) {
     try {
-        const { testResultId, premiumReportId } = await req.json()
+        const { testResultId, premiumReportId, retryAI } = await req.json()
 
         if (!testResultId && !premiumReportId) {
             return NextResponse.json({ message: "缺少必要参数" }, { status: 400 })
@@ -41,7 +61,6 @@ export async function POST(req: Request) {
         const session = await getServerSession(authOptions)
         let isPro = (session?.user as any)?.isPro
 
-        // 从数据库获取最新的 Pro 状态（解决 Session 缓存问题）
         if (session?.user) {
             const user = await prisma.user.findUnique({
                 where: { id: (session.user as any).id },
@@ -53,9 +72,7 @@ export async function POST(req: Request) {
         }
 
         if (!premiumReport) {
-            // 如果是 Pro 会员，且没有高级报告记录，自动创建一个已支付的记录
             if (isPro) {
-                // 需要 testResult 的 context 来创建
                 const testResult = await prisma.testResult.findUnique({
                     where: { id: testResultId }
                 })
@@ -67,7 +84,7 @@ export async function POST(req: Request) {
                 premiumReport = await prisma.premiumReport.create({
                     data: {
                         testResultId: testResultId,
-                        userId: (session.user as any).id,
+                        userId: (session!.user as any).id,
                         orderId: `PRO_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
                         amount: 0,
                         paymentStatus: 'PAID',
@@ -86,13 +103,12 @@ export async function POST(req: Request) {
             }
         }
 
-        // 验证支付状态：如果是付费会员，或者已支付，则允许生成
         if (!isPro && premiumReport.paymentStatus !== 'PAID') {
             return NextResponse.json({ message: "请先完成支付" }, { status: 402 })
         }
 
-        // 如果已经生成过报告，直接返回
-        if (premiumReport.reportData && !premiumReport.generateError) {
+        // 如果已经生成过报告且不是重试请求，直接返回
+        if (premiumReport.reportData && !premiumReport.generateError && !retryAI) {
             return NextResponse.json({
                 success: true,
                 report: premiumReport.reportData,
@@ -101,50 +117,51 @@ export async function POST(req: Request) {
             })
         }
 
-        // 准备测试数据
         const testResult = premiumReport.testResult
         const testData = {
             testType: testResult.test.type,
             score: testResult.score,
             dimensions: (testResult.dimensions as any[]) || []
         }
-
-        // 获取用户性别
         const gender = premiumReport.user?.gender || undefined
 
         let reportData
+        let usedFallback = false
 
         try {
-            // 尝试调用 AI 生成报告
             if (process.env.DEEPSEEK_API_KEY) {
                 reportData = await generatePremiumReport(testData, gender)
             } else {
-                // 没有 API Key 时使用模拟数据
                 console.log('DEEPSEEK_API_KEY not configured, using mock data')
                 reportData = generateMockPremiumReport(testData)
+                usedFallback = true
             }
         } catch (aiError) {
-            console.error('AI generation failed:', aiError)
+            const isTimeout = aiError instanceof APITimeoutError
+            console.error(`AI generation ${isTimeout ? 'timed out' : 'failed'}:`, aiError)
 
-            // 记录错误但不阻止流程，使用模拟数据
+            reportData = generateMockPremiumReport(testData)
+            usedFallback = true
+
             await prisma.premiumReport.update({
                 where: { id: premiumReport.id },
                 data: {
-                    generateError: aiError instanceof Error ? aiError.message : '生成失败'
+                    generateError: isTimeout ? 'TIMEOUT' : (aiError instanceof Error ? aiError.message : '生成失败')
                 }
             })
 
-            // 使用模拟数据作为降级方案
-            reportData = generateMockPremiumReport(testData)
+            // 超时时触发后台重试
+            if (isTimeout && process.env.DEEPSEEK_API_KEY) {
+                backgroundRetryAIGeneration(premiumReport.id, testData, gender).catch(() => {})
+            }
         }
 
-        // 保存报告数据
         await prisma.premiumReport.update({
             where: { id: premiumReport.id },
             data: {
                 reportData: reportData as any,
                 generatedAt: new Date(),
-                generateError: null
+                ...(usedFallback ? {} : { generateError: null })
             }
         })
 
@@ -152,13 +169,16 @@ export async function POST(req: Request) {
             success: true,
             report: reportData,
             generatedAt: new Date(),
-            cached: false
+            cached: false,
+            usedFallback,
+            canRetry: usedFallback && !!process.env.DEEPSEEK_API_KEY
         })
 
     } catch (error) {
         console.error("GENERATE_PREMIUM_REPORT_ERROR", error)
         return NextResponse.json({
-            message: error instanceof Error ? error.message : "生成报告失败"
+            message: error instanceof Error ? error.message : "生成报告失败",
+            canRetry: true
         }, { status: 500 })
     }
 }

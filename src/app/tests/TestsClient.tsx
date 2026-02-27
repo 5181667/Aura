@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from "next/link"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
-import { Brain, Heart, Briefcase, Clock, CheckCircle, ArrowRight, Sparkles, RotateCcw, Shield, Zap } from "lucide-react"
+import { Brain, Heart, Briefcase, Clock, CheckCircle, ArrowRight, Sparkles, RotateCcw, Shield, Zap, Star, Compass } from "lucide-react"
 import LoadingButton from "@/components/LoadingButton"
 import styles from "./tests.module.css"
 
@@ -98,21 +98,20 @@ const typeConfig: Record<string, { label: string; color: string; category: strin
     'MBTI': { label: 'MBTI 16型人格', color: '#8b5cf6', category: 'personality' },
     'BIG_FIVE': { label: '大五人格', color: '#06b6d4', category: 'personality' },
     'DISC': { label: 'DISC 行为风格', color: '#10b981', category: 'personality' },
-    'EQ': { label: '情商测试', color: '#f59e0b', category: 'emotion' },
-    'HOLLAND': { label: '霍兰德职业兴趣', color: '#ec4899', category: 'career' },
     'ENNEAGRAM': { label: '九型人格', color: '#6366f1', category: 'personality' },
-    'DEPRESSION': { label: 'PHQ-9 抑郁筛查', color: '#ef4444', category: 'mental_health' },
-    'TALENT': { label: '天赋发掘测试', color: '#f97316', category: 'talent' },
-    'MENTAL_AGE': { label: '心理年龄测试', color: '#14b8a6', category: 'personality' }
+    'HOLLAND': { label: '霍兰德职业兴趣', color: '#ec4899', category: 'career' },
+    'TALENT': { label: '天赋发掘测试', color: '#f97316', category: 'career' },
+    'EQ': { label: '情商测试', color: '#f59e0b', category: 'fun' },
+    'MENTAL_AGE': { label: '心理年龄测试', color: '#14b8a6', category: 'fun' },
+    'DEPRESSION': { label: 'PHQ-9 抑郁筛查', color: '#ef4444', category: 'mental_health' }
 }
 
 // 分类配置
 const categoryConfig = [
     { id: 'all', name: '全部测试', icon: <Sparkles size={20} />, color: '#8b5cf6' },
     { id: 'personality', name: '性格测试', icon: <Brain size={20} />, color: '#8b5cf6' },
-    { id: 'emotion', name: '情商测试', icon: <Heart size={20} />, color: '#f59e0b' },
-    { id: 'career', name: '职业兴趣', icon: <Briefcase size={20} />, color: '#ec4899' },
-    { id: 'talent', name: '天赋发掘', icon: <Zap size={20} />, color: '#f97316' },
+    { id: 'career', name: '职业发展', icon: <Compass size={20} />, color: '#ec4899' },
+    { id: 'fun', name: '有趣测试', icon: <Star size={20} />, color: '#f59e0b' },
     { id: 'mental_health', name: '心理健康', icon: <Shield size={20} />, color: '#ef4444' }
 ]
 
@@ -127,10 +126,9 @@ export default function TestsClient({ tests, completedTestIds }: TestsClientProp
     // 按类别分组
     const categories = {
         all: tests,
-        personality: tests.filter(t => ['MBTI', 'BIG_FIVE', 'DISC', 'ENNEAGRAM', 'MENTAL_AGE'].includes(t.type)),
-        emotion: tests.filter(t => t.type === 'EQ'),
-        career: tests.filter(t => t.type === 'HOLLAND'),
-        talent: tests.filter(t => t.type === 'TALENT'),
+        personality: tests.filter(t => ['MBTI', 'BIG_FIVE', 'DISC', 'ENNEAGRAM'].includes(t.type)),
+        career: tests.filter(t => ['HOLLAND', 'TALENT'].includes(t.type)),
+        fun: tests.filter(t => ['EQ', 'MENTAL_AGE'].includes(t.type)),
         mental_health: tests.filter(t => t.type === 'DEPRESSION')
     }
 

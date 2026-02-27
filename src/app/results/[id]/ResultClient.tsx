@@ -432,27 +432,52 @@ export default function ResultClient({ result, isLoggedIn = false, isGuest = fal
     }, [isPremiumPaid, premiumReport])
 
     // 生成高级报告
-    const generateReport = async () => {
+    const [reportCanRetry, setReportCanRetry] = useState(false)
+    const [retryCount, setRetryCount] = useState(0)
+
+    const generateReport = async (retryAI = false) => {
         setGeneratingReport(true)
         setReportError(null)
+        setReportCanRetry(false)
+
+        const controller = new AbortController()
+        const clientTimeout = setTimeout(() => controller.abort(), 55000)
 
         try {
             const response = await fetch('/api/premium-report/generate', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ testResultId: result.id })
+                body: JSON.stringify({ testResultId: result.id, retryAI }),
+                signal: controller.signal
             })
 
             const data = await response.json()
 
             if (response.ok && data.success) {
                 setPremiumReport(data.report)
+                if (data.usedFallback && data.canRetry) {
+                    setReportCanRetry(true)
+                }
             } else {
                 throw new Error(data.message || '生成报告失败')
             }
-        } catch (err) {
-            setReportError(err instanceof Error ? err.message : '生成报告失败')
+        } catch (err: any) {
+            if (err.name === 'AbortError') {
+                setReportError('生成超时，正在自动重试...')
+                if (retryCount < 2) {
+                    setRetryCount(prev => prev + 1)
+                    setTimeout(() => generateReport(), 2000)
+                    return
+                } else {
+                    setReportError('AI 服务暂时繁忙，请稍后点击重试按钮重新生成')
+                    setReportCanRetry(true)
+                }
+            } else {
+                setReportError(err instanceof Error ? err.message : '生成报告失败，请点击重试')
+                setReportCanRetry(true)
+            }
         } finally {
+            clearTimeout(clientTimeout)
             setGeneratingReport(false)
         }
     }
@@ -508,6 +533,21 @@ export default function ResultClient({ result, isLoggedIn = false, isGuest = fal
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.1, duration: 0.6 }}
                 >
+                    {reportCanRetry && !generatingReport && (
+                        <div className={styles.upgradeHint}>
+                            <p>当前为智能分析版本，可尝试升级为 AI 深度版</p>
+                            <button onClick={() => generateReport(true)} className={styles.upgradeBtn}>
+                                <RefreshCw size={14} />
+                                升级为 AI 深度报告
+                            </button>
+                        </div>
+                    )}
+                    {generatingReport && (
+                        <div className={styles.upgradeHint}>
+                            <Loader2 size={16} className="animate-spin" />
+                            <p>正在生成 AI 深度报告，请稍候...</p>
+                        </div>
+                    )}
                     <PremiumReport report={premiumReport} testType={result.test.type} />
                 </motion.section>
             )
@@ -551,13 +591,18 @@ export default function ResultClient({ result, isLoggedIn = false, isGuest = fal
                         </p>
                         <button
                             className={styles.premiumBuyBtn}
-                            onClick={generateReport}
+                            onClick={() => generateReport()}
                             disabled={generatingReport}
                         >
                             {generatingReport ? (
                                 <>
                                     <Loader2 size={18} className="animate-spin" />
-                                    AI 思考中...
+                                    AI 深度分析中，请耐心等待...
+                                </>
+                            ) : reportError ? (
+                                <>
+                                    <RefreshCw size={18} />
+                                    重新生成报告
                                 </>
                             ) : (
                                 <>
