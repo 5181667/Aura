@@ -143,7 +143,7 @@ export default function RedeemCodeDialog({ isOpen, testResultId, onClose, onSucc
                                 </button>
 
                                 <p className={styles.hint}>
-                                    兑换码可从活动或管理员处获取
+                                    兑换码可通过闲鱼购买后从客服获取
                                 </p>
                             </>
                         )}

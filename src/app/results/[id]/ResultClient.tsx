@@ -594,11 +594,11 @@ export default function ResultClient({ result, isLoggedIn = false, isGuest = fal
                 </div>
                 <button className={styles.premiumBuyBtn} onClick={() => setShowPayment(true)}>
                     <Crown size={18} />
-                    立即解锁
+                    扫码购买解锁
                     <span className={styles.premiumPrice}>¥9.9</span>
                 </button>
                 <button className={styles.redeemCodeBtn} onClick={() => setShowRedeemCode(true)}>
-                    有兑换码？点击兑换
+                    已有兑换码？直接兑换
                 </button>
             </motion.section>
         )
