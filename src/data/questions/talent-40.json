@@ -1,0 +1,501 @@
+{
+  "id": "talent-40",
+  "type": "TALENT",
+  "title": "天赋发掘测试",
+  "description": "基于霍华德·加德纳的多元智能理论，发掘您在语言、逻辑、空间、音乐、运动、人际、自省和自然观察八大维度的天赋倾向，帮助您找到最适合发展的方向。",
+  "questionCount": 40,
+  "estimatedTime": "8-10分钟",
+  "dimensions": ["LI", "LM", "SV", "MU", "BK", "IP", "IA", "NA"],
+  "dimensionLabels": {
+    "LI": "语言智能",
+    "LM": "逻辑数理智能",
+    "SV": "空间视觉智能",
+    "MU": "音乐节奏智能",
+    "BK": "身体运动智能",
+    "IP": "人际交往智能",
+    "IA": "自我认知智能",
+    "NA": "自然观察智能"
+  },
+  "questions": [
+    {
+      "id": "li-1",
+      "question": "我喜欢阅读各种类型的书籍和文章，无论是小说、新闻还是科普读物",
+      "dimension": "LI",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "LI", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "LI", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "LI", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "LI", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "LI", "value": 5 } }
+      ]
+    },
+    {
+      "id": "li-2",
+      "question": "我擅长用文字清晰地表达自己的想法，写邮件或文章时措辞讲究",
+      "dimension": "LI",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "LI", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "LI", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "LI", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "LI", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "LI", "value": 5 } }
+      ]
+    },
+    {
+      "id": "li-3",
+      "question": "我喜欢玩文字游戏，比如成语接龙、猜字谜或填字游戏",
+      "dimension": "LI",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "LI", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "LI", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "LI", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "LI", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "LI", "value": 5 } }
+      ]
+    },
+    {
+      "id": "li-4",
+      "question": "在讨论中，我能迅速找到合适的措辞来清楚地阐述观点或说服别人",
+      "dimension": "LI",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "LI", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "LI", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "LI", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "LI", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "LI", "value": 5 } }
+      ]
+    },
+    {
+      "id": "li-5",
+      "question": "我经常会注意到广告标语、歌词或文章中用词的巧妙之处",
+      "dimension": "LI",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "LI", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "LI", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "LI", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "LI", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "LI", "value": 5 } }
+      ]
+    },
+    {
+      "id": "lm-1",
+      "question": "我喜欢解决数学题或逻辑谜题，比如数独、推理游戏",
+      "dimension": "LM",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "LM", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "LM", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "LM", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "LM", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "LM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "lm-2",
+      "question": "做决定时，我习惯用数据和事实来分析，而不是凭直觉",
+      "dimension": "LM",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "LM", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "LM", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "LM", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "LM", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "LM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "lm-3",
+      "question": "我能快速发现一组数字或图形中隐藏的规律和模式",
+      "dimension": "LM",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "LM", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "LM", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "LM", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "LM", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "LM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "lm-4",
+      "question": "遇到复杂问题时，我喜欢把它拆分成有条理的步骤逐一解决",
+      "dimension": "LM",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "LM", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "LM", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "LM", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "LM", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "LM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "lm-5",
+      "question": "我对编程、科学实验或策略类桌游等需要逻辑思维的活动感兴趣",
+      "dimension": "LM",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "LM", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "LM", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "LM", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "LM", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "LM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "sv-1",
+      "question": "我能在脑海中清晰地想象出物体旋转、翻转或变形后的样子",
+      "dimension": "SV",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "SV", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "SV", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "SV", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "SV", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "SV", "value": 5 } }
+      ]
+    },
+    {
+      "id": "sv-2",
+      "question": "在陌生的城市或建筑中，我很少迷路，能自然地辨别方向",
+      "dimension": "SV",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "SV", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "SV", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "SV", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "SV", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "SV", "value": 5 } }
+      ]
+    },
+    {
+      "id": "sv-3",
+      "question": "我喜欢通过画图、制作图表或思维导图来整理和呈现信息",
+      "dimension": "SV",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "SV", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "SV", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "SV", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "SV", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "SV", "value": 5 } }
+      ]
+    },
+    {
+      "id": "sv-4",
+      "question": "我对颜色搭配、排版布局和视觉构图很敏感，能一眼看出不协调之处",
+      "dimension": "SV",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "SV", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "SV", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "SV", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "SV", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "SV", "value": 5 } }
+      ]
+    },
+    {
+      "id": "sv-5",
+      "question": "我擅长拼装家具、搭建积木或完成立体拼图等空间操作任务",
+      "dimension": "SV",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "SV", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "SV", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "SV", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "SV", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "SV", "value": 5 } }
+      ]
+    },
+    {
+      "id": "mu-1",
+      "question": "我能轻松记住一首歌的旋律，并准确地哼唱出来",
+      "dimension": "MU",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "MU", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "MU", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "MU", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "MU", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "MU", "value": 5 } }
+      ]
+    },
+    {
+      "id": "mu-2",
+      "question": "我能分辨出不同乐器在合奏中各自的声音和层次",
+      "dimension": "MU",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "MU", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "MU", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "MU", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "MU", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "MU", "value": 5 } }
+      ]
+    },
+    {
+      "id": "mu-3",
+      "question": "听到有节奏感的音乐时，我会不自觉地用手指敲桌子或用脚打拍子",
+      "dimension": "MU",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "MU", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "MU", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "MU", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "MU", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "MU", "value": 5 } }
+      ]
+    },
+    {
+      "id": "mu-4",
+      "question": "听到一段陌生的音乐时，我能很快感受到它所传达的情感和氛围",
+      "dimension": "MU",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "MU", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "MU", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "MU", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "MU", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "MU", "value": 5 } }
+      ]
+    },
+    {
+      "id": "mu-5",
+      "question": "我对周围环境中的声音很敏感，比如鸟鸣、雨声或远处的音乐",
+      "dimension": "MU",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "MU", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "MU", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "MU", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "MU", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "MU", "value": 5 } }
+      ]
+    },
+    {
+      "id": "bk-1",
+      "question": "学习新的运动动作或舞蹈时，我看几遍示范就能较快掌握",
+      "dimension": "BK",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "BK", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "BK", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "BK", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "BK", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "BK", "value": 5 } }
+      ]
+    },
+    {
+      "id": "bk-2",
+      "question": "我喜欢用双手制作东西，比如烹饪、手工艺品或维修物品",
+      "dimension": "BK",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "BK", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "BK", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "BK", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "BK", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "BK", "value": 5 } }
+      ]
+    },
+    {
+      "id": "bk-3",
+      "question": "长时间坐着不动会让我感到烦躁，我需要经常起来活动身体",
+      "dimension": "BK",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "BK", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "BK", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "BK", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "BK", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "BK", "value": 5 } }
+      ]
+    },
+    {
+      "id": "bk-4",
+      "question": "在运动、跑步或体力劳动时，我会感觉自己充满活力和满足感",
+      "dimension": "BK",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "BK", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "BK", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "BK", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "BK", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "BK", "value": 5 } }
+      ]
+    },
+    {
+      "id": "bk-5",
+      "question": "我能通过丰富的肢体语言和手势生动地表达自己的想法",
+      "dimension": "BK",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "BK", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "BK", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "BK", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "BK", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "BK", "value": 5 } }
+      ]
+    },
+    {
+      "id": "ip-1",
+      "question": "朋友或同事遇到烦恼时，通常会第一时间找我倾诉或寻求建议",
+      "dimension": "IP",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "IP", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "IP", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "IP", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "IP", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "IP", "value": 5 } }
+      ]
+    },
+    {
+      "id": "ip-2",
+      "question": "我能很快察觉到别人情绪的细微变化，即使对方试图掩饰",
+      "dimension": "IP",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "IP", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "IP", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "IP", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "IP", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "IP", "value": 5 } }
+      ]
+    },
+    {
+      "id": "ip-3",
+      "question": "在团队活动中，我自然而然地会承担组织协调或带领大家的角色",
+      "dimension": "IP",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "IP", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "IP", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "IP", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "IP", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "IP", "value": 5 } }
+      ]
+    },
+    {
+      "id": "ip-4",
+      "question": "我善于调解朋友之间的矛盾，帮助不同意见的人找到共识",
+      "dimension": "IP",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "IP", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "IP", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "IP", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "IP", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "IP", "value": 5 } }
+      ]
+    },
+    {
+      "id": "ip-5",
+      "question": "我能根据不同人的性格特点灵活调整自己的沟通方式和相处模式",
+      "dimension": "IP",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "IP", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "IP", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "IP", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "IP", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "IP", "value": 5 } }
+      ]
+    },
+    {
+      "id": "ia-1",
+      "question": "我经常反思自己的言行，思考自己做某件事的真正动机",
+      "dimension": "IA",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "IA", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "IA", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "IA", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "IA", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "IA", "value": 5 } }
+      ]
+    },
+    {
+      "id": "ia-2",
+      "question": "我清楚地知道自己的优势和不足，很少对自己的能力产生误判",
+      "dimension": "IA",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "IA", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "IA", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "IA", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "IA", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "IA", "value": 5 } }
+      ]
+    },
+    {
+      "id": "ia-3",
+      "question": "面对重大选择时，我会倾听内心真实的想法，而非盲目随大流",
+      "dimension": "IA",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "IA", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "IA", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "IA", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "IA", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "IA", "value": 5 } }
+      ]
+    },
+    {
+      "id": "ia-4",
+      "question": "当情绪波动时，我能辨别出引发这种情绪的具体原因",
+      "dimension": "IA",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "IA", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "IA", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "IA", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "IA", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "IA", "value": 5 } }
+      ]
+    },
+    {
+      "id": "ia-5",
+      "question": "我习惯为自己设定明确的个人目标，并制定切实可行的计划去实现",
+      "dimension": "IA",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "IA", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "IA", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "IA", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "IA", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "IA", "value": 5 } }
+      ]
+    },
+    {
+      "id": "na-1",
+      "question": "我能辨认出身边常见的植物或动物种类，并说出它们的名字",
+      "dimension": "NA",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "NA", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "NA", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "NA", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "NA", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "NA", "value": 5 } }
+      ]
+    },
+    {
+      "id": "na-2",
+      "question": "我喜欢观察天气和季节的变化，有时会尝试预测接下来的天气",
+      "dimension": "NA",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "NA", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "NA", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "NA", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "NA", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "NA", "value": 5 } }
+      ]
+    },
+    {
+      "id": "na-3",
+      "question": "待在大自然中，比如森林、海边或山里，会让我感到特别放松和愉悦",
+      "dimension": "NA",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "NA", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "NA", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "NA", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "NA", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "NA", "value": 5 } }
+      ]
+    },
+    {
+      "id": "na-4",
+      "question": "我关注环保和生态话题，会主动采取节能减排或垃圾分类等行动",
+      "dimension": "NA",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "NA", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "NA", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "NA", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "NA", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "NA", "value": 5 } }
+      ]
+    },
+    {
+      "id": "na-5",
+      "question": "我善于观察自然界中事物之间的联系，比如食物链、生态系统的运作方式",
+      "dimension": "NA",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "NA", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "NA", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "NA", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "NA", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "NA", "value": 5 } }
+      ]
+    }
+  ]
+}

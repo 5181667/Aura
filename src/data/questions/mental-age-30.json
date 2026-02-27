@@ -1,0 +1,378 @@
+{
+  "id": "mental-age-30",
+  "type": "MENTAL_AGE",
+  "title": "心理年龄测试",
+  "description": "通过评估您在情绪管理、认知方式、社会适应、价值观和独立性五个维度的成熟程度，科学推算您的心理年龄，帮助您了解内心的真实状态。",
+  "questionCount": 30,
+  "estimatedTime": "6-8分钟",
+  "dimensions": ["EM", "CM", "SA", "VM", "ID"],
+  "dimensionLabels": {
+    "EM": "情绪成熟度",
+    "CM": "认知成熟度",
+    "SA": "社会适应力",
+    "VM": "价值观成熟度",
+    "ID": "独立自主性"
+  },
+  "questions": [
+    {
+      "id": "em-1",
+      "question": "当别人批评我时，我能保持冷静并客观思考对方的观点",
+      "dimension": "EM",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "EM", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "EM", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "EM", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "EM", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "EM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "em-2",
+      "question": "遇到令我生气的事情，我能控制自己不立刻发火，而是先冷静下来再处理",
+      "dimension": "EM",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "EM", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "EM", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "EM", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "EM", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "EM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "em-3",
+      "question": "当期待已久的计划突然泡汤时，我能较快调整心态接受现实",
+      "dimension": "EM",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "EM", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "EM", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "EM", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "EM", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "EM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "em-4",
+      "question": "我能清楚地识别自己当下的情绪，并用语言准确表达出来",
+      "dimension": "EM",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "EM", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "EM", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "EM", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "EM", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "EM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "em-5",
+      "question": "面对压力和焦虑时，我有自己的方式来有效缓解负面情绪",
+      "dimension": "EM",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "EM", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "EM", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "EM", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "EM", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "EM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "em-6",
+      "question": "当我感到嫉妒或不满时，我能理性分析这些感受，而不是被情绪牵着走",
+      "dimension": "EM",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "EM", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "EM", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "EM", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "EM", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "EM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "cm-1",
+      "question": "我能理解大多数事情并非非黑即白，而是存在很多灰色地带",
+      "dimension": "CM",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "CM", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "CM", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "CM", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "CM", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "CM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "cm-2",
+      "question": "面对不确定的未来，我能坦然接受未知并保持耐心等待事情明朗",
+      "dimension": "CM",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "CM", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "CM", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "CM", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "CM", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "CM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "cm-3",
+      "question": "做重要决定前，我会认真考虑这个选择可能带来的长远后果",
+      "dimension": "CM",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "CM", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "CM", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "CM", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "CM", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "CM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "cm-4",
+      "question": "当别人的观点与我不同时，我会尝试站在对方的角度去理解他的想法",
+      "dimension": "CM",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "CM", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "CM", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "CM", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "CM", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "CM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "cm-5",
+      "question": "我能区分客观事实和个人观点，不会把自己的看法当作唯一的真理",
+      "dimension": "CM",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "CM", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "CM", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "CM", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "CM", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "CM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "cm-6",
+      "question": "遇到复杂问题时，我倾向于收集足够的信息再做判断，而不是凭直觉下结论",
+      "dimension": "CM",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "CM", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "CM", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "CM", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "CM", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "CM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "sa-1",
+      "question": "到一个全新的环境（如新公司、新城市），我能较快地适应并融入其中",
+      "dimension": "SA",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "SA", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "SA", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "SA", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "SA", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "SA", "value": 5 } }
+      ]
+    },
+    {
+      "id": "sa-2",
+      "question": "即使周围人都持某种观点，如果我经过思考后不认同，也不会盲目跟从",
+      "dimension": "SA",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "SA", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "SA", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "SA", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "SA", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "SA", "value": 5 } }
+      ]
+    },
+    {
+      "id": "sa-3",
+      "question": "我能尊重和接纳与我生活方式、文化背景或价值观不同的人",
+      "dimension": "SA",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "SA", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "SA", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "SA", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "SA", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "SA", "value": 5 } }
+      ]
+    },
+    {
+      "id": "sa-4",
+      "question": "与人发生矛盾时，我会主动寻求沟通和解决，而不是回避或攻击对方",
+      "dimension": "SA",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "SA", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "SA", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "SA", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "SA", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "SA", "value": 5 } }
+      ]
+    },
+    {
+      "id": "sa-5",
+      "question": "我能根据不同的场合和对象，灵活调整自己的沟通方式和行为举止",
+      "dimension": "SA",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "SA", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "SA", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "SA", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "SA", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "SA", "value": 5 } }
+      ]
+    },
+    {
+      "id": "sa-6",
+      "question": "即使对方的表达方式不太友好，我也愿意耐心倾听并理解他真正想说的内容",
+      "dimension": "SA",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "SA", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "SA", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "SA", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "SA", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "SA", "value": 5 } }
+      ]
+    },
+    {
+      "id": "vm-1",
+      "question": "我愿意为了长远的目标而放弃一些眼前的享受和即时满足",
+      "dimension": "VM",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "VM", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "VM", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "VM", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "VM", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "VM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "vm-2",
+      "question": "看到他人遭遇困难或不幸时，我会发自内心地感到同情并想要提供帮助",
+      "dimension": "VM",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "VM", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "VM", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "VM", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "VM", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "VM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "vm-3",
+      "question": "即使没有人监督或知道，我也会信守承诺、说到做到",
+      "dimension": "VM",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "VM", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "VM", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "VM", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "VM", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "VM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "vm-4",
+      "question": "我认为一个人的品格和为人比外在的财富和地位更重要",
+      "dimension": "VM",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "VM", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "VM", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "VM", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "VM", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "VM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "vm-5",
+      "question": "我能接受世界并不总是公平的，并专注于自己能改变和掌控的事情",
+      "dimension": "VM",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "VM", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "VM", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "VM", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "VM", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "VM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "vm-6",
+      "question": "我相信努力和付出的过程本身就有意义，而不是只看最终的结果",
+      "dimension": "VM",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "VM", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "VM", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "VM", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "VM", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "VM", "value": 5 } }
+      ]
+    },
+    {
+      "id": "id-1",
+      "question": "在重要的人生选择上，我会参考他人的意见，但最终由自己做决定",
+      "dimension": "ID",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "ID", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "ID", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "ID", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "ID", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "ID", "value": 5 } }
+      ]
+    },
+    {
+      "id": "id-2",
+      "question": "我清楚自己的收入和支出情况，并有基本的储蓄或理财规划",
+      "dimension": "ID",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "ID", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "ID", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "ID", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "ID", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "ID", "value": 5 } }
+      ]
+    },
+    {
+      "id": "id-3",
+      "question": "当事情出了问题，我会先反思自己的责任，而不是第一时间责怪别人",
+      "dimension": "ID",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "ID", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "ID", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "ID", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "ID", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "ID", "value": 5 } }
+      ]
+    },
+    {
+      "id": "id-4",
+      "question": "我能独立处理日常生活中的各种事务，而不需要过度依赖他人",
+      "dimension": "ID",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "ID", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "ID", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "ID", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "ID", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "ID", "value": 5 } }
+      ]
+    },
+    {
+      "id": "id-5",
+      "question": "我有自己明确的人生方向和目标，而不是随波逐流过日子",
+      "dimension": "ID",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "ID", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "ID", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "ID", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "ID", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "ID", "value": 5 } }
+      ]
+    },
+    {
+      "id": "id-6",
+      "question": "面对失败或挫折，我能靠自己重新振作，而不是等待别人来拉我一把",
+      "dimension": "ID",
+      "options": [
+        { "text": "完全不符合", "score": { "dimension": "ID", "value": 1 } },
+        { "text": "比较不符合", "score": { "dimension": "ID", "value": 2 } },
+        { "text": "一般", "score": { "dimension": "ID", "value": 3 } },
+        { "text": "比较符合", "score": { "dimension": "ID", "value": 4 } },
+        { "text": "非常符合", "score": { "dimension": "ID", "value": 5 } }
+      ]
+    }
+  ]
+}
