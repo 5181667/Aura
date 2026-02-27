@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Share2, ChevronRight, Sparkles, Brain, Target, Heart, Briefcase, Users, Eye, Zap, Calendar, Activity, Crown, LogIn, X, RefreshCw, Loader2, ArrowLeft, User, Mail, Clock, Shield } from 'lucide-react'
 import ShareDialog from '@/components/ShareDialog'
 import Navbar from '@/components/Navbar'
@@ -99,6 +100,24 @@ function buildUnifiedProfile(testType: string, score: string, dimensions: any[] 
         default:
             return null
     }
+}
+
+// 获取测试结果对应的展示图片
+function getResultImage(testType: string, score: string, dimensions: any[] | null): string | null {
+    if (testType === 'TALENT' && dimensions) {
+        const sorted = [...dimensions].sort((a: any, b: any) => (b.percentage || 0) - (a.percentage || 0))
+        const topDim = sorted[0]?.dimension
+        if (topDim) return `/images/tests/talent-${topDim}.png`
+    }
+    if (testType === 'MENTAL_AGE') {
+        const age = parseInt(score) || 25
+        if (age <= 17) return '/images/tests/mental-age-child.png'
+        if (age <= 24) return '/images/tests/mental-age-young.png'
+        if (age <= 35) return '/images/tests/mental-age-mature.png'
+        if (age <= 50) return '/images/tests/mental-age-wise.png'
+        return '/images/tests/mental-age-sage.png'
+    }
+    return null
 }
 
 // 通用雷达图组件
@@ -731,6 +750,26 @@ export default function ResultClient({ result, isLoggedIn = false, isGuest = fal
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.8 }}
                         >
+                            {(() => {
+                                const resultImg = getResultImage(result.test.type, result.score, dimensionArray)
+                                return resultImg ? (
+                                    <motion.div
+                                        className={styles.resultImageWrapper}
+                                        initial={{ opacity: 0, scale: 0.9 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        transition={{ delay: 0.2, duration: 0.6 }}
+                                    >
+                                        <Image
+                                            src={resultImg}
+                                            alt={unifiedProfile.title}
+                                            width={480}
+                                            height={270}
+                                            className={styles.resultImage}
+                                            priority
+                                        />
+                                    </motion.div>
+                                ) : null
+                            })()}
                             <div className={styles.heroContent}>
                                 <div className={styles.heroText}>
                                     <motion.div

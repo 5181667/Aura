@@ -2,7 +2,6 @@
 
 import { useEffect, useState, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import Image from "next/image"
 import { ChevronLeft, Clock, Target, Sparkles } from "lucide-react"
 import { calculateScore } from "@/data/scoring"
 import { useToast } from "@/components/Toast"
@@ -11,11 +10,6 @@ import { useRouter } from "next/navigation"
 import GenderSelector from "@/components/GenderSelector"
 import LoadingButton from "@/components/LoadingButton"
 import styles from "./engine.module.css"
-
-const testBannerImages: Record<string, string> = {
-    'TALENT': '/images/tests/talent-cover.png',
-    'MENTAL_AGE': '/images/tests/mental-age-cover.png',
-}
 
 interface TestEngineProps {
     test: {
@@ -273,20 +267,6 @@ export default function TestEngine({ test }: TestEngineProps) {
     if (!started) {
         return (
             <div className={`${styles.introCard} glass`}>
-                {testBannerImages[test.type] && (
-                    <div className={styles.introBanner}>
-                        <Image
-                            src={testBannerImages[test.type]}
-                            alt={test.title}
-                            fill
-                            sizes="(max-width: 768px) 100vw, 600px"
-                            style={{ objectFit: 'cover' }}
-                            onError={(e) => {
-                                (e.target as HTMLImageElement).parentElement!.style.display = 'none'
-                            }}
-                        />
-                    </div>
-                )}
                 <div className={styles.introIcon}>
                     <Sparkles size={48} />
                 </div>

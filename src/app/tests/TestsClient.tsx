@@ -2,22 +2,15 @@
 
 import { useState } from 'react'
 import Link from "next/link"
-import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { Brain, Heart, Briefcase, Clock, CheckCircle, ArrowRight, Sparkles, RotateCcw, Shield, Zap, Star, Compass } from "lucide-react"
 import LoadingButton from "@/components/LoadingButton"
 import styles from "./tests.module.css"
 
-const testCoverImages: Record<string, string> = {
-    'TALENT': '/images/tests/talent-cover.png',
-    'MENTAL_AGE': '/images/tests/mental-age-cover.png',
-}
-
 function TestCard({ test, isCompleted, config }: { test: any; isCompleted: boolean; config: any }) {
     const router = useRouter()
     const scoring = test.scoring as any
     const questions = test.questions as any[]
-    const coverImage = testCoverImages[test.type]
 
     const handleClick = () => {
         router.push(`/tests/${test.id}`)
@@ -32,21 +25,6 @@ function TestCard({ test, isCompleted, config }: { test: any; isCompleted: boole
                 <div className={styles.completedBadge}>
                     <CheckCircle size={14} />
                     已完成
-                </div>
-            )}
-
-            {coverImage && (
-                <div className={styles.cardCover}>
-                    <Image
-                        src={coverImage}
-                        alt={test.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 340px"
-                        style={{ objectFit: 'cover' }}
-                        onError={(e) => {
-                            (e.target as HTMLImageElement).style.display = 'none'
-                        }}
-                    />
                 </div>
             )}
 
