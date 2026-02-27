@@ -9,6 +9,21 @@ import styles from "./premium-reports.module.css"
 
 export const dynamic = 'force-dynamic'
 
+/** 按测试类型返回与标题对应的报告简介 */
+function getReportSummaryByType(testType: string): string {
+    const map: Record<string, string> = {
+        MBTI: '包含恋爱分析、个人成长、事业规划等完整内容',
+        BIG_FIVE: '五维人格深度解析、人际关系与职业匹配建议',
+        DISC: '行为风格解析、沟通与职场发展建议',
+        EQ: '情商与情绪管理深度分析',
+        HOLLAND: '职业倾向与生涯规划完整解读',
+        ENNEAGRAM: '九型人格深度解读、成长路线与关系指南',
+        DEPRESSION: '专业情绪分析、调节方案与康复建议',
+        PHQ9: '专业情绪分析、调节方案与康复建议',
+    }
+    return map[testType] || '完整 AI 深度分析内容'
+}
+
 export default async function PremiumReportsPage() {
     const session = await getServerSession(authOptions)
 
@@ -89,7 +104,7 @@ export default async function PremiumReportsPage() {
 
                                 <div className={styles.reportPreview}>
                                     {report.reportData ? (
-                                        <p>包含恋爱分析、个人成长、事业规划等完整内容</p>
+                                        <p>{getReportSummaryByType(report.testResult.test.type)}</p>
                                     ) : (
                                         <p>报告正在生成中，点击查看详情</p>
                                     )}

@@ -37,6 +37,7 @@ import { calculateDISC, discTypeDescriptions, getDISCDescription } from './disc-
 import { calculateEQ, eqLevelDescriptions, getEQLevel } from './eq-scoring'
 import { calculateHolland, hollandCareerSuggestions, getHollandCareerSuggestions, getHollandCodeCareers } from './holland-scoring'
 import { calculateEnneagram, enneagramTypeDescriptions, getEnneagramDescription, getEnneagramTypeName } from './enneagram-scoring'
+import { calculateDepression, depressionLevels, getDepressionLevel, getDepressionPercentage } from './depression-scoring'
 
 // 导出所有评分函数和工具函数
 export {
@@ -59,7 +60,11 @@ export {
   calculateEnneagram,
   enneagramTypeDescriptions,
   getEnneagramDescription,
-  getEnneagramTypeName
+  getEnneagramTypeName,
+  calculateDepression,
+  depressionLevels,
+  getDepressionLevel,
+  getDepressionPercentage
 }
 
 // 根据测试类型选择评分算法
@@ -77,6 +82,8 @@ export function calculateScore(testType: string, answers: Answer[]): TestResult 
       return calculateHolland(answers)
     case 'ENNEAGRAM':
       return calculateEnneagram(answers)
+    case 'DEPRESSION':
+      return calculateDepression(answers)
     default:
       throw new Error(`Unknown test type: ${testType}`)
   }

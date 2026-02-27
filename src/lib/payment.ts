@@ -1,194 +1,200 @@
-// 免签支付集成模块
-import crypto from 'crypto'
+// 支付宝官方支付集成（RSA2 签名，官方 SDK）
+import { AlipaySdk } from 'alipay-sdk'
+import QRCode from 'qrcode'
 
-// 支付配置
+// ============ SDK 单例 ============
+
+let _sdk: InstanceType<typeof AlipaySdk> | null = null
+
+function getAlipaySDK() {
+    const appId = process.env.ALIPAY_APP_ID
+    const privateKey = process.env.ALIPAY_PRIVATE_KEY
+    const alipayPublicKey = process.env.ALIPAY_PUBLIC_KEY
+
+    if (!appId || !privateKey || !alipayPublicKey) {
+        throw new Error(
+            '支付宝配置缺失，请检查环境变量: ALIPAY_APP_ID, ALIPAY_PRIVATE_KEY, ALIPAY_PUBLIC_KEY'
+        )
+    }
+
+    if (!_sdk) {
+        const isSandbox = process.env.ALIPAY_SANDBOX === 'true' || process.env.ALIPAY_SANDBOX === '1'
+        // 去除首尾空格和 \r，避免 .env 粘贴导致验签失败
+        const normalizedPrivateKey = privateKey.trim().replace(/\r/g, '')
+        const normalizedAlipayPublicKey = alipayPublicKey.trim().replace(/\r/g, '')
+        _sdk = new AlipaySdk({
+            appId,
+            privateKey: normalizedPrivateKey,
+            alipayPublicKey: normalizedAlipayPublicKey,
+            signType: 'RSA2',
+            keyType: 'PKCS1', // 支付宝密钥工具「非JAVA」生成的是 PKCS1
+            gateway: isSandbox
+                ? 'https://openapi-sandbox.dl.alipaydev.com/gateway.do'
+                : 'https://openapi.alipay.com/gateway.do',
+        })
+    }
+    return _sdk
+}
+
+// ============ 公共配置 ============
+
 export const PAYMENT_CONFIG = {
-    url: process.env.EPAY_URL || 'https://pay.example.com',
-    pid: process.env.EPAY_PID || '',
-    key: process.env.EPAY_KEY || '',
-    notifyUrl: process.env.EPAY_NOTIFY_URL || '',
-    returnUrl: process.env.EPAY_RETURN_URL || '',
+    notifyUrl: process.env.ALIPAY_NOTIFY_URL || '',
+    returnUrl: process.env.ALIPAY_RETURN_URL || '',
 }
 
-// 支付方式
-export type PaymentMethod = 'alipay' | 'wechat'
+// ============ 工具函数 ============
 
-// 订单信息
-export interface OrderInfo {
-    outTradeNo: string      // 商户订单号
-    type: PaymentMethod     // 支付方式
-    name: string            // 商品名称
-    money: string           // 金额
-    notifyUrl?: string      // 异步通知地址
-    returnUrl?: string      // 同步返回地址
-}
-
-// 生成签名
-export function generateSign(params: Record<string, string>, key: string): string {
-    // 按照参数名ASCII码从小到大排序
-    const sortedKeys = Object.keys(params).sort()
-    
-    // 拼接参数
-    const signStr = sortedKeys
-        .filter(k => params[k] !== '' && k !== 'sign' && k !== 'sign_type')
-        .map(k => `${k}=${params[k]}`)
-        .join('&')
-    
-    // MD5签名
-    return crypto.createHash('md5').update(signStr + key).digest('hex')
-}
-
-// 验证签名
-export function verifySign(params: Record<string, string>, key: string, sign: string): boolean {
-    const calculatedSign = generateSign(params, key)
-    return calculatedSign.toLowerCase() === sign.toLowerCase()
-}
-
-// 生成订单号
+/** 生成商户订单号 */
 export function generateOrderNo(): string {
     const timestamp = Date.now().toString()
     const random = Math.random().toString(36).substring(2, 8).toUpperCase()
     return `PR${timestamp}${random}`
 }
 
-// 创建支付链接（用于二维码或跳转）
-export function createPaymentUrl(order: OrderInfo): string {
-    const params: Record<string, string> = {
-        pid: PAYMENT_CONFIG.pid,
-        type: order.type,
-        out_trade_no: order.outTradeNo,
-        notify_url: order.notifyUrl || PAYMENT_CONFIG.notifyUrl,
-        return_url: order.returnUrl || PAYMENT_CONFIG.returnUrl,
-        name: order.name,
-        money: order.money,
-    }
-    
-    // 生成签名
-    params.sign = generateSign(params, PAYMENT_CONFIG.key)
-    params.sign_type = 'MD5'
-    
-    // 构建URL
-    const queryString = Object.entries(params)
-        .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
-        .join('&')
-    
-    return `${PAYMENT_CONFIG.url}/submit.php?${queryString}`
+/** 将支付宝返回的二维码链接转为 base64 data URL（供前端 <img> 直接使用）*/
+export async function qrToDataURL(text: string): Promise<string> {
+    return QRCode.toDataURL(text, { width: 280, margin: 2 })
 }
 
-// 创建支付API调用（获取二维码）
-export async function createPaymentQRCode(order: OrderInfo): Promise<{
-    success: boolean
-    qrcode?: string
-    payUrl?: string
-    error?: string
-}> {
+// ============ 当面付 · 预下单（扫码支付）============
+
+export async function createPrecreateTrade(params: {
+    outTradeNo: string
+    totalAmount: string
+    subject: string
+    notifyUrl?: string
+}): Promise<{ success: boolean; qrCode?: string; qrCodeDataUrl?: string; error?: string }> {
     try {
-        const params: Record<string, string> = {
-            pid: PAYMENT_CONFIG.pid,
-            type: order.type,
-            out_trade_no: order.outTradeNo,
-            notify_url: order.notifyUrl || PAYMENT_CONFIG.notifyUrl,
-            name: order.name,
-            money: order.money,
-        }
-        
-        // 生成签名
-        params.sign = generateSign(params, PAYMENT_CONFIG.key)
-        params.sign_type = 'MD5'
-        
-        // 调用API获取二维码
-        const response = await fetch(`${PAYMENT_CONFIG.url}/mapi.php`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
+        const sdk = getAlipaySDK()
+        const result: any = await sdk.exec('alipay.trade.precreate', {
+            notify_url: params.notifyUrl || PAYMENT_CONFIG.notifyUrl,
+            bizContent: {
+                out_trade_no: params.outTradeNo,
+                total_amount: params.totalAmount,
+                subject: params.subject,
             },
-            body: new URLSearchParams(params).toString(),
         })
-        
-        const data = await response.json()
-        
-        if (data.code === 1) {
-            return {
-                success: true,
-                qrcode: data.qrcode,
-                payUrl: data.payurl,
-            }
-        } else {
-            return {
-                success: false,
-                error: data.msg || '创建支付订单失败',
-            }
+
+        // SDK 可能返回 camelCase 或 snake_case
+        const qrCode = result?.qrCode || result?.qr_code
+        if (qrCode) {
+            const qrCodeDataUrl = await qrToDataURL(qrCode)
+            return { success: true, qrCode, qrCodeDataUrl }
         }
-    } catch (error) {
-        console.error('Create payment error:', error)
         return {
             success: false,
-            error: '支付服务暂时不可用',
+            error: result?.msg || result?.subMsg || result?.sub_msg || '创建预付单失败',
         }
+    } catch (error: any) {
+        console.error('[Alipay] precreate error:', error)
+        return { success: false, error: error.message || '支付服务暂不可用' }
     }
 }
 
-// 查询订单状态
-export async function queryOrderStatus(outTradeNo: string): Promise<{
+// ============ PC 网站支付（跳转收银台）============
+
+export function createPagePay(params: {
+    outTradeNo: string
+    totalAmount: string
+    subject: string
+    returnUrl?: string
+    notifyUrl?: string
+}): { success: boolean; payUrl?: string; error?: string } {
+    try {
+        const sdk = getAlipaySDK()
+        const payUrl = sdk.pageExecute('alipay.trade.page.pay', 'GET', {
+            notify_url: params.notifyUrl || PAYMENT_CONFIG.notifyUrl,
+            return_url: params.returnUrl || PAYMENT_CONFIG.returnUrl,
+            bizContent: {
+                out_trade_no: params.outTradeNo,
+                total_amount: params.totalAmount,
+                subject: params.subject,
+                product_code: 'FAST_INSTANT_TRADE_PAY',
+            },
+        })
+        return { success: true, payUrl: payUrl as string }
+    } catch (error: any) {
+        console.error('[Alipay] pagePay error:', error)
+        return { success: false, error: error.message || '创建支付页面失败' }
+    }
+}
+
+// ============ H5 手机网站支付 ============
+
+export function createWapPay(params: {
+    outTradeNo: string
+    totalAmount: string
+    subject: string
+    returnUrl?: string
+    notifyUrl?: string
+}): { success: boolean; payUrl?: string; error?: string } {
+    try {
+        const sdk = getAlipaySDK()
+        const payUrl = sdk.pageExecute('alipay.trade.wap.pay', 'GET', {
+            notify_url: params.notifyUrl || PAYMENT_CONFIG.notifyUrl,
+            return_url: params.returnUrl || PAYMENT_CONFIG.returnUrl,
+            bizContent: {
+                out_trade_no: params.outTradeNo,
+                total_amount: params.totalAmount,
+                subject: params.subject,
+                product_code: 'QUICK_WAP_WAY',
+            },
+        })
+        return { success: true, payUrl: payUrl as string }
+    } catch (error: any) {
+        console.error('[Alipay] wapPay error:', error)
+        return { success: false, error: error.message || '创建H5支付失败' }
+    }
+}
+
+// ============ 查询交易状态 ============
+
+export async function queryTradeStatus(outTradeNo: string): Promise<{
     success: boolean
-    status?: 'pending' | 'paid' | 'failed'
+    status?: 'pending' | 'paid' | 'closed' | 'failed'
     tradeNo?: string
     error?: string
 }> {
     try {
-        const params: Record<string, string> = {
-            act: 'order',
-            pid: PAYMENT_CONFIG.pid,
-            out_trade_no: outTradeNo,
+        const sdk = getAlipaySDK()
+        const result: any = await sdk.exec('alipay.trade.query', {
+            bizContent: {
+                out_trade_no: outTradeNo,
+            },
+        })
+
+        const statusMap: Record<string, 'pending' | 'paid' | 'closed' | 'failed'> = {
+            WAIT_BUYER_PAY: 'pending',
+            TRADE_SUCCESS: 'paid',
+            TRADE_FINISHED: 'paid',
+            TRADE_CLOSED: 'closed',
         }
-        
-        params.sign = generateSign(params, PAYMENT_CONFIG.key)
-        params.sign_type = 'MD5'
-        
-        const queryString = new URLSearchParams(params).toString()
-        const response = await fetch(`${PAYMENT_CONFIG.url}/api.php?${queryString}`)
-        const data = await response.json()
-        
-        if (data.code === 1) {
-            let status: 'pending' | 'paid' | 'failed' = 'pending'
-            if (data.status === 1) status = 'paid'
-            else if (data.status === -1) status = 'failed'
-            
-            return {
-                success: true,
-                status,
-                tradeNo: data.trade_no,
-            }
-        } else {
-            return {
-                success: false,
-                error: data.msg || '查询失败',
-            }
-        }
-    } catch (error) {
-        console.error('Query order error:', error)
+
+        const tradeStatus = result?.tradeStatus || result?.trade_status
         return {
-            success: false,
-            error: '查询服务暂时不可用',
+            success: true,
+            status: statusMap[tradeStatus] || 'failed',
+            tradeNo: result?.tradeNo || result?.trade_no,
         }
+    } catch (error: any) {
+        console.error('[Alipay] query error:', error)
+        return { success: false, error: error.message || '查询失败' }
     }
 }
 
-// 解析回调参数
-export interface PaymentNotifyParams {
-    pid: string
-    trade_no: string       // 平台订单号
-    out_trade_no: string   // 商户订单号
-    type: string           // 支付方式
-    name: string           // 商品名称
-    money: string          // 金额
-    trade_status: string   // 交易状态 TRADE_SUCCESS
-    sign: string           // 签名
-    sign_type: string      // 签名类型
+// ============ 验证异步通知签名 ============
+
+export function verifyNotifySign(params: Record<string, string>): boolean {
+    try {
+        const sdk = getAlipaySDK()
+        return sdk.checkNotifySign(params)
+    } catch (error) {
+        console.error('[Alipay] verify notify sign error:', error)
+        return false
+    }
 }
 
-// 验证回调
-export function verifyNotify(params: PaymentNotifyParams): boolean {
-    const { sign, sign_type, ...rest } = params
-    return verifySign(rest as Record<string, string>, PAYMENT_CONFIG.key, sign)
-}
+// ============ 类型导出 ============
+
+export type PaymentMethod = 'alipay'

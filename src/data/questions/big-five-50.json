@@ -5,7 +5,13 @@
   "description": "基于心理学界广泛认可的大五人格模型（OCEAN），测量您在开放性、尽责性、外向性、宜人性和神经质五个核心维度上的特征。",
   "questionCount": 50,
   "estimatedTime": "8-12分钟",
-  "dimensions": ["O", "C", "E", "A", "N"],
+  "dimensions": [
+    "O",
+    "C",
+    "E",
+    "A",
+    "N"
+  ],
   "dimensionLabels": {
     "O": "开放性 Openness",
     "C": "尽责性 Conscientiousness",
@@ -20,11 +26,41 @@
       "dimension": "O",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "O", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "O", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "O", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "O", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "O", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "O",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "O",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "O",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "O",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "O",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -33,11 +69,41 @@
       "dimension": "O",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "O", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "O", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "O", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "O", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "O", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "O",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "O",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "O",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "O",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "O",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -46,11 +112,41 @@
       "dimension": "O",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "O", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "O", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "O", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "O", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "O", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "O",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "O",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "O",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "O",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "O",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -59,11 +155,41 @@
       "dimension": "O",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "O", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "O", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "O", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "O", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "O", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "O",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "O",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "O",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "O",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "O",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -72,11 +198,41 @@
       "dimension": "O",
       "reverse": true,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "O", "value": 5 } },
-        { "text": "不同意", "score": { "dimension": "O", "value": 4 } },
-        { "text": "中立", "score": { "dimension": "O", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "O", "value": 2 } },
-        { "text": "非常同意", "score": { "dimension": "O", "value": 1 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "O",
+            "value": 5
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "O",
+            "value": 4
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "O",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "O",
+            "value": 2
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "O",
+            "value": 1
+          }
+        }
       ]
     },
     {
@@ -85,11 +241,41 @@
       "dimension": "O",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "O", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "O", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "O", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "O", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "O", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "O",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "O",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "O",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "O",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "O",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -98,11 +284,41 @@
       "dimension": "O",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "O", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "O", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "O", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "O", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "O", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "O",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "O",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "O",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "O",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "O",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -111,11 +327,41 @@
       "dimension": "O",
       "reverse": true,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "O", "value": 5 } },
-        { "text": "不同意", "score": { "dimension": "O", "value": 4 } },
-        { "text": "中立", "score": { "dimension": "O", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "O", "value": 2 } },
-        { "text": "非常同意", "score": { "dimension": "O", "value": 1 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "O",
+            "value": 5
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "O",
+            "value": 4
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "O",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "O",
+            "value": 2
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "O",
+            "value": 1
+          }
+        }
       ]
     },
     {
@@ -124,11 +370,41 @@
       "dimension": "O",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "O", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "O", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "O", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "O", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "O", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "O",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "O",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "O",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "O",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "O",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -137,11 +413,41 @@
       "dimension": "O",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "O", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "O", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "O", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "O", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "O", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "O",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "O",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "O",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "O",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "O",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -150,11 +456,41 @@
       "dimension": "C",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "C", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "C", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "C", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "C", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "C", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "C",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "C",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "C",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "C",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "C",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -163,11 +499,41 @@
       "dimension": "C",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "C", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "C", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "C", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "C", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "C", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "C",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "C",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "C",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "C",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "C",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -176,11 +542,41 @@
       "dimension": "C",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "C", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "C", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "C", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "C", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "C", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "C",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "C",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "C",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "C",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "C",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -189,11 +585,41 @@
       "dimension": "C",
       "reverse": true,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "C", "value": 5 } },
-        { "text": "不同意", "score": { "dimension": "C", "value": 4 } },
-        { "text": "中立", "score": { "dimension": "C", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "C", "value": 2 } },
-        { "text": "非常同意", "score": { "dimension": "C", "value": 1 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "C",
+            "value": 5
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "C",
+            "value": 4
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "C",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "C",
+            "value": 2
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "C",
+            "value": 1
+          }
+        }
       ]
     },
     {
@@ -202,11 +628,41 @@
       "dimension": "C",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "C", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "C", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "C", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "C", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "C", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "C",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "C",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "C",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "C",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "C",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -215,11 +671,41 @@
       "dimension": "C",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "C", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "C", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "C", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "C", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "C", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "C",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "C",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "C",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "C",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "C",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -228,11 +714,41 @@
       "dimension": "C",
       "reverse": true,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "C", "value": 5 } },
-        { "text": "不同意", "score": { "dimension": "C", "value": 4 } },
-        { "text": "中立", "score": { "dimension": "C", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "C", "value": 2 } },
-        { "text": "非常同意", "score": { "dimension": "C", "value": 1 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "C",
+            "value": 5
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "C",
+            "value": 4
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "C",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "C",
+            "value": 2
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "C",
+            "value": 1
+          }
+        }
       ]
     },
     {
@@ -241,11 +757,41 @@
       "dimension": "C",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "C", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "C", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "C", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "C", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "C", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "C",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "C",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "C",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "C",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "C",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -254,11 +800,41 @@
       "dimension": "C",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "C", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "C", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "C", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "C", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "C", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "C",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "C",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "C",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "C",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "C",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -267,11 +843,41 @@
       "dimension": "C",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "C", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "C", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "C", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "C", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "C", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "C",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "C",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "C",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "C",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "C",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -280,11 +886,41 @@
       "dimension": "E",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "E", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "E", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "E", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "E", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "E", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "E",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "E",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "E",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "E",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "E",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -293,11 +929,41 @@
       "dimension": "E",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "E", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "E", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "E", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "E", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "E", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "E",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "E",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "E",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "E",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "E",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -306,11 +972,41 @@
       "dimension": "E",
       "reverse": true,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "E", "value": 5 } },
-        { "text": "不同意", "score": { "dimension": "E", "value": 4 } },
-        { "text": "中立", "score": { "dimension": "E", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "E", "value": 2 } },
-        { "text": "非常同意", "score": { "dimension": "E", "value": 1 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "E",
+            "value": 5
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "E",
+            "value": 4
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "E",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "E",
+            "value": 2
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "E",
+            "value": 1
+          }
+        }
       ]
     },
     {
@@ -319,11 +1015,41 @@
       "dimension": "E",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "E", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "E", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "E", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "E", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "E", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "E",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "E",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "E",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "E",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "E",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -332,11 +1058,41 @@
       "dimension": "E",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "E", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "E", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "E", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "E", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "E", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "E",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "E",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "E",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "E",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "E",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -345,11 +1101,41 @@
       "dimension": "E",
       "reverse": true,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "E", "value": 5 } },
-        { "text": "不同意", "score": { "dimension": "E", "value": 4 } },
-        { "text": "中立", "score": { "dimension": "E", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "E", "value": 2 } },
-        { "text": "非常同意", "score": { "dimension": "E", "value": 1 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "E",
+            "value": 5
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "E",
+            "value": 4
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "E",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "E",
+            "value": 2
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "E",
+            "value": 1
+          }
+        }
       ]
     },
     {
@@ -358,11 +1144,41 @@
       "dimension": "E",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "E", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "E", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "E", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "E", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "E", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "E",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "E",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "E",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "E",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "E",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -371,11 +1187,41 @@
       "dimension": "E",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "E", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "E", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "E", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "E", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "E", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "E",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "E",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "E",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "E",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "E",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -384,11 +1230,41 @@
       "dimension": "E",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "E", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "E", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "E", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "E", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "E", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "E",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "E",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "E",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "E",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "E",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -397,11 +1273,41 @@
       "dimension": "E",
       "reverse": true,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "E", "value": 5 } },
-        { "text": "不同意", "score": { "dimension": "E", "value": 4 } },
-        { "text": "中立", "score": { "dimension": "E", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "E", "value": 2 } },
-        { "text": "非常同意", "score": { "dimension": "E", "value": 1 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "E",
+            "value": 5
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "E",
+            "value": 4
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "E",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "E",
+            "value": 2
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "E",
+            "value": 1
+          }
+        }
       ]
     },
     {
@@ -410,11 +1316,41 @@
       "dimension": "A",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "A", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "A", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "A", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "A", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "A", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "A",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "A",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "A",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "A",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "A",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -423,11 +1359,41 @@
       "dimension": "A",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "A", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "A", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "A", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "A", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "A", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "A",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "A",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "A",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "A",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "A",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -436,11 +1402,41 @@
       "dimension": "A",
       "reverse": true,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "A", "value": 5 } },
-        { "text": "不同意", "score": { "dimension": "A", "value": 4 } },
-        { "text": "中立", "score": { "dimension": "A", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "A", "value": 2 } },
-        { "text": "非常同意", "score": { "dimension": "A", "value": 1 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "A",
+            "value": 5
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "A",
+            "value": 4
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "A",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "A",
+            "value": 2
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "A",
+            "value": 1
+          }
+        }
       ]
     },
     {
@@ -449,11 +1445,41 @@
       "dimension": "A",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "A", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "A", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "A", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "A", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "A", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "A",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "A",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "A",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "A",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "A",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -462,11 +1488,41 @@
       "dimension": "A",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "A", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "A", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "A", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "A", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "A", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "A",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "A",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "A",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "A",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "A",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -475,11 +1531,41 @@
       "dimension": "A",
       "reverse": true,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "A", "value": 5 } },
-        { "text": "不同意", "score": { "dimension": "A", "value": 4 } },
-        { "text": "中立", "score": { "dimension": "A", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "A", "value": 2 } },
-        { "text": "非常同意", "score": { "dimension": "A", "value": 1 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "A",
+            "value": 5
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "A",
+            "value": 4
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "A",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "A",
+            "value": 2
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "A",
+            "value": 1
+          }
+        }
       ]
     },
     {
@@ -488,11 +1574,41 @@
       "dimension": "A",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "A", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "A", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "A", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "A", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "A", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "A",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "A",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "A",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "A",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "A",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -501,11 +1617,41 @@
       "dimension": "A",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "A", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "A", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "A", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "A", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "A", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "A",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "A",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "A",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "A",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "A",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -514,11 +1660,41 @@
       "dimension": "A",
       "reverse": true,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "A", "value": 5 } },
-        { "text": "不同意", "score": { "dimension": "A", "value": 4 } },
-        { "text": "中立", "score": { "dimension": "A", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "A", "value": 2 } },
-        { "text": "非常同意", "score": { "dimension": "A", "value": 1 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "A",
+            "value": 5
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "A",
+            "value": 4
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "A",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "A",
+            "value": 2
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "A",
+            "value": 1
+          }
+        }
       ]
     },
     {
@@ -527,11 +1703,41 @@
       "dimension": "A",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "A", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "A", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "A", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "A", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "A", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "A",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "A",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "A",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "A",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "A",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -540,11 +1746,41 @@
       "dimension": "N",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "N", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "N", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "N", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "N", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "N", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "N",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "N",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "N",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "N",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "N",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -553,11 +1789,41 @@
       "dimension": "N",
       "reverse": true,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "N", "value": 5 } },
-        { "text": "不同意", "score": { "dimension": "N", "value": 4 } },
-        { "text": "中立", "score": { "dimension": "N", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "N", "value": 2 } },
-        { "text": "非常同意", "score": { "dimension": "N", "value": 1 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "N",
+            "value": 5
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "N",
+            "value": 4
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "N",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "N",
+            "value": 2
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "N",
+            "value": 1
+          }
+        }
       ]
     },
     {
@@ -566,11 +1832,41 @@
       "dimension": "N",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "N", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "N", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "N", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "N", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "N", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "N",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "N",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "N",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "N",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "N",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -579,11 +1875,41 @@
       "dimension": "N",
       "reverse": true,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "N", "value": 5 } },
-        { "text": "不同意", "score": { "dimension": "N", "value": 4 } },
-        { "text": "中立", "score": { "dimension": "N", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "N", "value": 2 } },
-        { "text": "非常同意", "score": { "dimension": "N", "value": 1 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "N",
+            "value": 5
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "N",
+            "value": 4
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "N",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "N",
+            "value": 2
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "N",
+            "value": 1
+          }
+        }
       ]
     },
     {
@@ -592,11 +1918,41 @@
       "dimension": "N",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "N", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "N", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "N", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "N", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "N", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "N",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "N",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "N",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "N",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "N",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -605,11 +1961,41 @@
       "dimension": "N",
       "reverse": true,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "N", "value": 5 } },
-        { "text": "不同意", "score": { "dimension": "N", "value": 4 } },
-        { "text": "中立", "score": { "dimension": "N", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "N", "value": 2 } },
-        { "text": "非常同意", "score": { "dimension": "N", "value": 1 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "N",
+            "value": 5
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "N",
+            "value": 4
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "N",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "N",
+            "value": 2
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "N",
+            "value": 1
+          }
+        }
       ]
     },
     {
@@ -618,11 +2004,41 @@
       "dimension": "N",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "N", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "N", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "N", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "N", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "N", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "N",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "N",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "N",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "N",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "N",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -631,11 +2047,41 @@
       "dimension": "N",
       "reverse": true,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "N", "value": 5 } },
-        { "text": "不同意", "score": { "dimension": "N", "value": 4 } },
-        { "text": "中立", "score": { "dimension": "N", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "N", "value": 2 } },
-        { "text": "非常同意", "score": { "dimension": "N", "value": 1 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "N",
+            "value": 5
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "N",
+            "value": 4
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "N",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "N",
+            "value": 2
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "N",
+            "value": 1
+          }
+        }
       ]
     },
     {
@@ -644,11 +2090,41 @@
       "dimension": "N",
       "reverse": false,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "N", "value": 1 } },
-        { "text": "不同意", "score": { "dimension": "N", "value": 2 } },
-        { "text": "中立", "score": { "dimension": "N", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "N", "value": 4 } },
-        { "text": "非常同意", "score": { "dimension": "N", "value": 5 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "N",
+            "value": 1
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "N",
+            "value": 2
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "N",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "N",
+            "value": 4
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "N",
+            "value": 5
+          }
+        }
       ]
     },
     {
@@ -657,11 +2133,41 @@
       "dimension": "N",
       "reverse": true,
       "options": [
-        { "text": "非常不同意", "score": { "dimension": "N", "value": 5 } },
-        { "text": "不同意", "score": { "dimension": "N", "value": 4 } },
-        { "text": "中立", "score": { "dimension": "N", "value": 3 } },
-        { "text": "同意", "score": { "dimension": "N", "value": 2 } },
-        { "text": "非常同意", "score": { "dimension": "N", "value": 1 } }
+        {
+          "text": "完全不像我",
+          "score": {
+            "dimension": "N",
+            "value": 5
+          }
+        },
+        {
+          "text": "不太像我",
+          "score": {
+            "dimension": "N",
+            "value": 4
+          }
+        },
+        {
+          "text": "说不准",
+          "score": {
+            "dimension": "N",
+            "value": 3
+          }
+        },
+        {
+          "text": "比较像我",
+          "score": {
+            "dimension": "N",
+            "value": 2
+          }
+        },
+        {
+          "text": "非常像我",
+          "score": {
+            "dimension": "N",
+            "value": 1
+          }
+        }
       ]
     }
   ]

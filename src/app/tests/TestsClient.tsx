@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { Brain, Heart, Briefcase, Clock, CheckCircle, ArrowRight, Sparkles, RotateCcw } from "lucide-react"
+import { Brain, Heart, Briefcase, Clock, CheckCircle, ArrowRight, Sparkles, RotateCcw, Shield } from "lucide-react"
 import LoadingButton from "@/components/LoadingButton"
 import styles from "./tests.module.css"
 
@@ -78,7 +78,8 @@ const typeConfig: Record<string, { label: string; color: string; category: strin
     'DISC': { label: 'DISC 行为风格', color: '#10b981', category: 'personality' },
     'EQ': { label: '情商测试', color: '#f59e0b', category: 'emotion' },
     'HOLLAND': { label: '霍兰德职业兴趣', color: '#ec4899', category: 'career' },
-    'ENNEAGRAM': { label: '九型人格', color: '#6366f1', category: 'personality' }
+    'ENNEAGRAM': { label: '九型人格', color: '#6366f1', category: 'personality' },
+    'DEPRESSION': { label: 'PHQ-9 抑郁筛查', color: '#ef4444', category: 'mental_health' }
 }
 
 // 分类配置
@@ -86,7 +87,8 @@ const categoryConfig = [
     { id: 'all', name: '全部测试', icon: <Sparkles size={20} />, color: '#8b5cf6' },
     { id: 'personality', name: '性格测试', icon: <Brain size={20} />, color: '#8b5cf6' },
     { id: 'emotion', name: '情商测试', icon: <Heart size={20} />, color: '#f59e0b' },
-    { id: 'career', name: '职业兴趣', icon: <Briefcase size={20} />, color: '#ec4899' }
+    { id: 'career', name: '职业兴趣', icon: <Briefcase size={20} />, color: '#ec4899' },
+    { id: 'mental_health', name: '心理健康', icon: <Shield size={20} />, color: '#ef4444' }
 ]
 
 interface TestsClientProps {
@@ -102,7 +104,8 @@ export default function TestsClient({ tests, completedTestIds }: TestsClientProp
         all: tests,
         personality: tests.filter(t => ['MBTI', 'BIG_FIVE', 'DISC', 'ENNEAGRAM'].includes(t.type)),
         emotion: tests.filter(t => t.type === 'EQ'),
-        career: tests.filter(t => t.type === 'HOLLAND')
+        career: tests.filter(t => t.type === 'HOLLAND'),
+        mental_health: tests.filter(t => t.type === 'DEPRESSION')
     }
 
     const displayTests = categories[activeCategory as keyof typeof categories] || tests

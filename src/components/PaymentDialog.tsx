@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, CreditCard, Smartphone, CheckCircle, Loader2, AlertCircle, RefreshCw } from 'lucide-react'
+import { X, CreditCard, Smartphone, CheckCircle, Loader2, AlertCircle, RefreshCw, ExternalLink } from 'lucide-react'
 import styles from './PaymentDialog.module.css'
 
 interface PaymentDialogProps {
@@ -12,19 +12,39 @@ interface PaymentDialogProps {
     onSuccess: () => void
 }
 
-type PaymentMethod = 'alipay' | 'wechat'
 type PaymentStatus = 'selecting' | 'creating' | 'pending' | 'checking' | 'success' | 'error'
+type PaymentMethod = 'alipay' | 'wechat'
+
+// 检测是否为移动端
+function isMobile(): boolean {
+    if (typeof window === 'undefined') return false
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+    )
+}
 
 export default function PaymentDialog({ isOpen, testResultId, onClose, onSuccess }: PaymentDialogProps) {
-    const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('alipay')
     const [status, setStatus] = useState<PaymentStatus>('selecting')
     const [orderId, setOrderId] = useState<string | null>(null)
     const [qrcode, setQrcode] = useState<string | null>(null)
     const [payUrl, setPayUrl] = useState<string | null>(null)
     const [error, setError] = useState<string | null>(null)
     const [pollCount, setPollCount] = useState(0)
+    const [mobile] = useState(() => isMobile())
+    const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('alipay')
+    const [paymentMethodUsed, setPaymentMethodUsed] = useState<PaymentMethod>('alipay')
+    const [wechatAvailable, setWechatAvailable] = useState(false)
 
     const amount = 9.9
+
+    // 拉取可用支付方式（未配置 AppID 时不展示微信）
+    useEffect(() => {
+        if (!isOpen || status !== 'selecting') return
+        fetch('/api/payment/methods')
+            .then((r) => r.json())
+            .then((data) => setWechatAvailable(!!data?.wechat))
+            .catch(() => setWechatAvailable(false))
+    }, [isOpen, status])
 
     // 创建支付订单
     const createOrder = async () => {
@@ -37,18 +57,24 @@ export default function PaymentDialog({ isOpen, testResultId, onClose, onSuccess
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     testResultId,
+                    clientType: mobile ? 'mobile' : 'pc',
                     paymentMethod,
-                })
+                }),
             })
 
             const data = await response.json()
 
-            if (response.ok) {
+            if (response.ok && data.success) {
                 setOrderId(data.orderId)
                 setQrcode(data.qrcode)
-                setPayUrl(data.payUrl || data.paymentUrl)
+                setPayUrl(data.payUrl || null)
+                setPaymentMethodUsed(data.paymentMethod || paymentMethod)
                 setStatus('pending')
                 setPollCount(0)
+
+                if (mobile && data.payUrl) {
+                    window.location.href = data.payUrl
+                }
             } else {
                 throw new Error(data.message || '创建订单失败')
             }
@@ -68,10 +94,12 @@ export default function PaymentDialog({ isOpen, testResultId, onClose, onSuccess
 
             if (data.status === 'paid') {
                 setStatus('success')
-                // 延迟调用成功回调
                 setTimeout(() => {
                     onSuccess()
                 }, 1500)
+            } else if (data.status === 'closed') {
+                setError('交易已关闭，请重新支付')
+                setStatus('error')
             } else {
                 setPollCount(prev => prev + 1)
             }
@@ -84,7 +112,7 @@ export default function PaymentDialog({ isOpen, testResultId, onClose, onSuccess
     useEffect(() => {
         if (status !== 'pending' || !orderId) return
 
-        // 每3秒检查一次，最多检查100次（5分钟）
+        // 每 3 秒检查一次，最多 100 次（约 5 分钟）
         if (pollCount >= 100) {
             setError('支付超时，请刷新页面重试')
             setStatus('error')
@@ -106,21 +134,30 @@ export default function PaymentDialog({ isOpen, testResultId, onClose, onSuccess
         onClose()
     }
 
-    // 打开支付链接
+    // 跳转支付宝支付页面
     const openPayUrl = () => {
         if (payUrl) {
             window.open(payUrl, '_blank')
         }
     }
 
-    // 手动刷新状态
-    const manualCheck = () => {
+    // 手动刷新支付状态
+    const manualCheck = async () => {
         setStatus('checking')
-        checkPayment().then(() => {
-            if (status !== 'success') {
+        try {
+            if (!orderId) return
+            const response = await fetch(`/api/payment/check?orderId=${orderId}`)
+            const data = await response.json()
+
+            if (data.status === 'paid') {
+                setStatus('success')
+                setTimeout(() => onSuccess(), 1500)
+            } else {
                 setStatus('pending')
             }
-        })
+        } catch {
+            setStatus('pending')
+        }
     }
 
     return (
@@ -143,7 +180,7 @@ export default function PaymentDialog({ isOpen, testResultId, onClose, onSuccess
                             <X size={20} />
                         </button>
 
-                        {/* 选择支付方式 */}
+                        {/* 选择 & 确认支付 */}
                         {status === 'selecting' && (
                             <>
                                 <div className={styles.header}>
@@ -158,22 +195,26 @@ export default function PaymentDialog({ isOpen, testResultId, onClose, onSuccess
                                 </div>
 
                                 <div className={styles.methodSection}>
-                                    <p className={styles.methodLabel}>选择支付方式</p>
+                                    <p className={styles.methodLabel}>支付方式</p>
                                     <div className={styles.methods}>
                                         <button
+                                            type="button"
                                             className={`${styles.methodBtn} ${paymentMethod === 'alipay' ? styles.selected : ''}`}
                                             onClick={() => setPaymentMethod('alipay')}
                                         >
                                             <span className={styles.methodIcon}>💳</span>
                                             <span>支付宝</span>
                                         </button>
-                                        <button
-                                            className={`${styles.methodBtn} ${paymentMethod === 'wechat' ? styles.selected : ''}`}
-                                            onClick={() => setPaymentMethod('wechat')}
-                                        >
-                                            <span className={styles.methodIcon}>💚</span>
-                                            <span>微信支付</span>
-                                        </button>
+                                        {wechatAvailable && (
+                                            <button
+                                                type="button"
+                                                className={`${styles.methodBtn} ${paymentMethod === 'wechat' ? styles.selected : ''}`}
+                                                onClick={() => setPaymentMethod('wechat')}
+                                            >
+                                                <span className={styles.methodIcon}>💚</span>
+                                                <span>微信支付</span>
+                                            </button>
+                                        )}
                                     </div>
                                 </div>
 
@@ -215,24 +256,39 @@ export default function PaymentDialog({ isOpen, testResultId, onClose, onSuccess
                             <>
                                 <div className={styles.header}>
                                     <Smartphone size={28} className={styles.headerIcon} />
-                                    <h2>扫码支付</h2>
-                                    <p>请使用{paymentMethod === 'alipay' ? '支付宝' : '微信'}扫描二维码完成支付</p>
+                                    <h2>
+                                        {paymentMethodUsed === 'wechat' ? '微信支付' : mobile ? '支付宝支付' : '扫码支付'}
+                                    </h2>
+                                    <p>
+                                        {paymentMethodUsed === 'wechat'
+                                            ? '请使用微信扫一扫扫描二维码完成支付'
+                                            : mobile
+                                                ? '正在跳转支付宝，请完成支付后返回'
+                                                : '请使用支付宝扫描二维码完成支付'}
+                                    </p>
                                 </div>
 
-                                <div className={styles.qrcodeSection}>
-                                    {qrcode ? (
-                                        <img src={qrcode} alt="支付二维码" className={styles.qrcode} />
-                                    ) : (
-                                        <div className={styles.qrcodePlaceholder}>
-                                            <p>二维码加载中...</p>
-                                            {payUrl && (
+                                {/* PC 端显示二维码 */}
+                                {!mobile && (
+                                    <div className={styles.qrcodeSection}>
+                                        {qrcode ? (
+                                            <img src={qrcode} alt="支付二维码" className={styles.qrcode} />
+                                        ) : payUrl && paymentMethodUsed === 'alipay' ? (
+                                            <div className={styles.qrcodePlaceholder}>
+                                                <p>二维码暂不可用</p>
                                                 <button className={styles.linkBtn} onClick={openPayUrl}>
-                                                    点击跳转支付页面
+                                                    <ExternalLink size={16} style={{ marginRight: 4 }} />
+                                                    点击跳转支付宝支付
                                                 </button>
-                                            )}
-                                        </div>
-                                    )}
-                                </div>
+                                            </div>
+                                        ) : (
+                                            <div className={styles.qrcodePlaceholder}>
+                                                <Loader2 size={24} className={styles.miniSpinner} />
+                                                <p>加载中...</p>
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
 
                                 <div className={styles.waitingInfo}>
                                     <Loader2 size={16} className={styles.miniSpinner} />
@@ -244,9 +300,16 @@ export default function PaymentDialog({ isOpen, testResultId, onClose, onSuccess
                                         <RefreshCw size={16} />
                                         已完成支付？点击刷新
                                     </button>
-                                    {payUrl && (
+                                    {payUrl && paymentMethodUsed === 'alipay' && !mobile && (
                                         <button className={styles.linkBtn} onClick={openPayUrl}>
-                                            打开支付页面
+                                            <ExternalLink size={16} style={{ marginRight: 4 }} />
+                                            打开支付宝支付页面
+                                        </button>
+                                    )}
+                                    {payUrl && paymentMethodUsed === 'alipay' && mobile && (
+                                        <button className={styles.linkBtn} onClick={() => payUrl && (window.location.href = payUrl)}>
+                                            <ExternalLink size={16} style={{ marginRight: 4 }} />
+                                            重新打开支付宝
                                         </button>
                                     )}
                                 </div>

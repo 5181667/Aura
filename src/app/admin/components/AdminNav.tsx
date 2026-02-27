@@ -4,7 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import {
     LayoutDashboard, Users, FileText, Settings,
-    ChevronLeft, Home, Shield, PlusCircle, Star, History
+    ChevronLeft, Home, Shield, PlusCircle, Star, History, Ticket
 } from "lucide-react"
 import styles from "./AdminNav.module.css"
 
@@ -41,6 +41,12 @@ export default function AdminNav() {
             label: "名人管理",
             icon: Star,
             description: "查看代表人物"
+        },
+        {
+            href: "/admin/redemption-codes",
+            label: "兑换码管理",
+            icon: Ticket,
+            description: "生成与管理兑换码"
         },
     ]
 

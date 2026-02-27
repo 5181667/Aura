@@ -646,6 +646,206 @@
     text-align: right;
 }
 
+/* ===== 丰富维度样式 ===== */
+.richDimList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.richDimItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.richDimHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.richDimLabel {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.richDimPercent {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.richDimBar {
+    height: 10px;
+    background: var(--bg-glass);
+    border-radius: 100px;
+    overflow: hidden;
+    position: relative;
+}
+
+.richDimFill {
+    height: 100%;
+    border-radius: 100px;
+    transition: width 0.8s ease-out;
+    position: relative;
+}
+
+.richDimFill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 20px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3));
+    border-radius: 100px;
+}
+
+/* ===== 洞察卡片网格 ===== */
+.insightGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.insightCard {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    padding: 1.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.insightCard:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.insightLabel {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.75rem;
+}
+
+.insightValue {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--text-main);
+}
+
+@media (max-width: 768px) {
+    .insightGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== 抑郁测试专属样式 ===== */
+.depressionGauge {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.gaugeLabel {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.gaugeLevelBadge {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.gaugeTrack {
+    height: 12px;
+    background: var(--bg-glass);
+    border-radius: 100px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.gaugeFill {
+    height: 100%;
+    border-radius: 100px;
+    transition: width 1.2s ease-out;
+}
+
+.gaugeScale {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    padding: 0 0.25rem;
+    margin-bottom: 1rem;
+}
+
+.gaugeScore {
+    font-size: 1rem;
+    color: var(--text-main);
+}
+
+.gaugeScore strong {
+    font-size: 1.5rem;
+}
+
+.depressionDisclaimer {
+    display: flex;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: rgba(245, 158, 11, 0.08);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+    border-radius: 16px;
+    text-align: left;
+    margin-top: 1.5rem;
+}
+
+.depressionDisclaimer svg {
+    flex-shrink: 0;
+    color: #f59e0b;
+    margin-top: 2px;
+}
+
+.depressionDisclaimer strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #f59e0b;
+    font-size: 0.95rem;
+}
+
+.depressionDisclaimer p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.hotline {
+    margin-top: 0.75rem !important;
+    padding: 0.75rem 1rem;
+    background: rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    border-radius: 10px;
+    color: #ef4444 !important;
+    font-weight: 500;
+}
+
+.hotline strong {
+    color: #ef4444;
+    font-size: 1rem;
+    display: inline;
+}
+
 /* ===== 游客提示横幅 ===== */
 .guestBanner {
     position: fixed;
@@ -764,6 +964,26 @@
     background: rgba(255, 255, 255, 0.2);
     padding: 0.25rem 0.75rem;
     border-radius: 100px;
+}
+
+.redeemCodeBtn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1.25rem;
+    background: transparent;
+    border: 1.5px dashed var(--primary);
+    border-radius: 100px;
+    color: var(--primary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.redeemCodeBtn:hover {
+    background: rgba(139, 92, 246, 0.1);
+    border-style: solid;
+    transform: translateY(-1px);
 }
 
 /* 高级报告功能列表 */

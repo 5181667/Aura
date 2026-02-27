@@ -45,6 +45,13 @@ const dimensionColors: Record<string, { primary: string; secondary: string }> = 
     'MO': { primary: '#f59e0b', secondary: '#fbbf24' }, // 动机
     'EM': { primary: '#ec4899', secondary: '#f472b6' }, // 同理心
     'SS': { primary: '#10b981', secondary: '#34d399' }, // 社交技能
+    // Depression（5维度）
+    'EMO': { primary: '#8b5cf6', secondary: '#a78bfa' }, // 情绪症状 - 紫色
+    'SOM': { primary: '#06b6d4', secondary: '#22d3ee' }, // 躯体症状 - 青色
+    'COG': { primary: '#f59e0b', secondary: '#fbbf24' }, // 认知症状 - 橙色
+    'BEH': { primary: '#ef4444', secondary: '#f87171' }, // 行为症状 - 红色
+    'SOC': { primary: '#6366f1', secondary: '#818cf8' }, // 社会功能 - 靛蓝
+    'DEP': { primary: '#6366f1', secondary: '#818cf8' }, // 兼容旧数据
     // 默认
     'default': { primary: '#8b5cf6', secondary: '#ec4899' }
 }

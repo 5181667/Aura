@@ -1,0 +1,382 @@
+{
+  "id": "depression-30",
+  "type": "DEPRESSION",
+  "title": "综合抑郁评估量表（专业版）",
+  "description": "基于 PHQ-9、BDI-II、SDS 等国际权威量表综合设计，从情绪、躯体、认知、行为、社会功能五个维度全面评估你近两周的心理状态。共30题，仅供自我筛查参考，不能替代专业诊断。",
+  "questionCount": 30,
+  "estimatedTime": "5-8分钟",
+  "dimensions": ["EMO", "SOM", "COG", "BEH", "SOC"],
+  "dimensionLabels": {
+    "EMO": "情绪症状",
+    "SOM": "躯体症状",
+    "COG": "认知症状",
+    "BEH": "行为症状",
+    "SOC": "社会功能"
+  },
+  "questions": [
+    {
+      "id": "emo-1",
+      "question": "近两周，你是否感到持续的心情低落或莫名的悲伤",
+      "dimension": "EMO",
+      "symptom": "持续低落",
+      "options": [
+        { "text": "完全没有", "score": { "dimension": "EMO", "value": 0 } },
+        { "text": "偶尔几天", "score": { "dimension": "EMO", "value": 1 } },
+        { "text": "超过一半时间", "score": { "dimension": "EMO", "value": 2 } },
+        { "text": "几乎每天", "score": { "dimension": "EMO", "value": 3 } }
+      ]
+    },
+    {
+      "id": "emo-2",
+      "question": "你是否觉得生活中缺少令人期待或开心的事情",
+      "dimension": "EMO",
+      "symptom": "快感缺失",
+      "options": [
+        { "text": "完全没有", "score": { "dimension": "EMO", "value": 0 } },
+        { "text": "偶尔几天", "score": { "dimension": "EMO", "value": 1 } },
+        { "text": "超过一半时间", "score": { "dimension": "EMO", "value": 2 } },
+        { "text": "几乎每天", "score": { "dimension": "EMO", "value": 3 } }
+      ]
+    },
+    {
+      "id": "emo-3",
+      "question": "你是否经常感到空虚，好像内心什么都没有",
+      "dimension": "EMO",
+      "symptom": "空虚感",
+      "options": [
+        { "text": "完全没有", "score": { "dimension": "EMO", "value": 0 } },
+        { "text": "偶尔几天", "score": { "dimension": "EMO", "value": 1 } },
+        { "text": "超过一半时间", "score": { "dimension": "EMO", "value": 2 } },
+        { "text": "几乎每天", "score": { "dimension": "EMO", "value": 3 } }
+      ]
+    },
+    {
+      "id": "emo-4",
+      "question": "你是否容易因为小事而烦躁、发脾气或情绪失控",
+      "dimension": "EMO",
+      "symptom": "易激惹",
+      "options": [
+        { "text": "完全没有", "score": { "dimension": "EMO", "value": 0 } },
+        { "text": "偶尔几天", "score": { "dimension": "EMO", "value": 1 } },
+        { "text": "超过一半时间", "score": { "dimension": "EMO", "value": 2 } },
+        { "text": "几乎每天", "score": { "dimension": "EMO", "value": 3 } }
+      ]
+    },
+    {
+      "id": "emo-5",
+      "question": "你是否感到莫名的焦虑或紧张，却说不清原因",
+      "dimension": "EMO",
+      "symptom": "焦虑不安",
+      "options": [
+        { "text": "完全没有", "score": { "dimension": "EMO", "value": 0 } },
+        { "text": "偶尔几天", "score": { "dimension": "EMO", "value": 1 } },
+        { "text": "超过一半时间", "score": { "dimension": "EMO", "value": 2 } },
+        { "text": "几乎每天", "score": { "dimension": "EMO", "value": 3 } }
+      ]
+    },
+    {
+      "id": "emo-6",
+      "question": "你是否经常无缘无故地想哭，或者很容易就哭出来",
+      "dimension": "EMO",
+      "symptom": "易哭泣",
+      "options": [
+        { "text": "完全没有", "score": { "dimension": "EMO", "value": 0 } },
+        { "text": "偶尔几天", "score": { "dimension": "EMO", "value": 1 } },
+        { "text": "超过一半时间", "score": { "dimension": "EMO", "value": 2 } },
+        { "text": "几乎每天", "score": { "dimension": "EMO", "value": 3 } }
+      ]
+    },
+
+    {
+      "id": "som-1",
+      "question": "你是否经常感觉身体疲惫，即使休息后也难以恢复",
+      "dimension": "SOM",
+      "symptom": "持续疲劳",
+      "options": [
+        { "text": "完全没有", "score": { "dimension": "SOM", "value": 0 } },
+        { "text": "偶尔几天", "score": { "dimension": "SOM", "value": 1 } },
+        { "text": "超过一半时间", "score": { "dimension": "SOM", "value": 2 } },
+        { "text": "几乎每天", "score": { "dimension": "SOM", "value": 3 } }
+      ]
+    },
+    {
+      "id": "som-2",
+      "question": "你是否存在入睡困难、半夜易醒或早醒的睡眠问题",
+      "dimension": "SOM",
+      "symptom": "睡眠障碍",
+      "options": [
+        { "text": "完全没有", "score": { "dimension": "SOM", "value": 0 } },
+        { "text": "偶尔几天", "score": { "dimension": "SOM", "value": 1 } },
+        { "text": "超过一半时间", "score": { "dimension": "SOM", "value": 2 } },
+        { "text": "几乎每天", "score": { "dimension": "SOM", "value": 3 } }
+      ]
+    },
+    {
+      "id": "som-3",
+      "question": "你的食欲是否明显下降或暴饮暴食",
+      "dimension": "SOM",
+      "symptom": "食欲紊乱",
+      "options": [
+        { "text": "完全没有", "score": { "dimension": "SOM", "value": 0 } },
+        { "text": "偶尔几天", "score": { "dimension": "SOM", "value": 1 } },
+        { "text": "超过一半时间", "score": { "dimension": "SOM", "value": 2 } },
+        { "text": "几乎每天", "score": { "dimension": "SOM", "value": 3 } }
+      ]
+    },
+    {
+      "id": "som-4",
+      "question": "你是否经常感到头痛、胸闷或身体莫名的不适",
+      "dimension": "SOM",
+      "symptom": "躯体不适",
+      "options": [
+        { "text": "完全没有", "score": { "dimension": "SOM", "value": 0 } },
+        { "text": "偶尔几天", "score": { "dimension": "SOM", "value": 1 } },
+        { "text": "超过一半时间", "score": { "dimension": "SOM", "value": 2 } },
+        { "text": "几乎每天", "score": { "dimension": "SOM", "value": 3 } }
+      ]
+    },
+    {
+      "id": "som-5",
+      "question": "你是否觉得自己的动作变慢了，或者反过来坐立不安、无法静下来",
+      "dimension": "SOM",
+      "symptom": "精神运动变化",
+      "options": [
+        { "text": "完全没有", "score": { "dimension": "SOM", "value": 0 } },
+        { "text": "偶尔几天", "score": { "dimension": "SOM", "value": 1 } },
+        { "text": "超过一半时间", "score": { "dimension": "SOM", "value": 2 } },
+        { "text": "几乎每天", "score": { "dimension": "SOM", "value": 3 } }
+      ]
+    },
+    {
+      "id": "som-6",
+      "question": "你的体重近期是否有明显的增加或减少（非刻意控制）",
+      "dimension": "SOM",
+      "symptom": "体重波动",
+      "options": [
+        { "text": "完全没有", "score": { "dimension": "SOM", "value": 0 } },
+        { "text": "偶尔几天", "score": { "dimension": "SOM", "value": 1 } },
+        { "text": "超过一半时间", "score": { "dimension": "SOM", "value": 2 } },
+        { "text": "几乎每天", "score": { "dimension": "SOM", "value": 3 } }
+      ]
+    },
+
+    {
+      "id": "cog-1",
+      "question": "你是否经常觉得自己什么都做不好，是个失败者",
+      "dimension": "COG",
+      "symptom": "自我否定",
+      "options": [
+        { "text": "完全没有", "score": { "dimension": "COG", "value": 0 } },
+        { "text": "偶尔几天", "score": { "dimension": "COG", "value": 1 } },
+        { "text": "超过一半时间", "score": { "dimension": "COG", "value": 2 } },
+        { "text": "几乎每天", "score": { "dimension": "COG", "value": 3 } }
+      ]
+    },
+    {
+      "id": "cog-2",
+      "question": "你是否很难集中注意力，比如阅读文章或追剧时容易走神",
+      "dimension": "COG",
+      "symptom": "注意力下降",
+      "options": [
+        { "text": "完全没有", "score": { "dimension": "COG", "value": 0 } },
+        { "text": "偶尔几天", "score": { "dimension": "COG", "value": 1 } },
+        { "text": "超过一半时间", "score": { "dimension": "COG", "value": 2 } },
+        { "text": "几乎每天", "score": { "dimension": "COG", "value": 3 } }
+      ]
+    },
+    {
+      "id": "cog-3",
+      "question": "你是否对未来感到悲观，觉得事情不会变好",
+      "dimension": "COG",
+      "symptom": "绝望感",
+      "options": [
+        { "text": "完全没有", "score": { "dimension": "COG", "value": 0 } },
+        { "text": "偶尔几天", "score": { "dimension": "COG", "value": 1 } },
+        { "text": "超过一半时间", "score": { "dimension": "COG", "value": 2 } },
+        { "text": "几乎每天", "score": { "dimension": "COG", "value": 3 } }
+      ]
+    },
+    {
+      "id": "cog-4",
+      "question": "你是否经常自责或内疚，反复回想自己做错的事",
+      "dimension": "COG",
+      "symptom": "过度自责",
+      "options": [
+        { "text": "完全没有", "score": { "dimension": "COG", "value": 0 } },
+        { "text": "偶尔几天", "score": { "dimension": "COG", "value": 1 } },
+        { "text": "超过一半时间", "score": { "dimension": "COG", "value": 2 } },
+        { "text": "几乎每天", "score": { "dimension": "COG", "value": 3 } }
+      ]
+    },
+    {
+      "id": "cog-5",
+      "question": "你是否觉得自己毫无价值，或者不值得被爱",
+      "dimension": "COG",
+      "symptom": "无价值感",
+      "options": [
+        { "text": "完全没有", "score": { "dimension": "COG", "value": 0 } },
+        { "text": "偶尔几天", "score": { "dimension": "COG", "value": 1 } },
+        { "text": "超过一半时间", "score": { "dimension": "COG", "value": 2 } },
+        { "text": "几乎每天", "score": { "dimension": "COG", "value": 3 } }
+      ]
+    },
+    {
+      "id": "cog-6",
+      "question": "你是否频繁地出现关于死亡的想法，或觉得活着没有意义",
+      "dimension": "COG",
+      "symptom": "消极念头",
+      "options": [
+        { "text": "完全没有", "score": { "dimension": "COG", "value": 0 } },
+        { "text": "偶尔几天", "score": { "dimension": "COG", "value": 1 } },
+        { "text": "超过一半时间", "score": { "dimension": "COG", "value": 2 } },
+        { "text": "几乎每天", "score": { "dimension": "COG", "value": 3 } }
+      ]
+    },
+
+    {
+      "id": "beh-1",
+      "question": "你是否对以前喜欢的事物（如爱好、运动、游戏）失去了兴趣",
+      "dimension": "BEH",
+      "symptom": "兴趣丧失",
+      "options": [
+        { "text": "完全没有", "score": { "dimension": "BEH", "value": 0 } },
+        { "text": "偶尔几天", "score": { "dimension": "BEH", "value": 1 } },
+        { "text": "超过一半时间", "score": { "dimension": "BEH", "value": 2 } },
+        { "text": "几乎每天", "score": { "dimension": "BEH", "value": 3 } }
+      ]
+    },
+    {
+      "id": "beh-2",
+      "question": "你是否发现自己很难做出日常决定，哪怕是很小的选择",
+      "dimension": "BEH",
+      "symptom": "决策困难",
+      "options": [
+        { "text": "完全没有", "score": { "dimension": "BEH", "value": 0 } },
+        { "text": "偶尔几天", "score": { "dimension": "BEH", "value": 1 } },
+        { "text": "超过一半时间", "score": { "dimension": "BEH", "value": 2 } },
+        { "text": "几乎每天", "score": { "dimension": "BEH", "value": 3 } }
+      ]
+    },
+    {
+      "id": "beh-3",
+      "question": "你是否经常拖延或无法开始需要做的事情",
+      "dimension": "BEH",
+      "symptom": "行动力丧失",
+      "options": [
+        { "text": "完全没有", "score": { "dimension": "BEH", "value": 0 } },
+        { "text": "偶尔几天", "score": { "dimension": "BEH", "value": 1 } },
+        { "text": "超过一半时间", "score": { "dimension": "BEH", "value": 2 } },
+        { "text": "几乎每天", "score": { "dimension": "BEH", "value": 3 } }
+      ]
+    },
+    {
+      "id": "beh-4",
+      "question": "你是否会通过刷手机、暴食、饮酒等方式来逃避现实情绪",
+      "dimension": "BEH",
+      "symptom": "逃避行为",
+      "options": [
+        { "text": "完全没有", "score": { "dimension": "BEH", "value": 0 } },
+        { "text": "偶尔几天", "score": { "dimension": "BEH", "value": 1 } },
+        { "text": "超过一半时间", "score": { "dimension": "BEH", "value": 2 } },
+        { "text": "几乎每天", "score": { "dimension": "BEH", "value": 3 } }
+      ]
+    },
+    {
+      "id": "beh-5",
+      "question": "你是否开始忽视个人卫生或外表，比如不想洗澡、不在意穿着",
+      "dimension": "BEH",
+      "symptom": "自我忽视",
+      "options": [
+        { "text": "完全没有", "score": { "dimension": "BEH", "value": 0 } },
+        { "text": "偶尔几天", "score": { "dimension": "BEH", "value": 1 } },
+        { "text": "超过一半时间", "score": { "dimension": "BEH", "value": 2 } },
+        { "text": "几乎每天", "score": { "dimension": "BEH", "value": 3 } }
+      ]
+    },
+    {
+      "id": "beh-6",
+      "question": "你是否有过想要伤害自己的冲动或行为",
+      "dimension": "BEH",
+      "symptom": "自伤倾向",
+      "options": [
+        { "text": "完全没有", "score": { "dimension": "BEH", "value": 0 } },
+        { "text": "偶尔几天", "score": { "dimension": "BEH", "value": 1 } },
+        { "text": "超过一半时间", "score": { "dimension": "BEH", "value": 2 } },
+        { "text": "几乎每天", "score": { "dimension": "BEH", "value": 3 } }
+      ]
+    },
+
+    {
+      "id": "soc-1",
+      "question": "你是否开始回避社交活动，不想和朋友或家人联系",
+      "dimension": "SOC",
+      "symptom": "社交退缩",
+      "options": [
+        { "text": "完全没有", "score": { "dimension": "SOC", "value": 0 } },
+        { "text": "偶尔几天", "score": { "dimension": "SOC", "value": 1 } },
+        { "text": "超过一半时间", "score": { "dimension": "SOC", "value": 2 } },
+        { "text": "几乎每天", "score": { "dimension": "SOC", "value": 3 } }
+      ]
+    },
+    {
+      "id": "soc-2",
+      "question": "你的工作或学习效率是否明显下降",
+      "dimension": "SOC",
+      "symptom": "效率下降",
+      "options": [
+        { "text": "完全没有", "score": { "dimension": "SOC", "value": 0 } },
+        { "text": "偶尔几天", "score": { "dimension": "SOC", "value": 1 } },
+        { "text": "超过一半时间", "score": { "dimension": "SOC", "value": 2 } },
+        { "text": "几乎每天", "score": { "dimension": "SOC", "value": 3 } }
+      ]
+    },
+    {
+      "id": "soc-3",
+      "question": "你是否觉得别人不理解你，或者觉得自己很孤独",
+      "dimension": "SOC",
+      "symptom": "孤独隔离",
+      "options": [
+        { "text": "完全没有", "score": { "dimension": "SOC", "value": 0 } },
+        { "text": "偶尔几天", "score": { "dimension": "SOC", "value": 1 } },
+        { "text": "超过一半时间", "score": { "dimension": "SOC", "value": 2 } },
+        { "text": "几乎每天", "score": { "dimension": "SOC", "value": 3 } }
+      ]
+    },
+    {
+      "id": "soc-4",
+      "question": "你是否在人际关系中更容易产生冲突或感到不耐烦",
+      "dimension": "SOC",
+      "symptom": "人际摩擦",
+      "options": [
+        { "text": "完全没有", "score": { "dimension": "SOC", "value": 0 } },
+        { "text": "偶尔几天", "score": { "dimension": "SOC", "value": 1 } },
+        { "text": "超过一半时间", "score": { "dimension": "SOC", "value": 2 } },
+        { "text": "几乎每天", "score": { "dimension": "SOC", "value": 3 } }
+      ]
+    },
+    {
+      "id": "soc-5",
+      "question": "你是否觉得自己成了家人或朋友的负担",
+      "dimension": "SOC",
+      "symptom": "负担感",
+      "options": [
+        { "text": "完全没有", "score": { "dimension": "SOC", "value": 0 } },
+        { "text": "偶尔几天", "score": { "dimension": "SOC", "value": 1 } },
+        { "text": "超过一半时间", "score": { "dimension": "SOC", "value": 2 } },
+        { "text": "几乎每天", "score": { "dimension": "SOC", "value": 3 } }
+      ]
+    },
+    {
+      "id": "soc-6",
+      "question": "你是否难以履行日常责任，比如上班、上学、做家务",
+      "dimension": "SOC",
+      "symptom": "功能受损",
+      "options": [
+        { "text": "完全没有", "score": { "dimension": "SOC", "value": 0 } },
+        { "text": "偶尔几天", "score": { "dimension": "SOC", "value": 1 } },
+        { "text": "超过一半时间", "score": { "dimension": "SOC", "value": 2 } },
+        { "text": "几乎每天", "score": { "dimension": "SOC", "value": 3 } }
+      ]
+    }
+  ]
+}

@@ -41,6 +41,12 @@ const testConfigs = [
     type: 'ENNEAGRAM',
     category: 'personality',
     isSystem: true
+  },
+  {
+    filename: 'phq9-9.json',
+    type: 'DEPRESSION',
+    category: 'mental_health',
+    isSystem: true
   }
 ]
 

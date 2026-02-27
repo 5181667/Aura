@@ -43,6 +43,9 @@ model User {
   // Chat (保留，暂不删除)
   sentMessages     Message[] @relation("SentMessages")
   receivedMessages Message[] @relation("ReceivedMessages")
+
+  // Redemption Codes
+  redemptionCodes  RedemptionCode[]
 }
 
 model FriendRequest {
@@ -62,7 +65,7 @@ model Test {
   id          String   @id @default(cuid())
   title       String
   description String
-  type        String   // MBTI, BIG_FIVE, DISC, EQ, HOLLAND, ENNEAGRAM, CUSTOM
+  type        String   // MBTI, BIG_FIVE, DISC, EQ, HOLLAND, ENNEAGRAM, DEPRESSION, CUSTOM
   category    String   @default("personality") // personality, emotion, career, etc.
   questions   Json     // Array of questions
   scoring     Json?    // Scoring configuration
@@ -132,6 +135,22 @@ model FullAnalysis {
   updatedAt       DateTime  @updatedAt
 
   user            User      @relation(fields: [userId], references: [id])
+}
+
+// 兑换码
+model RedemptionCode {
+  id                  String    @id @default(cuid())
+  code                String    @unique
+  testType            String    // 适用的测试类型：MBTI, BIG_FIVE, DISC, EQ, HOLLAND, ENNEAGRAM, ALL
+  batchName           String?   // 批次名称，方便管理员归类
+  isUsed              Boolean   @default(false)
+  usedBy              String?   // 使用者 userId
+  usedAt              DateTime? // 使用时间
+  usedForTestResultId String?   // 兑换的测试结果ID
+  expiresAt           DateTime? // 过期时间（可选）
+  createdAt           DateTime  @default(now())
+
+  user                User?     @relation(fields: [usedBy], references: [id])
 }
 
 // 高级报告（每次测试可单独购买）
