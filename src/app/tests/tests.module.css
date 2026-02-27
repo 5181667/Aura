@@ -109,6 +109,16 @@
     gap: 1.5rem;
 }
 
+.cardCover {
+    position: relative;
+    width: calc(100% + 4rem);
+    margin: -2rem -2rem 1.25rem -2rem;
+    height: 160px;
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--glass) 0%, var(--surface) 100%);
+}
+
 .testCard {
     position: relative;
     padding: 2rem;

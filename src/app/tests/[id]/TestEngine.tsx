@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import Image from "next/image"
 import { ChevronLeft, Clock, Target, Sparkles } from "lucide-react"
 import { calculateScore } from "@/data/scoring"
 import { useToast } from "@/components/Toast"
@@ -10,6 +11,11 @@ import { useRouter } from "next/navigation"
 import GenderSelector from "@/components/GenderSelector"
 import LoadingButton from "@/components/LoadingButton"
 import styles from "./engine.module.css"
+
+const testBannerImages: Record<string, string> = {
+    'TALENT': '/images/tests/talent-cover.png',
+    'MENTAL_AGE': '/images/tests/mental-age-cover.png',
+}
 
 interface TestEngineProps {
     test: {
@@ -52,6 +58,19 @@ const dimensionColors: Record<string, { primary: string; secondary: string }> = 
     'BEH': { primary: '#ef4444', secondary: '#f87171' }, // 行为症状 - 红色
     'SOC': { primary: '#6366f1', secondary: '#818cf8' }, // 社会功能 - 靛蓝
     'DEP': { primary: '#6366f1', secondary: '#818cf8' }, // 兼容旧数据
+    // 天赋发掘
+    'LI': { primary: '#f97316', secondary: '#fb923c' }, // 语言智能 - 橙色
+    'LM': { primary: '#3b82f6', secondary: '#60a5fa' }, // 逻辑数理 - 蓝色
+    'SV': { primary: '#a855f7', secondary: '#c084fc' }, // 空间视觉 - 紫色
+    'MU': { primary: '#ec4899', secondary: '#f472b6' }, // 音乐节奏 - 粉色
+    'BK': { primary: '#ef4444', secondary: '#f87171' }, // 身体运动 - 红色
+    'IP': { primary: '#22c55e', secondary: '#4ade80' }, // 人际交往 - 绿色
+    'IA': { primary: '#6366f1', secondary: '#818cf8' }, // 自我认知 - 靛蓝
+    'NA': { primary: '#14b8a6', secondary: '#2dd4bf' }, // 自然观察 - 青绿
+    // 心理年龄
+    'CM': { primary: '#0ea5e9', secondary: '#38bdf8' }, // 认知成熟度 - 天蓝
+    'VM': { primary: '#f59e0b', secondary: '#fbbf24' }, // 价值观成熟度 - 琥珀
+    'ID': { primary: '#8b5cf6', secondary: '#a78bfa' }, // 独立自主性 - 紫色
     // 默认
     'default': { primary: '#8b5cf6', secondary: '#ec4899' }
 }
@@ -254,6 +273,20 @@ export default function TestEngine({ test }: TestEngineProps) {
     if (!started) {
         return (
             <div className={`${styles.introCard} glass`}>
+                {testBannerImages[test.type] && (
+                    <div className={styles.introBanner}>
+                        <Image
+                            src={testBannerImages[test.type]}
+                            alt={test.title}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 600px"
+                            style={{ objectFit: 'cover' }}
+                            onError={(e) => {
+                                (e.target as HTMLImageElement).parentElement!.style.display = 'none'
+                            }}
+                        />
+                    </div>
+                )}
                 <div className={styles.introIcon}>
                     <Sparkles size={48} />
                 </div>

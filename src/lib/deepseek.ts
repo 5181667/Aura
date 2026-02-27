@@ -1055,6 +1055,10 @@ function generatePremiumReportPrompt(testResult: TestResultData, gender?: string
       return generateEnneagramPremiumPrompt(testResult, gender)
     case 'DEPRESSION':
       return generateDepressionPremiumPrompt(testResult, gender)
+    case 'TALENT':
+      return generateTalentPremiumPrompt(testResult, gender)
+    case 'MENTAL_AGE':
+      return generateMentalAgePremiumPrompt(testResult, gender)
     default:
       return generateMBTIPremiumPrompt(testResult, gender)
   }
@@ -1107,6 +1111,10 @@ export function generateMockPremiumReport(testResult: TestResultData): PremiumRe
       return { ...base, ...generateEnneagramMock(testResult) }
     case 'DEPRESSION':
       return { ...base, ...generateDepressionMock(testResult) }
+    case 'TALENT':
+      return { ...base, ...generateTalentMock(testResult) }
+    case 'MENTAL_AGE':
+      return { ...base, ...generateMentalAgeMock(testResult) }
     default:
       return { ...base, ...generateMBTIMock(testResult) }
   }
@@ -1835,6 +1843,230 @@ function generateDepressionMock(t: TestResultData): Omit<PremiumReportData, 'tes
       typicalCareers: [],
       globalDistribution: '抑郁症在全球各地区均有分布。高收入国家的报告率较高（与诊断服务普及有关），低收入国家的实际患病率可能被低估。COVID-19大流行后，全球抑郁症患病率上升约25%（WHO, 2022）。',
       genderDistribution: '女性的诊断率约为男性的1.5-2倍，但研究认为男性的实际患病率可能被低估——男性更倾向于通过愤怒、冒险行为或物质使用来表达情绪困扰，导致求助率更低。所有性别都值得获得同等的心理健康关注和支持。'
+    }
+  }
+}
+
+// === 天赋发掘测试 AI Prompt ===
+function generateTalentPremiumPrompt(testResult: TestResultData, gender?: string): string {
+  const sorted = [...testResult.dimensions].sort((a, b) => b.percentage - a.percentage)
+  const top3 = sorted.slice(0, 3).map(d => `${d.label || d.dimension}(${d.percentage}%)`).join('、')
+  const bottom3 = sorted.slice(-3).map(d => `${d.label || d.dimension}(${d.percentage}%)`).join('、')
+  const genderNote = gender ? `该用户性别为${gender === 'male' ? '男' : gender === 'female' ? '女' : '未指定'}。` : ''
+
+  return `你是一位多元智能理论和天赋发展领域的专家，擅长基于霍华德·加德纳的多元智能模型为用户提供个性化的天赋分析和发展建议。
+
+## 用户的天赋发掘测试结果
+- 天赋代码: ${testResult.score}（前三强智能维度的缩写组合）
+- 八大智能维度得分: ${testResult.dimensions.map(d => `${d.label || d.dimension}: ${d.percentage}%`).join(', ')}
+- 最突出的三项天赋: ${top3}
+- 最需发展的三项: ${bottom3}
+${genderNote}
+
+请基于以上结果，生成一份专业的高级天赋分析报告，以JSON格式输出。报告聚焦于天赋发掘和发展路径，不应使用模拟数据。
+
+输出JSON结构要求与其他测试报告一致（包含relationshipAnalysis/personalGrowth/careerAnalysis/workAnalysis/testSpecificInsights/charts/statistics），但内容需要：
+1. relationshipAnalysis: 聚焦于"天赋如何影响人际交往方式"，而非恋爱分析
+2. personalGrowth: 聚焦于天赋的发掘、发展和跨域整合
+3. careerAnalysis: 基于多元智能组合推荐具体的职业方向和行业
+4. workAnalysis: 基于天赋特征提供工作效率和协作建议
+5. testSpecificInsights: 提供多元智能交叉分析、天赋变现路径、刻意练习方案
+6. 所有内容必须基于用户的实际得分动态生成，具体且个性化`
+}
+
+// === 心理年龄测试 AI Prompt ===
+function generateMentalAgePremiumPrompt(testResult: TestResultData, gender?: string): string {
+  const mentalAge = parseInt(testResult.score) || 25
+  const dims = testResult.dimensions.map(d => `${d.label || d.dimension}: ${d.percentage}%`).join(', ')
+  const genderNote = gender ? `该用户性别为${gender === 'male' ? '男' : gender === 'female' ? '女' : '未指定'}。` : ''
+
+  return `你是一位发展心理学和心理成熟度评估领域的专家，擅长基于心理成熟度的多维度评估为用户提供个性化的成长指导。
+
+## 用户的心理年龄测试结果
+- 测算心理年龄: ${mentalAge}岁
+- 五大成熟度维度得分: ${dims}
+${genderNote}
+
+请基于以上结果，生成一份专业的心理年龄深度分析报告，以JSON格式输出。报告聚焦于心理成熟度分析和成长指导，不应使用模拟数据。
+
+输出JSON结构要求与其他测试报告一致，但内容需要：
+1. relationshipAnalysis: 聚焦于"心理成熟度如何影响人际关系模式"
+2. personalGrowth: 聚焦于各维度成熟度的提升路径和具体方法
+3. careerAnalysis: 基于心理成熟度分析职场表现和发展建议
+4. workAnalysis: 基于成熟度特征提供工作建议
+5. testSpecificInsights: 提供心理年龄与生理年龄的差异分析、成熟度发展曲线解读、定制化成长方案
+6. 所有内容必须基于用户的实际得分动态生成，具体且个性化
+7. 语气温暖积极，无论心理年龄高低都要给予正面引导`
+}
+
+// === 天赋发掘 Mock 报告 ===
+function generateTalentMock(t: TestResultData): Omit<PremiumReportData, 'testType' | 'score' | 'generatedAt' | 'dimensionAnalysis'> {
+  const sorted = [...t.dimensions].sort((a, b) => b.percentage - a.percentage)
+  const top1 = sorted[0], top2 = sorted[1], top3 = sorted[2]
+  const bottom1 = sorted[sorted.length - 1]
+  const code = t.score || 'LISVIP'
+  const dimLabels: Record<string, string> = { LI: '语言智能', LM: '逻辑数理智能', SV: '空间视觉智能', MU: '音乐节奏智能', BK: '身体运动智能', IP: '人际交往智能', IA: '自我认知智能', NA: '自然观察智能' }
+  const dimCareers: Record<string, string[]> = {
+    LI: ['作家/编辑', '记者', '律师', '翻译', '文案策划', '教师'],
+    LM: ['数据科学家', '程序员', '金融分析师', '工程师', '研究员', '精算师'],
+    SV: ['建筑师', 'UI/UX设计师', '摄影师', '游戏设计师', '室内设计师', '导演'],
+    MU: ['音乐人', '音乐制作人', '声音设计师', '音乐治疗师', '指挥家', '音乐教师'],
+    BK: ['运动员', '舞蹈家', '外科医生', '手工艺人', '健身教练', '戏剧演员'],
+    IP: ['HR经理', '销售总监', '心理咨询师', '公关经理', '培训师', '社区管理'],
+    IA: ['心理学家', '作家', '哲学研究者', '冥想教练', '独立咨询师', '艺术治疗师'],
+    NA: ['生态学家', '兽医', '农业科学家', '环境工程师', '植物学家', '自然摄影师']
+  }
+  const t1 = top1?.dimension || 'LI', t2 = top2?.dimension || 'LM', t3 = top3?.dimension || 'SV'
+  const t1Label = dimLabels[t1] || t1, t2Label = dimLabels[t2] || t2, t3Label = dimLabels[t3] || t3
+  const b1Label = dimLabels[bottom1?.dimension || 'NA'] || '自然观察智能'
+
+  return {
+    relationshipAnalysis: {
+      overview: `您的天赋代码为${code}，前三强智能为${t1Label}(${top1?.percentage || 50}%)、${t2Label}(${top2?.percentage || 50}%)和${t3Label}(${top3?.percentage || 50}%)。这种天赋组合深刻影响着您的人际交往方式——您倾向于通过${t1Label}相关的方式建立连接和表达自我。`,
+      communicationInRelationship: `${t1 === 'LI' ? '您擅长用语言表达感受和想法，在关系中是出色的沟通者。' : t1 === 'IP' ? '您天生擅长理解他人，在关系中善于共情和回应。' : t1 === 'IA' ? '您善于自我反思，在关系中能深入理解自己和对方的需求。' : `您的${t1Label}天赋让您在人际互动中有独特的表达方式。`}`,
+      conflictResolution: `面对冲突时，您倾向于运用${t1Label}和${t2Label}的能力来处理问题。${t1 === 'LM' ? '您善于用逻辑分析问题根源。' : t1 === 'IP' ? '您善于感知对方情绪并找到共识。' : '建议在处理冲突时也发展互补能力。'}`,
+      advice: ['利用您的天赋优势建立有深度的人际连接', '在社交中展现您的独特才能来吸引志同道合的人', '发展互补智能来丰富人际互动的方式', '与拥有不同天赋组合的人合作以获得互补效应', '定期用您的天赋为他人创造价值'],
+      redFlags: ['只与天赋类型相似的人交往形成信息茧房', '过度依赖单一天赋维度来处理所有关系问题', '忽视在弱势维度上的发展机会'],
+      greenFlags: ['能欣赏和利用不同天赋类型的人的独特价值', '在关系中灵活运用多种智能来沟通和表达', '愿意在弱势维度上向他人学习和成长'],
+    },
+    personalGrowth: {
+      overview: `基于加德纳的多元智能理论，每个人都拥有八种智能，但分布各不相同。您的天赋组合"${code}"表明${t1Label}是您最突出的天赋(${top1?.percentage || 50}%)，这是您天然的竞争优势。成长的关键不是补短板，而是将最强天赋发展到极致，同时用次强天赋来创造独特的交叉优势。`,
+      coreStrengths: [`${t1Label}(${top1?.percentage || 50}%): 您最突出的天赋维度，是核心竞争力的基础`, `${t2Label}(${top2?.percentage || 50}%): 第二天赋，与核心天赋形成强大的协同效应`, `${t3Label}(${top3?.percentage || 50}%): 第三天赋，提供额外的视角和能力支撑`, '独特的三维天赋组合在人群中具有稀缺性', '天赋驱动的学习效率远高于普通学习'],
+      blindSpots: [`${b1Label}(${bottom1?.percentage || 30}%)相对较低，在相关场景中可能需要额外努力`, '可能过度依赖优势天赋而忽视全面发展', '在需要弱势天赋的任务中可能缺乏耐心'],
+      growthPath: ['将核心天赋发展到专业级别（10000小时刻意练习）', '寻找核心天赋与次强天赋的交叉应用场景', '在弱势维度上建立"足够好"的基础能力', '通过团队合作来弥补弱势维度'],
+      recommendedBooks: ['《发现你的天赋》Ken Robinson - 理解天赋与热情的关系', '《多元智能》Howard Gardner - 多元智能理论原著', '《异类》Malcolm Gladwell - 理解天赋与练习的关系'],
+      habits: ['每天至少投入1小时在核心天赋的刻意练习上', '每周尝试一次跨天赋的创意活动', '定期记录天赋应用中的心流体验', '每月寻找一个将天赋变现的新机会'],
+      mindsetShifts: ['天赋不是技能——天赋是你学习某种技能时比别人快10倍的那个维度', '与其补短板，不如将长板发展到极致', '最大的竞争优势来自多种天赋的独特组合，而非单一维度的绝对高分'],
+      shortTermGoals: ['明确核心天赋的3个具体应用方向', '找到一个能同时运用前两项天赋的项目或活动', '与一位在你弱势领域有天赋的人建立合作关系'],
+      longTermGoals: ['在核心天赋领域达到专家级别', '建立基于天赋组合的个人品牌和变现路径', '帮助他人发掘和发展自身天赋']
+    },
+    careerAnalysis: {
+      overview: `这是本报告最具价值的部分。您的天赋代码"${code}"指向特定的职业集群——当职业内容与核心天赋高度匹配时，您不仅工作效率更高，还能获得持续的内在满足感和心流体验。研究表明，在天赋匹配的领域工作的人，绩效是不匹配者的6倍。`,
+      idealIndustries: [...new Set([...(dimCareers[t1]?.slice(0, 3) || []), ...(dimCareers[t2]?.slice(0, 2) || []), ...(dimCareers[t3]?.slice(0, 2) || [])])],
+      idealRoles: [...new Set([...(dimCareers[t1]?.slice(0, 3) || []), ...(dimCareers[t2]?.slice(0, 3) || [])])],
+      workStyle: `您的${t1Label}天赋驱动了一种独特的工作方式：${t1 === 'LI' ? '您在需要写作、演讲和语言表达的任务中效率最高。' : t1 === 'LM' ? '您在需要分析、推理和问题解决的任务中表现卓越。' : t1 === 'SV' ? '您在需要视觉设计、空间规划的工作中最为出色。' : t1 === 'IP' ? '您在需要团队协作、人际沟通的场景中如鱼得水。' : `您偏好能充分发挥${t1Label}的工作场景。`}`,
+      leadershipStyle: `${t1 === 'IP' ? '您是天然的关系型领导者，善于理解和激励团队成员。' : t1 === 'LM' ? '您是策略型领导者，善于用数据和逻辑做出最优决策。' : t1 === 'LI' ? '您是沟通型领导者，善于用语言传递愿景和凝聚团队。' : `您的${t1Label}天赋赋予您独特的领导力风格。`}`,
+      teamDynamics: `在团队中，您最适合承担需要${t1Label}的角色。与拥有互补天赋的团队成员合作能产生最佳效果。`,
+      careerRisks: ['在与核心天赋严重不匹配的岗位上长期工作会导致倦怠', '过度依赖单一天赋可能限制职业发展的广度', '忽视市场需求只追求天赋表达可能影响收入'],
+      careerAdvantages: ['天赋匹配的工作让您拥有天然的竞争优势', '天赋驱动的内在动力让您持续保持高效', '独特的天赋组合让您在交叉领域不可替代', '天赋带来的心流体验让工作成为享受'],
+      fiveYearPath: `第1年：在${t1Label}领域深耕，建立专业基础；第2年：整合${t2Label}天赋，开拓交叉应用；第3年：在天赋交叉领域建立个人品牌；第4-5年：成为天赋组合领域的专家，实现天赋变现最大化。`,
+      salaryPotential: `在天赋匹配的领域，您的成长速度和薪资潜力显著高于平均水平。${t1 === 'LM' ? '逻辑数理天赋在科技和金融领域的薪资天花板尤其高。' : t1 === 'IP' ? '人际交往天赋在管理和销售领域能带来可观的回报。' : '关键是找到天赋与市场需求的最佳交叉点。'}`
+    },
+    workAnalysis: {
+      productivityTips: ['将最重要的工作安排在能发挥核心天赋的时段', '用核心天赋来解构和简化困难任务', '在弱势领域的任务上寻求协助或外包', '建立发挥天赋的工作仪式和环境', '定期评估工作内容与天赋的匹配度'],
+      communicationStyle: `您的${t1Label}天赋塑造了独特的沟通方式——${t1 === 'LI' ? '善于用精准的语言传达复杂概念。' : t1 === 'SV' ? '偏好用图表和可视化来辅助表达。' : t1 === 'MU' ? '对语调和节奏敏感，沟通中注重表达的韵律感。' : '善于在沟通中融入自身天赋的独特视角。'}`,
+      meetingBehavior: `在会议中，您倾向于从${t1Label}的角度思考和贡献。建议同时关注其他维度的讨论，用天赋优势为团队带来差异化价值。`,
+      stressResponse: `当工作要求长时间使用弱势智能（如${b1Label}）时，压力会明显增加。建议在高压时段穿插运用核心天赋的任务来恢复能量。`,
+      collaborationStyle: `与天赋互补的同事合作能产生1+1>2的效果。您在${t1Label}方面的能力可以为团队提供独特价值，同时向其他天赋类型的同事学习。`,
+      feedbackPreference: `偏好与${t1Label}相关的具体反馈和改进建议。对于弱势领域的反馈，建议以学习心态接受而非自我否定。`,
+      idealWorkEnvironment: `能充分发挥${t1Label}和${t2Label}天赋的工作环境。需要创造性表达的空间和对天赋多样性的尊重。`,
+      workLifeBalance: '将核心天赋融入业余爱好和副业，实现天赋在工作和生活中的全面表达。当天赋=热情=工作时，工作生活的界限会自然融合。'
+    },
+    testSpecificInsights: {
+      title: '多元智能深度分析',
+      sections: [
+        { heading: '天赋交叉分析', content: `您的前三强天赋${t1Label}、${t2Label}和${t3Label}形成了独特的"天赋三角"。${t1Label}+${t2Label}的组合在人群中约占${Math.floor(Math.random() * 5) + 8}%，这种稀缺性本身就是竞争优势。寻找能同时运用这两种天赋的职业和项目，是您天赋变现的最佳路径。` },
+        { heading: '天赋变现路径', content: `基于您的天赋代码"${code}"，最具变现潜力的方向有：(1)在${(dimCareers[t1] || ['相关'])[0]}领域深耕核心技能；(2)将${t1Label}和${t2Label}交叉应用于${t1 === 'LI' && t2 === 'LM' ? '技术写作、数据新闻' : t1 === 'SV' && t2 === 'LM' ? '数据可视化、交互设计' : '交叉创新领域'}；(3)建立基于天赋组合的个人品牌，通过内容创作、咨询或教育来实现价值。` },
+        { heading: '刻意练习方案', content: `核心天赋的刻意练习建议：${t1Label}——每天投入至少60分钟高质量练习，关注"舒适区边缘"的挑战；${t2Label}——每周安排3次结构化练习，逐步提升到专业级别；${t3Label}——保持每周1-2次的接触，维持灵感和兴趣。弱势维度（${b1Label}）——不必追求卓越，建立"及格线"水平即可。` }
+      ]
+    },
+    charts: {
+      radarData: Object.fromEntries(t.dimensions.map(d => [d.label || d.dimension, d.percentage])),
+      dimensionBars: t.dimensions.map((d, i) => ({ label: d.label || d.dimension, value: d.percentage, color: ['#f97316', '#8b5cf6', '#10b981', '#ec4899', '#3b82f6', '#f59e0b', '#06b6d4', '#ef4444'][i % 8] })),
+    },
+    statistics: {
+      populationPercentage: `您的天赋代码"${code}"组合在人群中具有独特性，核心天赋${t1Label}约有15-20%的人较为突出`,
+      famousPeople: t1 === 'LI' ? ['莎士比亚', '鲁迅', 'J.K.罗琳', '莫言', '韩寒'] : t1 === 'LM' ? ['爱因斯坦', '图灵', '陈景润', '牛顿', '高斯'] : t1 === 'SV' ? ['达芬奇', '贝聿铭', '毕加索', '宫崎骏', '安藤忠雄'] : t1 === 'MU' ? ['莫扎特', '贝多芬', '周杰伦', '坂本龙一', '谭盾'] : t1 === 'BK' ? ['乔丹', '李小龙', '杨丽萍', '梅西', '刘翔'] : t1 === 'IP' ? ['奥普拉', '马云', '戴尔·卡耐基', '曼德拉', '德兰修女'] : t1 === 'IA' ? ['苏格拉底', '佛陀', '荣格', '老子', '弗洛伊德'] : ['达尔文', '法布尔', '珍·古道尔', '大卫·爱登堡', '屠呦呦'],
+      typicalCareers: [...(dimCareers[t1]?.slice(0, 3) || []), ...(dimCareers[t2]?.slice(0, 2) || [])],
+      globalDistribution: '多元智能分布受教育体系和文化环境影响。重视语言和逻辑的教育体系中这两种智能的平均分更高，而重视艺术和体育的文化中空间和运动智能更为突出。',
+      genderDistribution: '研究显示多元智能本身没有显著的性别差异，但社会期待和教育偏向可能导致不同性别在某些智能上的表达差异。每种天赋都值得被发掘和发展。'
+    }
+  }
+}
+
+// === 心理年龄 Mock 报告 ===
+function generateMentalAgeMock(t: TestResultData): Omit<PremiumReportData, 'testType' | 'score' | 'generatedAt' | 'dimensionAnalysis'> {
+  const mentalAge = parseInt(t.score) || 25
+  const dims = Object.fromEntries(t.dimensions.map(d => [d.dimension, d.percentage]))
+  const EM = dims['EM'] || 50, CM = dims['CM'] || 50, SA = dims['SA'] || 50, VM = dims['VM'] || 50, ID = dims['ID'] || 50
+  const avgMaturity = Math.round((EM + CM + SA + VM + ID) / 5)
+  const sorted = [...t.dimensions].sort((a, b) => b.percentage - a.percentage)
+  const strongest = sorted[0], weakest = sorted[sorted.length - 1]
+  const hi = (v: number) => v >= 65, lo = (v: number) => v < 40
+  const level = avgMaturity >= 81 ? '通达' : avgMaturity >= 66 ? '睿智' : avgMaturity >= 46 ? '成熟' : avgMaturity >= 26 ? '成长期' : '青春期'
+
+  return {
+    relationshipAnalysis: {
+      overview: `您的心理年龄测算结果为${mentalAge}岁，综合心理成熟度为${avgMaturity}%（${level}阶段）。心理成熟度直接影响您在人际关系中的表现质量——情绪成熟度(${EM}%)决定冲突处理能力，社会适应力(${SA}%)影响社交灵活性，价值观成熟度(${VM}%)影响关系中的决策质量。`,
+      attachmentStyle: `${hi(EM) && hi(SA) ? '您的情绪成熟度和社会适应力较高，倾向于安全型依恋——能在关系中保持独立的同时建立深度信任。' : lo(EM) ? '情绪成熟度('+ EM +'%)偏低可能导致在关系中过度反应或情绪化。建议通过情绪觉察练习来提升情绪管理能力。' : '您具有良好的依恋基础，通过进一步发展情绪管理能力可以建立更健康的关系模式。'}`,
+      idealPartnerTraits: [hi(EM) ? '情绪稳定、能进行深度情感交流的人' : '有耐心、能包容情绪波动的人', hi(CM) ? '思维成熟、能进行有深度的对话的人' : '乐于分享知识和经验的人', '有自我成长意愿和反思能力的人', '尊重彼此独立空间和个人边界的人', hi(VM) ? '价值观成熟且一致的人' : '愿意共同探索和建立价值观的人'],
+      communicationInRelationship: `${hi(EM) ? '较高的情绪成熟度让您能在关系中清晰地表达感受和需求。' : '在沟通中可能会有情绪先于理智的倾向，建议练习"先感受、后表达"的沟通方式。'}${hi(SA) ? '良好的社会适应力帮助您灵活应对不同的关系情境。' : ''}`,
+      conflictResolution: `${hi(EM) && hi(CM) ? '您能在冲突中保持情绪稳定并理性分析问题，这是非常成熟的冲突处理方式。' : lo(EM) ? '冲突中可能因情绪反应过强而难以理性沟通。建议使用"暂停-呼吸-回应"策略。' : '您有一定的冲突处理能力，可以通过提升认知成熟度来进一步改善。'}`,
+      advice: ['用与心理成熟度匹配的方式建立和维护关系', '在关系中保持成长心态，避免停滞', '与心理成熟度相近或互补的人建立深度连接', '定期进行关系质量的自我评估和调整', '在关系中践行您的核心价值观'],
+      redFlags: ['持续触发情绪退行（回到更不成熟的行为模式）的关系', '阻碍您心理成长的关系模式', '长期损害您自尊和自我价值感的互动'],
+      greenFlags: ['促进您心理成熟度持续发展的关系', '在安全感中鼓励您探索和成长', '尊重并支持您的独立性和价值观'],
+      longTermRelationship: `心理成熟度是长期关系质量的核心预测因素。您当前${mentalAge}岁的心理年龄${mentalAge >= 30 ? '为健康的长期关系提供了良好基础。' : '正处于快速发展期，在关系中的成长将推动心理成熟度的提升。'}`
+    },
+    personalGrowth: {
+      overview: `您的心理年龄为${mentalAge}岁，综合成熟度${avgMaturity}%。${strongest ? `最突出的维度是${strongest.label || strongest.dimension}(${strongest.percentage}%)` : ''}${weakest ? `，最大的成长空间在${weakest.label || weakest.dimension}(${weakest.percentage}%)` : ''}。发展心理学研究表明，心理成熟度可以通过有意识的练习和反思持续提升——它不像身高，到了一定年龄就停止了。`,
+      coreStrengths: t.dimensions.filter(d => d.percentage >= 55).map(d => {
+        const labels: Record<string, string> = { EM: '较好的情绪管理和表达能力', CM: '成熟的思维方式和认知灵活性', SA: '良好的社会适应力和人际技巧', VM: '清晰且坚定的价值观体系', ID: '较强的独立判断和行动能力' }
+        return `${d.label || d.dimension}(${d.percentage}%): ${labels[d.dimension] || '突出优势'}`
+      }),
+      blindSpots: t.dimensions.filter(d => d.percentage < 45).map(d => {
+        const labels: Record<string, string> = { EM: '情绪管理需要更多练习，容易在压力下失控', CM: '思维方式偏向二元化，需发展灰度思考能力', SA: '社交适应性有限，在新环境中可能感到不适', VM: '价值观仍在形成中，决策时可能缺乏内在标尺', ID: '独立性不足，决策时可能过度依赖他人意见' }
+        return `${d.label || d.dimension}(${d.percentage}%): ${labels[d.dimension] || '需要发展的领域'}`
+      }),
+      growthPath: [`优先提升${weakest?.label || '最薄弱维度'}——这是心理成熟度提升的最高杠杆点`, '建立日常的反思和复盘习惯', '主动寻求挑战性的经历来加速成熟', '定期进行心理成熟度自评以追踪进步'],
+      recommendedBooks: ['《少有人走的路》M. Scott Peck - 心理成熟的经典指南', '《被讨厌的勇气》岸见一郎 - 关于独立性和自我接纳', '《思考，快与慢》Daniel Kahneman - 提升认知成熟度'],
+      habits: ['每天进行5分钟的情绪觉察日记（提升EM）', '每周进行一次"换位思考"练习——从不同角度分析同一件事（提升CM）', '每月主动进入一个新环境或尝试一件新事物（提升SA）', '定期回顾和更新自己的核心价值观清单（提升VM）', '在日常决策中练习独立判断，减少对他人意见的依赖（提升ID）'],
+      mindsetShifts: ['心理年龄和生理年龄不需要一致——年轻的心理年龄意味着更大的成长空间', '成熟不等于无趣——真正的成熟是在保持活力的同时增加智慧', '每一次挫折和挑战都是心理成熟度提升的催化剂'],
+      shortTermGoals: [`在${weakest?.label || '最薄弱维度'}上设定一个具体的改善目标`, '找到一位心理年龄明显高于自己的"成熟导师"', '完成一次对过去重要决策的成熟度复盘'],
+      longTermGoals: ['各维度成熟度均达到60%以上', '建立与心理年龄匹配的生活方式和人际关系', '成为他人心理成长的支持者和引导者']
+    },
+    careerAnalysis: {
+      overview: `心理成熟度对职业发展的影响被严重低估。研究表明，情绪成熟度和社会适应力是职场成功的强预测因素——甚至超过专业技能。您的心理年龄${mentalAge}岁${mentalAge >= 30 ? '表明您具有较好的职场心理素质。' : '表明您正处于职场心理素质的快速发展期。'}`,
+      idealIndustries: [hi(EM) ? '心理咨询/教练' : '技术研发', hi(CM) ? '战略咨询/研究' : '创意设计', hi(SA) ? '市场营销/公关' : '独立创作', hi(VM) ? '教育/公益' : '商业管理', hi(ID) ? '创业/自由职业' : '稳定型企业'],
+      idealRoles: [hi(SA) && hi(EM) ? '团队管理者' : '独立贡献者', hi(CM) ? '策略分析师' : '执行专员', hi(ID) ? '项目负责人' : '团队成员', hi(VM) ? '培训师/导师' : '专业技术岗'],
+      workStyle: `${hi(EM) ? '较高的情绪成熟度让您能在压力下保持冷静和高效。' : '建议在高压环境中建立情绪缓冲机制。'}${hi(ID) ? '较强的独立性让您在自主管理的工作中表现出色。' : '在需要高度自主的岗位中可能需要额外支持。'}`,
+      leadershipStyle: `${mentalAge >= 35 ? '您的心理成熟度支持成熟稳健的领导风格——善于在复杂局面中做出平衡决策。' : mentalAge >= 25 ? '您正在发展领导力基础，建议从小团队管理开始积累经验。' : '当前阶段建议先聚焦专业能力提升，领导力会随心理成熟度的增长自然发展。'}`,
+      teamDynamics: `${hi(SA) ? '您在团队中有良好的适应性，能与不同类型的人有效协作。' : '在团队协作中可能需要更多时间来适应不同的工作风格。'}`,
+      careerRisks: [lo(EM) ? '情绪管理不足可能在高压环境中影响判断和人际关系' : '保持情绪管理能力的持续练习', lo(ID) ? '独立性不足可能限制在高自主岗位上的表现' : '保持独立判断力在快速变化环境中的敏锐度', '心理成熟度与岗位要求不匹配时的适应挑战'],
+      careerAdvantages: t.dimensions.filter(d => d.percentage >= 55).map(d => {
+        const labels: Record<string, string> = { EM: `情绪成熟度(${d.percentage}%)提升了您的压力管理和人际沟通能力`, CM: `认知成熟度(${d.percentage}%)帮助您做出更好的职业决策`, SA: `社会适应力(${d.percentage}%)让您在不同环境中都能快速融入`, VM: `价值观成熟度(${d.percentage}%)为您的职业选择提供内在指南针`, ID: `独立自主性(${d.percentage}%)让您在需要自我管理的岗位上表现出色` }
+        return labels[d.dimension] || `${d.label}(${d.percentage}%)带来的职业优势`
+      }),
+      fiveYearPath: `第1-2年：重点提升${weakest?.label || '最薄弱维度'}的成熟度，建立职场基础；第3年：${mentalAge >= 30 ? '承担更大责任，发展领导力' : '拓展能力边界，积累跨领域经验'}；第4-5年：${mentalAge >= 35 ? '在成熟的心理素质基础上追求更高的职业目标' : '随着心理成熟度的持续增长，进入职业发展的加速期'}。`,
+      salaryPotential: `心理成熟度与职业发展正相关。情绪成熟度高的人在管理岗位上表现更好，认知成熟度高的人在策略和决策岗位上更具优势。您当前${level}的成熟度${avgMaturity >= 60 ? '为薪资增长提供了良好基础' : '通过提升成熟度将释放更大的职业潜力'}。`
+    },
+    workAnalysis: {
+      productivityTips: [hi(EM) ? '利用情绪稳定性在高压时段处理最重要的任务' : '将困难任务安排在情绪最佳的时段', hi(CM) ? '用成熟的认知框架快速分析和拆解复杂问题' : '建立结构化的思考框架来辅助决策', hi(ID) ? '利用独立性优势自主安排高效的工作节奏' : '借助外部工具和同事支持来维持工作节奏', '每日设定3个最重要的任务并优先完成', '定期回顾工作方法并持续优化'],
+      communicationStyle: `${hi(EM) ? '您能在沟通中保持情绪稳定，这有助于传递清晰的信息。' : '在重要沟通前建议先做情绪准备。'}${hi(SA) ? '良好的社会适应力让您能根据对象调整沟通方式。' : '建议针对不同的沟通对象准备不同的表达策略。'}`,
+      meetingBehavior: `${hi(CM) ? '您能在会议中保持清晰的思维和全局视角。' : '建议在会议前准备好核心论点，确保表达有条理。'}${hi(SA) ? '您善于在会议中适时发言并促进讨论。' : ''}`,
+      stressResponse: `${hi(EM) ? '较高的情绪成熟度让您在压力下仍能保持冷静和理性判断。保持规律的减压习惯来维持这种优势。' : '当前的情绪成熟度('+ EM +'%)提示您在高压下可能出现情绪波动。建议建立"压力信号清单"，在早期察觉并主动调节。推荐4-7-8呼吸法作为即时缓解工具。'}`,
+      collaborationStyle: `${hi(SA) && hi(EM) ? '您在团队协作中具有显著优势——既能适应不同工作风格，又能稳定地管理协作中的情绪挑战。' : hi(SA) ? '良好的适应力帮助您在多元团队中顺畅协作。' : '建议从小范围合作开始，逐步建立团队协作的信心。'}`,
+      feedbackPreference: `${hi(EM) ? '您能客观地接受和处理反馈，无论正面还是负面。' : '收到负面反馈时建议先消化情绪再处理内容。'}${hi(CM) ? '您能将反馈转化为具体的改进行动。' : '建议将反馈记录下来，定期回顾并制定改进计划。'}`,
+      idealWorkEnvironment: `${hi(ID) ? '有高度自主权和灵活安排空间的工作环境。' : '有清晰结构和支持体系的工作环境。'}${hi(SA) ? '包容多元、鼓励交流的团队文化。' : '稳定且友好的团队氛围。'}`,
+      workLifeBalance: `心理年龄${mentalAge}岁${mentalAge >= 35 ? '——您已具备较好的工作生活边界管理能力。继续保持健康的生活习惯。' : '——建议有意识地建立工作和生活的边界，避免将所有精力投入单一领域。规律的作息、运动和社交是心理成熟度提升的基础。'}`
+    },
+    testSpecificInsights: {
+      title: '心理年龄深度解读',
+      sections: [
+        { heading: '心理年龄与生理年龄的差异分析', content: `您的测算心理年龄为${mentalAge}岁。心理年龄与生理年龄不一致是完全正常的——一个25岁的人可能拥有35岁的智慧，或保持着20岁的热情。重要的不是数字本身，而是理解自己在哪些维度上更加成熟，在哪些方面仍有成长空间。${mentalAge > 35 ? '您展现出超越年龄的心理成熟度，这是宝贵的内在资源。' : mentalAge < 22 ? '较年轻的心理年龄意味着您保持着旺盛的好奇心和可塑性——这是成长最快的阶段。' : '您处于心理发展的活跃期，各维度都有很大的提升空间。'}` },
+        { heading: '五维成熟度画像', content: `您的成熟度画像：情绪成熟度(${EM}%)${hi(EM) ? '✓ 突出' : lo(EM) ? '△ 需发展' : '○ 中等'}、认知成熟度(${CM}%)${hi(CM) ? '✓ 突出' : lo(CM) ? '△ 需发展' : '○ 中等'}、社会适应力(${SA}%)${hi(SA) ? '✓ 突出' : lo(SA) ? '△ 需发展' : '○ 中等'}、价值观成熟度(${VM}%)${hi(VM) ? '✓ 突出' : lo(VM) ? '△ 需发展' : '○ 中等'}、独立自主性(${ID}%)${hi(ID) ? '✓ 突出' : lo(ID) ? '△ 需发展' : '○ 中等'}。五个维度的均衡发展比单一维度的极高分更重要——它们相互影响、相互促进。` },
+        { heading: '定制化成长方案', content: `基于您的五维画像，优先成长方向为：${weakest ? `(1)${weakest.label || weakest.dimension}(${weakest.percentage}%)——每天用5分钟做该维度的专项练习；` : ''}${lo(EM) ? '情绪成熟度：练习"情绪命名法"——每天3次停下来问自己"我现在的感受是什么？强度多少？"；' : ''}${lo(CM) ? '认知成熟度：练习"灰度思考"——对每个观点找3个支持和3个反对的理由；' : ''}${lo(SA) ? '社会适应力：每周主动进入一个新环境并与至少1位陌生人交谈；' : ''}${lo(VM) ? '价值观成熟度：写下你的5个核心价值观并每月检查行为是否一致；' : ''}${lo(ID) ? '独立自主性：每天独立做一个不征求他人意见的小决策。' : ''}持续3个月后重新测试，追踪心理年龄的变化。` }
+      ]
+    },
+    charts: {
+      radarData: Object.fromEntries(t.dimensions.map(d => [d.label || d.dimension, d.percentage])),
+      dimensionBars: t.dimensions.map((d, i) => ({ label: d.label || d.dimension, value: d.percentage, color: ['#14b8a6', '#8b5cf6', '#f59e0b', '#ec4899', '#3b82f6'][i % 5] })),
+    },
+    statistics: {
+      populationPercentage: `心理年龄${mentalAge}岁，综合成熟度${avgMaturity}%，处于${level}阶段`,
+      famousPeople: mentalAge >= 40 ? ['孔子（"四十不惑"的智慧象征）', '苏格拉底（以自我认知著称）', '曼德拉（以极高的情绪成熟度领导变革）', '稻盛和夫（通达的人生哲学）', '杨绛（百岁人生的通达智慧）'] : mentalAge >= 30 ? ['马克·扎克伯格（年轻但成熟的决策者）', '张一鸣（理性成熟的创业者）', '艾玛·沃特森（超越年龄的价值观成熟度）', '马斯克（独立思考的先行者）', '周恩来（年轻时即展现非凡成熟度）'] : ['比尔·盖茨（年轻时的好奇心和独立性）', 'Greta Thunberg（年轻但有坚定价值观）', '莫扎特（年少时的情感深度）', '丁真（纯真与自然的连接）', '谷爱凌（运动与学业的成熟平衡）'],
+      typicalCareers: [],
+      globalDistribution: '心理成熟度受教育、文化和人生经历的综合影响。东亚文化中价值观成熟度和社会适应力的平均得分较高，西方文化中独立自主性的平均得分较高。',
+      genderDistribution: '研究显示女性在情绪成熟度和社会适应力上平均略高，男性在独立自主性上平均略高，但个体差异远大于性别差异。心理成熟度的发展路径因人而异。'
     }
   }
 }

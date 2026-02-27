@@ -105,6 +105,26 @@ function getTabConfig(testType?: string): { id: TabId; label: string; icon: Reac
                 { id: 'insights', label: '专业指导', icon: <Lightbulb size={18} /> },
                 { id: 'data', label: '数据图表', icon: <BarChart3 size={18} /> },
             ]
+        case 'TALENT':
+            return [
+                ...base,
+                { id: 'career', label: '天赋变现', icon: <Compass size={18} /> },
+                { id: 'growth', label: '天赋发展', icon: <TrendingUp size={18} /> },
+                { id: 'relationship', label: '天赋社交', icon: <Users size={18} /> },
+                { id: 'work', label: '工作分析', icon: <Monitor size={18} /> },
+                { id: 'insights', label: '深度解读', icon: <Lightbulb size={18} /> },
+                { id: 'data', label: '数据图表', icon: <BarChart3 size={18} /> },
+            ]
+        case 'MENTAL_AGE':
+            return [
+                ...base,
+                { id: 'growth', label: '成熟度提升', icon: <Brain size={18} /> },
+                { id: 'relationship', label: '人际成熟度', icon: <Heart size={18} /> },
+                { id: 'career', label: '职场表现', icon: <Briefcase size={18} /> },
+                { id: 'work', label: '工作分析', icon: <Monitor size={18} /> },
+                { id: 'insights', label: '深度解读', icon: <Lightbulb size={18} /> },
+                { id: 'data', label: '数据图表', icon: <BarChart3 size={18} /> },
+            ]
         case 'MBTI':
         case 'BIG_FIVE':
         default:
@@ -129,6 +149,8 @@ function getOverviewLabel(testType?: string): string {
         case 'HOLLAND': return '您的职业兴趣代码'
         case 'ENNEAGRAM': return '您的核心类型'
         case 'DEPRESSION': return '您的评估结果'
+        case 'TALENT': return '您的天赋代码'
+        case 'MENTAL_AGE': return '您的心理年龄'
         default: return '您的类型'
     }
 }
@@ -244,8 +266,8 @@ export default function PremiumReport({ report, testType, loading, onRetry, erro
     // ===== 关系/恋爱分析页 =====
     const renderRelationshipAnalysis = () => {
         if (!relData) return null
-        const isLoveContext = testType === 'MBTI' || testType === 'BIG_FIVE' || testType === 'ENNEAGRAM'
-        const isWorkContext = testType === 'HOLLAND' || testType === 'DISC'
+        const isLoveContext = testType === 'MBTI' || testType === 'BIG_FIVE' || testType === 'ENNEAGRAM' || testType === 'MENTAL_AGE'
+        const isWorkContext = testType === 'HOLLAND' || testType === 'DISC' || testType === 'TALENT'
 
         return (
             <div className={styles.loveContent}>

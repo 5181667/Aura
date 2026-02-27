@@ -38,6 +38,8 @@ import { calculateEQ, eqLevelDescriptions, getEQLevel } from './eq-scoring'
 import { calculateHolland, hollandCareerSuggestions, getHollandCareerSuggestions, getHollandCodeCareers } from './holland-scoring'
 import { calculateEnneagram, enneagramTypeDescriptions, getEnneagramDescription, getEnneagramTypeName } from './enneagram-scoring'
 import { calculateDepression, depressionLevels, getDepressionLevel, getDepressionPercentage } from './depression-scoring'
+import { calculateTalent, talentDescriptions, getTalentDescription, getTalentName } from './talent-scoring'
+import { calculateMentalAge, mentalAgeLevelDescriptions, getMentalAgeLevel, getMentalAgeLevelLabel } from './mental-age-scoring'
 
 // 导出所有评分函数和工具函数
 export {
@@ -64,7 +66,15 @@ export {
   calculateDepression,
   depressionLevels,
   getDepressionLevel,
-  getDepressionPercentage
+  getDepressionPercentage,
+  calculateTalent,
+  talentDescriptions,
+  getTalentDescription,
+  getTalentName,
+  calculateMentalAge,
+  mentalAgeLevelDescriptions,
+  getMentalAgeLevel,
+  getMentalAgeLevelLabel
 }
 
 // 根据测试类型选择评分算法
@@ -84,6 +94,10 @@ export function calculateScore(testType: string, answers: Answer[]): TestResult 
       return calculateEnneagram(answers)
     case 'DEPRESSION':
       return calculateDepression(answers)
+    case 'TALENT':
+      return calculateTalent(answers)
+    case 'MENTAL_AGE':
+      return calculateMentalAge(answers)
     default:
       throw new Error(`Unknown test type: ${testType}`)
   }

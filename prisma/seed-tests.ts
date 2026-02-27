@@ -47,6 +47,18 @@ const testConfigs = [
     type: 'DEPRESSION',
     category: 'mental_health',
     isSystem: true
+  },
+  {
+    filename: 'talent-40.json',
+    type: 'TALENT',
+    category: 'talent',
+    isSystem: true
+  },
+  {
+    filename: 'mental-age-30.json',
+    type: 'MENTAL_AGE',
+    category: 'personality',
+    isSystem: true
   }
 ]
 

@@ -18,6 +18,8 @@ import { getEQProfile, eqDimensionProfiles } from '@/data/eq-profiles'
 import { getHollandProfile } from '@/data/holland-profiles'
 import { getEnneagramProfile, getWingDescription } from '@/data/enneagram-profiles'
 import { getDepressionProfile } from '@/data/depression-profiles'
+import { getTalentProfile } from '@/data/talent-profiles'
+import { getMentalAgeProfile } from '@/data/mental-age-profiles'
 import { getDepressionLevel, getDepressionPercentage } from '@/data/scoring/depression-scoring'
 import { useTheme } from '@/providers/ThemeProvider'
 import styles from './result.module.css'
@@ -84,6 +86,15 @@ function buildUnifiedProfile(testType: string, score: string, dimensions: any[] 
                     ...(p.warningNote ? [{ label: '重要提示', value: p.warningNote }] : [])
                 ]
             }
+        }
+        case 'TALENT': {
+            const p = getTalentProfile(score, dimensions || [])
+            return { title: p.title, tagline: p.tagline, emoji: p.emoji, color: p.color, colorSecondary: p.colorSecondary, tags: p.tags, description: p.description, strengths: p.strengths, weaknesses: p.weaknesses, careers: p.careers, famousPeople: p.famousPeople, extraInfo: [{ label: '发展建议', value: p.developmentTips[0] || '' }] }
+        }
+        case 'MENTAL_AGE': {
+            const mentalAge = parseInt(score) || 25
+            const p = getMentalAgeProfile(mentalAge)
+            return { title: p.title, tagline: p.tagline, emoji: p.emoji, color: p.color, colorSecondary: p.colorSecondary, tags: p.tags, description: p.description, strengths: p.strengths, weaknesses: p.weaknesses, careers: [], famousPeople: [], extraInfo: [{ label: '心理年龄', value: `${mentalAge}岁` }, { label: '心态阶段', value: p.ageRange }] }
         }
         default:
             return null

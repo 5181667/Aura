@@ -49,7 +49,8 @@ export async function POST(req: Request) {
         if (redemptionCode.testType !== 'ALL' && redemptionCode.testType !== testResult.test.type) {
             const typeLabels: Record<string, string> = {
                 'MBTI': 'MBTI', 'BIG_FIVE': '大五人格', 'DISC': 'DISC',
-                'EQ': '情商', 'HOLLAND': '霍兰德', 'ENNEAGRAM': '九型人格', 'ALL': '通用'
+                'EQ': '情商', 'HOLLAND': '霍兰德', 'ENNEAGRAM': '九型人格',
+                'TALENT': '天赋发掘', 'MENTAL_AGE': '心理年龄', 'ALL': '通用'
             }
             const codeLabel = typeLabels[redemptionCode.testType] || redemptionCode.testType
             const testLabel = typeLabels[testResult.test.type] || testResult.test.type

@@ -144,7 +144,7 @@ export async function POST(req: Request) {
             return NextResponse.json({ message: "生成数量需在 1-500 之间" }, { status: 400 })
         }
 
-        const validTypes = ['MBTI', 'BIG_FIVE', 'DISC', 'EQ', 'HOLLAND', 'ENNEAGRAM', 'ALL']
+        const validTypes = ['MBTI', 'BIG_FIVE', 'DISC', 'EQ', 'HOLLAND', 'ENNEAGRAM', 'TALENT', 'MENTAL_AGE', 'ALL']
         if (!testType || !validTypes.includes(testType)) {
             return NextResponse.json({ message: "请选择有效的测试类型" }, { status: 400 })
         }

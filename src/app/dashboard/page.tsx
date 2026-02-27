@@ -57,7 +57,7 @@ export default async function DashboardPage() {
     }
 
     // 获取未完成的测试类型
-    const allTestTypes = ['MBTI', 'BIG_FIVE', 'DISC', 'EQ', 'HOLLAND', 'ENNEAGRAM']
+    const allTestTypes = ['MBTI', 'BIG_FIVE', 'DISC', 'EQ', 'HOLLAND', 'ENNEAGRAM', 'TALENT', 'MENTAL_AGE']
     const completedTypes = Array.from(testTypes)
     const uncompletedTests = allTestTypes.filter(t => !completedTypes.includes(t))
 
@@ -68,7 +68,9 @@ export default async function DashboardPage() {
         'EQ': { name: '情商测试', desc: '探索你的情感智慧维度', icon: '💖' },
         'HOLLAND': { name: '霍兰德职业兴趣', desc: '发现最适合你的职业方向', icon: '🎯' },
         'ENNEAGRAM': { name: '九型人格', desc: '深入理解你的核心动机', icon: '🔮' },
-        'MBTI': { name: 'MBTI 性格类型', desc: '探索你的16种性格类型', icon: '🧠' }
+        'MBTI': { name: 'MBTI 性格类型', desc: '探索你的16种性格类型', icon: '🧠' },
+        'TALENT': { name: '天赋发掘测试', desc: '发掘你的多元智能天赋', icon: '⚡' },
+        'MENTAL_AGE': { name: '心理年龄测试', desc: '了解你内心的真实年龄', icon: '🧭' }
     }
 
     return (
