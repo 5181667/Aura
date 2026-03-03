@@ -31,7 +31,7 @@ export async function GET(req: NextRequest) {
 
     try {
         const response = await fetch(
-            `http://ip-api.com/json/${ip}?lang=zh-CN&fields=status,message,country,regionName,city,district,isp,lat,lon,timezone,query`,
+            `http://whois.pconline.com.cn/ipJson.jsp?ip=${ip}&json=true`,
             { next: { revalidate: 3600 } }
         )
 
@@ -39,13 +39,23 @@ export async function GET(req: NextRequest) {
             throw new Error("IP API 请求失败")
         }
 
-        const data = await response.json()
+        // 太平洋接口返回 GBK 编码，需转换
+        const buffer = await response.arrayBuffer()
+        const text = new TextDecoder("gbk").decode(buffer)
+        const data = JSON.parse(text)
 
-        if (data.status === "fail") {
-            return NextResponse.json({ message: data.message || "IP解析失败" }, { status: 400 })
+        if (data.err) {
+            return NextResponse.json({ message: "IP解析失败：" + data.err }, { status: 400 })
         }
 
-        return NextResponse.json(data)
+        return NextResponse.json({
+            ip: data.ip,
+            country: "中国",
+            regionName: data.pro,
+            city: data.city,
+            district: data.region || "",
+            isp: data.addr?.replace(data.pro, "").replace(data.city, "").trim() || "",
+        })
     } catch {
         return NextResponse.json({ message: "IP地址解析服务暂时不可用" }, { status: 500 })
     }
