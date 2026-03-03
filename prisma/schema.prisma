@@ -85,6 +85,7 @@ model TestResult {
   dimensions    Json?     // 各维度得分
   aiAnalysis    Json?     // AI分析结果
   aiAnalyzedAt  DateTime? // AI分析时间
+  ipAddress     String?   // 提交时的IP地址
   createdAt     DateTime  @default(now())
 
   user          User? @relation(fields: [userId], references: [id])

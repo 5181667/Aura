@@ -12,6 +12,7 @@ export default async function AdminResultsPage() {
             score: true,
             createdAt: true,
             aiAnalyzedAt: true,
+            ipAddress: true,
             user: {
                 select: {
                     id: true,

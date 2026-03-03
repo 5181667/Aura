@@ -1,9 +1,19 @@
-import { NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
 import { prisma } from "@/lib/prisma"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 
-export async function POST(req: Request) {
+function getClientIP(req: NextRequest): string | null {
+    const forwarded = req.headers.get("x-forwarded-for")
+    if (forwarded) {
+        return forwarded.split(",")[0].trim()
+    }
+    return req.headers.get("x-real-ip") || 
+           req.headers.get("cf-connecting-ip") || 
+           null
+}
+
+export async function POST(req: NextRequest) {
     try {
         const session = await getServerSession(authOptions)
         const { testId, score, details, dimensions } = await req.json()
@@ -14,6 +24,7 @@ export async function POST(req: Request) {
 
         // 支持游客提交，userId 可为空
         const userId = session?.user ? (session.user as any).id : null
+        const ipAddress = getClientIP(req)
 
         const result = await prisma.testResult.create({
             data: {
@@ -22,6 +33,7 @@ export async function POST(req: Request) {
                 score,
                 details,
                 dimensions,
+                ipAddress,
             }
         })
 
